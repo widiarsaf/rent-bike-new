@@ -126,9 +126,12 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="auth-normal-sign-in.html">
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <i class="ti-layout-sidebar-left"></i> Logout
                                         </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                     </li>
                                 </ul>
                             </li>
@@ -248,17 +251,17 @@
                                     </a>
                                 </li>
                             </ul>
-                            {{-- Login --}}
+                            <!-- {{-- Login --}}
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Login</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu">
+                                <li class="">
                                     <a href="{{route('login')}}">
                                         <span class="pcoded-micon"><i class="ti-key"></i><b>D</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Login</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </nav>
                     <div class="pcoded-content">
