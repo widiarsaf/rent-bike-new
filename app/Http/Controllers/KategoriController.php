@@ -27,7 +27,6 @@ class KategoriController extends Controller
             ]);
 
         Kategori::create($request->all());
-        // if the data is added successfully, will return to the main page
         return redirect()->route('kategori.index')
             ->with('success', 'Kategori telah ditambahkan');
     }
