@@ -16,14 +16,13 @@ class SepedaController extends Controller
         $sepeda = Sepeda::with('kategori')->get();
         $paket = Paket::all();
         $kategori = Kategori::all();
-        return view('sepeda.index', compact('sepeda', 'paket', 'kategori'));
+        return view('admin.sepedaIndex', compact('sepeda', 'paket', 'kategori'));
     }
 
 
     public function create()
     {
-        $kategori = Kategori::all();
-        return view('sepeda.create', ['kategori' => $kategori]);
+        //
     }
 
     public function store(Request $request)
@@ -67,11 +66,11 @@ class SepedaController extends Controller
             ->where('id_sepeda', $id_sepeda)
             ->first();
         $kategori = Kategori::all();
-        return view('sepeda.edit', ['sepeda' => $sepeda, 'kategori' => $kategori]);
+        return view('admin.sepedaEdit', ['sepeda' => $sepeda, 'kategori' => $kategori]);
     }
-    public function update(Request $request)
+    public function update(Request $request, $id_sepeda)
     {
-         $request->validate([
+        $request->validate([
             'unit_code' => 'required',
             'kategori_id' => 'required',
             'deskripsi' => 'required',
@@ -79,14 +78,18 @@ class SepedaController extends Controller
             'status' => 'required',
         ]);
 
-        $sepeda = Sepeda::with('kategori')->findOrFail($request->id_sepeda);
+        $sepeda = Sepeda::with('kategori')
+            ->where('id_sepeda', $id_sepeda)
+            ->first();
 
-        if($sepeda->foto_unit && file_exists(storage_path('app/public/' . $sepeda->foto_unit))) {
-            Storage::delete('public/' . $sepeda->foto_unit);
-            $sepeda->foto_unit = $image_name;
+        if ($request->file('foto_unit')) {
+            if($sepeda->foto_unit && file_exists(storage_path('app/public/' . $sepeda->foto_unit))) {
+                Storage::delete('public/' . $sepeda->foto_unit);
+                $image_name = $request->file('foto_unit')->store('images', 'public');
+                $sepeda->foto_unit = $image_name;
+            }
         }
-        $image_name = $request->file('foto_unit')->store('images', 'public');
-
+       
         $sepeda->unit_code = $request->get('unit_code');
         $sepeda->deskripsi = $request->get('deskripsi');
         $sepeda->status = $request->get('status');
@@ -103,8 +106,17 @@ class SepedaController extends Controller
 
 
     }
-    public function destroy($id)
+    public function destroy($id_sepeda)
     {
-        //
+        $sepeda = Sepeda::with('kategori')
+            ->where('id_sepeda', $id_sepeda)
+            ->first();
+        if($sepeda->foto_unit && file_exists(storage_path('app/public/' . $sepeda->foto_unit))) {
+            Storage::delete('public/' . $sepeda->foto_unit);
+        }
+        Sepeda::find($id_sepeda)->delete();
+
+        return redirect()->route('sepeda.index')
+            ->with('success', 'Sepeda berhasil dihapus');
     }
 }

@@ -12,7 +12,7 @@ class PaketController extends Controller
     public function index()
     {
         $paket = Paket::get();
-        return view('paket.index', compact('paket'));
+        return view('admin.paketIndex', compact('paket'));
     }
 
     public function create()

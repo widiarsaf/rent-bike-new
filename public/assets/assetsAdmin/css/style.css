@@ -423,7 +423,7 @@ p {
   background-color: #4680ff !important; }
 
 .sweet-alert .sa-input-error {
-  top: 23px; }
+  top: 5px; }
 
 /**====== Modal css end ======**/
 /**  =====================
@@ -14215,7 +14215,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
     float: none; }
 
   .timeline-right .card {
-    margin-left: 20px; }
+    margin-left: 5px; }
 
   .user-box .media-left {
     padding-right: 10px; }
@@ -14337,3 +14337,9 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
     background-color: #444c67; }
 
 /*# sourceMappingURL=style.css.map */
+
+.card{
+  margin: 0 -30px !important;
+  padding: 15px;
+}
+

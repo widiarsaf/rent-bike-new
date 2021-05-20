@@ -137,3 +137,49 @@ var nav = $('.fixed-button');
          nav.removeClass('active');
      }
  });
+
+ 
+$('#edit').on('show.bs.modal', function (event) {
+var button = $(event.relatedTarget)
+var namakategori = button.data('namakategori')
+var idkategori = button.data('idkategori')
+var modal = $(this)
+modal.find('.modal-body #namaKategori').val(namakategori);
+modal.find('.modal-body #idKategori').val(idkategori);
+})
+
+ 
+
+$('#delete').on('show.bs.modal', function (event) {
+var button = $(event.relatedTarget)
+var idkategori = button.data('idkategori')
+var modal = $(this)
+modal.find('.modal-body #idKategori').val(idkategori);
+})
+
+ 
+ 
+$('#editPaket').on('show.bs.modal', function (event) {
+var button = $(event.relatedTarget)
+var namapaket = button.data('namapaket')
+var jam = button.data('jam')
+var harga = button.data('harga')
+var idpaket= button.data('idpaket')
+var modal = $(this)
+console.log(idpaket)
+modal.find('.modal-body #namaPaket').val(namapaket);
+modal.find('.modal-body #jam').val(jam);
+modal.find('.modal-body #harga').val(harga);
+modal.find('.modal-body #idPaket').val(idpaket);
+})
+
+$('#deletePaket').on('show.bs.modal', function (event) {
+var button = $(event.relatedTarget)
+var idpaket= button.data('idpaket')
+var modal = $(this)
+modal.find('.modal-body #idPaket').val(idpaket);
+})
+
+
+
+ 

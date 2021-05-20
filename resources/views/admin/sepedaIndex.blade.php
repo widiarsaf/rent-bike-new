@@ -1,5 +1,18 @@
 @extends('layouts.admin')
 @section('content')
+<div>
+    @if ($message = Session::get('fail'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>    
+        <strong>Failed!!</strong><span> {{ $message }}</span>
+    </div>
+    @elseif ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible fade show"  role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>    
+    <strong>Success!!</strong><span> {{ $message }}</span>
+    </div>
+    @endif
+</div>
 <div class="page-body">
     <div class="card">
         <div class="card-header">
@@ -79,7 +92,8 @@
                         </select>
 
                     </div>
-                    <button type="submit" class="btn btn-primary" onclick="$('#formAdd').hide();">Submit</button>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
 
@@ -148,15 +162,17 @@
                             <td>{{$spd->deskripsi}}</td>
                             <td><img width=" 80px" src="{{asset('storage/'.$spd->foto_unit) }}"></td>
                             <td>{{$spd->status}}</td>
-                            <td>
-                                {{-- <button class="btn btn-primary" data-mytitle="hello" data-idsepeda="{{$spd->id_sepeda}}"
-                                data-unitcode="{{$spd->unit_code}}"
-                                data-kategori="{{$spd->kategori->nama_kategori}}"
-                                data-deskripsi="{{$spd->deskripsi}}"
-                                data-foto="{{asset('storage/'.$spd->foto_unit) }}" data-status="{{$spd->status}}"
-                                data-toggle="collapse" data-target="#formEditSepeda">Edit</button> --}}
-                                <a href="{{route('sepeda.edit', $spd->id_sepeda)}}">Edit</a>
-                                <button type=" submit" class="btn btn-danger">Delete</button>
+                            <td style="display: flex">
+                                <a type="button" class="btn btn-warning"
+                                    href="{{ route('sepeda.edit', $spd->id_sepeda) }}"><i
+                                        class="ti-marker-alt"></i></a>
+                                <form style="margin-left: 5px"
+                                    action="{{ route('sepeda.destroy', $spd->id_sepeda) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"><i class="ti-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
