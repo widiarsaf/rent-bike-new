@@ -1,113 +1,213 @@
-<html>
+@extends('layouts.customer')
+@section('content')
+    <!-- hero area -->
+	<div class="hero-area hero-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 offset-lg-2 text-center">
+					<div class="hero-text">
+						<div class="hero-text-tablecell">
+							<p class="subtitle">Let's Get Healthy</p>
+							<h1>GOWESSLURR MALANG RENT BIKE</h1>
+							<div class="hero-btns">
+								<a href="shop.html" class="boxed-btn">Bike Collection</a>
+								<a href="contact.html" class="bordered-btn">About Us</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end hero area -->
 
-<head>
-    <meta name="viewport" content="with=device-width, initial-scale=1.0">
-    <title>Goweslurr Malang</title>
-    <link rel="stylesheet" href="assetsCustomer/homepage.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-</head>
+	<!-- features list section -->
+	<div class="list-section pt-80 pb-80">
+		<div class="container">
 
-<body>
-    <section class="header">
-        <nav>
-            <a href="index.html"><img src="assetsCustomer/logo-remove.png" style="width: 25%;"></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="">HOME</a></li>
-                    <li><a href="">ABOUT US</a></li>
-                    <li><a href="">SEWA</a></li>
-                    <li><a href="">LOGIN</a></li>
-                </ul>
-            </div>
-            <i class="fa fa-bars" onclick="showMenu()"></i>
-        </nav>
-        <div class="text-box">
-            <h1>GOWESLURR MALANG</h1>
-            <p>Lorem Ipsum kjhgbvftfvghbjngfvcvbjnhbghnhnj</p><br><br>
-            <a href="" class="hero-btn">Visit Us</a>
-        </div>
-    </section>
-    <section class="packages">
-        <h1><b>Bike Rental Packages</b></h1><br>
-        <div class="row">
-            <div class="packages-col">
-                <h3><b>Weekday Packages</b></h3><br>
-                <p>1 Hour Package : Rp. 10.000</p>
-                <p>2 Hours Package : Rp. 20.000</p>
-                <p>3 Hours Package : Rp. 30.000</p>
-                <p>1 Day Package : Rp. 100.000</p>
-            </div>
-            <div class="packages-col">
-                <h3><b>Weekend Packages</b></h3><br>
-                <p>1 Hour Package : Rp. 7.500</p>
-                <p>2 Hours Package : Rp. 15.000</p>
-                <p>3 Hours Package : Rp. 22.500</p>
-            </div>
-        </div>
-    </section>
-    <section class="bicycle">
-        <h1><b>Bicycle Type</b></h1><br>
-        <div class="row">
-            <div class="bicycle-col">
-                <img src="assetsCustomer/mtb.jpg">
-                <div class="layer">
-                    <h3>Mountain Bike</h3>
-                </div>
-            </div>
-            <div class="bicycle-col">
-                <img src="assetsCustomer/seli.jpg"><br>
-                <div class="layer">
-                    <h3>Sepeda Lipat</h3>
-                </div>
-            </div>
-            <div class="bicycle-col">
-                <img src="assetsCustomer/fixie.jpg"><br>
-                <div class="layer">
-                    <h3>Fixie Bike</h3>
-                </div>
-            </div>
-            <div class="bicycle-col">
-                <img src="assetsCustomer/roadbike.jpg">
-                <div class="layer">
-                    <h3>Road Bike</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="location">
-        <h1 style="text-align: center;"><b>Our Location</b></h1><br>
-        <div class="peta-responsive">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.199492690259!2d112.64072041477937!3d-7.978321694253882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629aefb25b6af%3A0x2e42001be9d62c6e!2sGoweslurr%20malang!5e0!3m2!1sen!2sid!4v1619504892816!5m2!1sen!2sid"
-                width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
-    <footer>
-        <div class="footer-content">
-            <h3>GOWESLURR MALANG</h3>
-            <p>Lorem ipsum dolor sit, rtfgyhujioidsfgincvjd</p>
-            <ul class="contact">
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            </ul>
-        </div>
-        <div class="footer-bottom">
-            <p>copyright &copy;2021 Goweslurr.</p>
-        </div>
-    </footer>
-    <script>
-        var navLinks = document.getElementById("navLinks");
-        function showMenu(){
-            navLinks.style.right= "0";
-        }
-        function hideMenu(){
-            navLinks.style.right= "-200px";
-        }
-    </script>
-</body>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+					<div class="list-box d-flex align-items-center">
+						<div class="list-icon">
+							<i class="fas fa-shipping-fast"></i>
+						</div>
+						<div class="content">
+							<h3>Free Shipping</h3>
+							<p>When order over $75</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+					<div class="list-box d-flex align-items-center">
+						<div class="list-icon">
+							<i class="fas fa-phone-volume"></i>
+						</div>
+						<div class="content">
+							<h3>24/7 Support</h3>
+							<p>Get support all day</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="list-box d-flex justify-content-start align-items-center">
+						<div class="list-icon">
+							<i class="fas fa-sync"></i>
+						</div>
+						<div class="content">
+							<h3>Refund</h3>
+							<p>Get refund within 3 days!</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-</html>
+		</div>
+	</div>
+	<!-- end features list section -->
+
+    <!-- advertisement section -->
+	<div class="abt-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-bg">
+						<a href="https://www.youtube.com/watch?v=DBLlFWYcIGQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-text">
+						<p class="top-sub">Since Year 2020</p>
+						<h2>We are <span class="orange-text">GOWESSLURR</span></h2>
+						<p>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
+						<a href="about.html" class="boxed-btn mt-4">know more</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end advertisement section -->
+
+	<!-- product section -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">	
+						<h3><span class="orange-text">Our</span> Bicycle</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-3 col-md-5 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{asset('assets/assetsCustomer/img/products/fixie.jpg')}}" alt=""></a>
+						</div>
+						<h3>FIXIE</h3>
+					</div>
+				</div>
+                <div class="col-lg-3 col-md-5 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{asset('assets/assetsCustomer/img/products/mtb.jpg')}}" alt=""></a>
+						</div>
+						<h3>MTB</h3>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-5 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{asset('assets/assetsCustomer/img/products/roadbike.jpg')}}" alt=""></a>
+						</div>
+						<h3>ROAD BIKE</h3>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-5 offset-md-3 offset-lg-0 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{asset('assets/assetsCustomer/img/products/seli.jpg')}}" alt=""></a>
+						</div>
+						<h3>SELI</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end product section -->
+
+
+	<!-- logo carousel -->
+	<div class="logo-carousel-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="logo-carousel-inner d-flex justify-content-center" >
+						<div class="single-logo-item">
+							<img src="{{asset('assets/assetsCustomer/img/company-logos/1.jpg')}}" style = "border-radius: 50%" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="{{asset('assets/assetsCustomer/img/company-logos/2.jpg')}}" style = "margin-top:50px;" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end logo carousel -->
+
+    	<!-- logo carousel -->
+	<div class="gallery-carousel-section">
+		<div class="container">
+			<div class="row">
+                <div class="section-title">	
+                    <h3 style = "color: #fff"><span class="orange-text">Our</span > Gallery</h3>
+                </div>
+				<div class="col-lg-12">
+					<div class="gallery-carousel-inner d-flex justify-content-center" >
+						<div class="gallery-logo-item">
+                            <img src="{{asset('assets/assetsCustomer/img/gallery/byc.jpg')}}" alt="">
+                            <a href="#"><i class="ti-instagram"></i></a>
+						</div>
+						<div class="gallery-logo-item">
+                            <img src="{{asset('assets/assetsCustomer/img/gallery/byc.jpg')}}" alt="">
+                            <a href="#"><i class="ti-instagram"></i></a>
+						</div>
+                        <div class="gallery-logo-item">
+                            <img src="{{asset('assets/assetsCustomer/img/gallery/byc.jpg')}}" alt="">
+                            <a href="#"><i class="ti-instagram"></i></a>
+						</div>
+                        <div class="gallery-logo-item">
+                            <img src="{{asset('assets/assetsCustomer/img/gallery/byc.jpg')}}" alt="">
+                            <a href="#"><i class="ti-instagram"></i></a>
+						</div>
+                        <div class="gallery-logo-item">
+                            <img src="{{asset('assets/assetsCustomer/img/gallery/byc.jpg')}}" alt="">
+                            <a href="#"><i class="ti-instagram"></i></a>
+						</div>
+                        <div class="gallery-logo-item">
+                            <img src="{{asset('assets/assetsCustomer/img/gallery/byc.jpg')}}" alt="">
+                            <a href="#"><i class="ti-instagram"></i></a>
+						</div>
+                        <div class="gallery-logo-item">
+                            <img src="{{asset('assets/assetsCustomer/img/gallery/byc.jpg')}}" alt="">
+                            <a href="#"><i class="ti-instagram"></i></a>
+						</div>
+                        <div class="gallery-logo-item">
+                            <img src="{{asset('assets/assetsCustomer/img/gallery/byc.jpg')}}" alt="">
+                            <a href="#"><i class="ti-instagram"></i></a>
+						</div>
+                        <div class="gallery-logo-item">
+                            <img src="{{asset('assets/assetsCustomer/img/gallery/byc.jpg')}}" alt="">
+                            <a href="#"><i class="ti-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end logo carousel -->
+
+@endsection

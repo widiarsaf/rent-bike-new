@@ -2093,7 +2093,7 @@ a.bg-danger:hover {
   width: 100%;
   background-color: white;
   position: fixed;
-  z-index: 999999;
+  z-index: 99999;
   top: 0; }
 
 .ball-scale {
@@ -3091,26 +3091,7 @@ a.bg-danger:hover {
 
 /*======= Button-color css ends  ======= */
 /*======= Loader-color css starts  ======= */
-.loader-primary {
-  background-color: #4680ff !important; }
 
-.loader-warning {
-  background-color: #FFB64D !important; }
-
-.loader-default {
-  background-color: #e0e0e0 !important; }
-
-.loader-danger {
-  background-color: #FC6180 !important; }
-
-.loader-success {
-  background-color: #93BE52 !important; }
-
-.loader-inverse {
-  background-color: #303548 !important; }
-
-.loader-info {
-  background-color: #62d1f3 !important; }
 
 /*======= Loader-color css ends  ======= */
 /*======= Nestable-color css starts  ======= */
