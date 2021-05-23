@@ -14324,3 +14324,13 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
   padding: 15px;
 }
 
+.long-text{
+  overflow:hidden;
+  width:200px;
+  word-wrap:break-word;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+}

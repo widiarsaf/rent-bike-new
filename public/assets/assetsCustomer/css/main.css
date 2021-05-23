@@ -439,7 +439,9 @@ a.read-more-btn:hover {
   color: #D7D911;
 }
 
-a.boxed-btn, a.bordered-btn, a.cart-btn {
+
+
+a.boxed-btn, a.bordered-btn, a.cart-btn, .cart-btn2 {
   border-radius: 50px;
 }
 
@@ -1269,6 +1271,16 @@ a.cart-btn:hover {
   background-color: #051922;
   color: #D7D911;
 }
+
+.cart-btn2{
+  border: none;
+}
+
+.cart-btn2:hover {
+    background-color: #051922;
+    color: #D7D911;
+}
+
 
 .recent-posts ul li {
   -webkit-transition: 0.3s;
@@ -2433,9 +2445,9 @@ ul.social-link-team li a {
 }
 
 .product-image img {
-  width: 90%;
+  width: 60%;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .single-product-item h3 {
@@ -2444,29 +2456,31 @@ ul.social-link-team li a {
   margin-bottom: 10px;
 }
 
-p.product-price {
+p.product-status {
   font-family: 'Poppins', sans-serif;
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   margin-bottom: 15px;
 }
 
-p.product-price span {
+p.product-status span {
   display: block;
   opacity: 0.8;
   font-size: 15px;
   font-weight: 400;
 }
 
-a.cart-btn {
+a.cart-btn, .cart-btn2 {
   font-family: 'Poppins', sans-serif;
   display: inline-block;
   background-color: #D7D911;
   color: #fff;
-  padding: 10px 20px;
+  padding: 10px 10px;
+  font-size: 12px;
 }
 
-a.cart-btn i {
+a.cart-btn,
+.cart-btn2 i {
   margin-right: 5px;
 }
 
@@ -2474,6 +2488,7 @@ a.cart-btn i {
   border-radius: 5px;
   -webkit-box-shadow: 0 0 20px #ddd;
   box-shadow: 0 0 20px #ddd;
+  width: 90%;
 }
 
 .single-product-content h3 {
@@ -2482,7 +2497,7 @@ a.cart-btn i {
 }
 
 p.single-product-pricing span {
-  font-size: 18px;
+  font-size: 17px;
   display: block;
   opacity: 0.8;
   margin-bottom: 10px;
@@ -2496,7 +2511,7 @@ p.single-product-pricing span {
 }
 
 .single-product-content p.single-product-pricing {
-  font-size: 32px;
+  font-size: 16px;
   font-weight: 700;
   margin-bottom: 10px;
   color: #051922;
@@ -2511,8 +2526,8 @@ input[type="number"] {
   margin-bottom: 15px;
 }
 
-.single-product-form a.cart-btn {
-  margin-bottom: 15px;
+.single-product-form .cart-btn2 {
+  margin-bottom: 10px;
 }
 
 .single-product-content h4 {

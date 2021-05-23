@@ -3,13 +3,13 @@
 <div>
     @if ($message = Session::get('fail'))
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>    
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Failed!!</strong><span> {{ $message }}</span>
     </div>
     @elseif ($message = Session::get('success'))
-    <div class="alert alert-success alert-dismissible fade show"  role="alert">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>    
-    <strong>Success!!</strong><span> {{ $message }}</span>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!!</strong><span> {{ $message }}</span>
     </div>
     @endif
 </div>
@@ -92,7 +92,7 @@
                         </select>
 
                     </div>
-                    
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
@@ -159,15 +159,16 @@
 
                             <td>{{$spd->unit_code}}</td>
                             <td>{{$spd->kategori->nama_kategori}}</td>
-                            <td>{{$spd->deskripsi}}</td>
-                            <td><img width=" 80px" src="{{asset('storage/'.$spd->foto_unit) }}"></td>
+                            <td>
+                                <p class="long-text">{{$spd->deskripsi}}<p>
+                            </td>
+                            <td><img width=" 80px" src="{{asset('storage/'.$spd->foto_unit) }}">
+                            </td>
                             <td>{{$spd->status}}</td>
                             <td style="display: flex">
                                 <a type="button" class="btn btn-warning"
-                                    href="{{ route('sepeda.edit', $spd->id_sepeda) }}"><i
-                                        class="ti-marker-alt"></i></a>
-                                <form style="margin-left: 5px"
-                                    action="{{ route('sepeda.destroy', $spd->id_sepeda) }}"
+                                    href="{{ route('sepeda.edit', $spd->id_sepeda) }}"><i class="ti-marker-alt"></i></a>
+                                <form style="margin-left: 5px" action="{{ route('sepeda.destroy', $spd->id_sepeda) }}"
                                     method="POST">
                                     @csrf
                                     @method('DELETE')

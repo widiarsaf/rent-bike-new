@@ -1,14 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+	<meta name="description"
+		content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Fruitkha</title>
+	<title>Gowesslurr Malang</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="{{asset('assets/assetsCustomer/img/favicon-gws.png')}}">
@@ -33,9 +34,10 @@
 	<link rel="stylesheet" href="{{asset('assets/assetsCustomer/css/responsive.css')}}">
 
 </head>
+
 <body>
-	
-	
+
+
 	<!-- header -->
 	<div class="top-header-area" id="sticker">
 		<div class="container">
@@ -54,12 +56,14 @@
 						<nav class="main-menu">
 							<ul>
 								<li><a href="{{url('home')}}">Home</a></li>
-                                <li><a href="{{url('about')}}">About</a></li>
-                                <li><a href="{{url('sepeda')}}">Sewa</a></li>
-                                <li><a href="{{url('cart')}}">Login</a></li>
+								<li><a href="{{url('about')}}">About</a></li>
+								<li><a href="{{route('product.index')}}">Sepeda</a></li>
+								<li><a href="{{route('login')}}">Login</a></li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+										<a class="shopping-cart" href="{{url('cart')}}"><i
+												class="fas fa-shopping-cart"></i></a>
+										<a class="shopping-cart" href="#"><i class="fas fa-user"></i></a>
 									</div>
 								</li>
 							</ul>
@@ -73,9 +77,9 @@
 		</div>
 	</div>
 	<!-- end header -->
-	
-    @yield('content')
-	
+
+	@yield('content')
+
 
 	<!-- footer -->
 	<div class="footer-area">
@@ -84,7 +88,8 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box about-widget">
 						<h2 class="widget-title">About us</h2>
-						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium
+							doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
@@ -123,13 +128,14 @@
 		</div>
 	</div>
 	<!-- end footer -->
-	
+
 	<!-- copyright -->
 	<div class="copyright">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
+					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>, All Rights
+						Reserved.</p>
 				</div>
 				<div class="col-lg-6 text-right col-md-12">
 					<div class="social-icons">
@@ -146,7 +152,7 @@
 		</div>
 	</div>
 	<!-- end copyright -->
-	
+
 	<!-- jquery -->
 	<script src="{{asset('assets/assetsCustomer/js/jquery-1.11.3.min.js')}}"></script>
 	<!-- bootstrap -->
@@ -169,4 +175,5 @@
 	<script src="{{asset('assets/assetsCustomer/js/main.js')}}"></script>
 
 </body>
+
 </html>
