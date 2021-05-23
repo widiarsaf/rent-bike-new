@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\DetailPenyewaan;
+
+
 
 class Penyewaan extends Model
 {
@@ -23,5 +26,9 @@ class Penyewaan extends Model
 
     public function user() {
         return $this->belongsTo(User::class, 'pengguna_id');
+    }
+
+    public function detailPenyewaan() {
+        return $this->hasMany(DetailPenyewaan::class, 'no_nota');
     }
 }

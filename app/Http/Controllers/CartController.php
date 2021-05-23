@@ -18,8 +18,9 @@ class CartController extends Controller
     {
         $user = Auth::user()->id_pengguna;
         $cart = Cart::all()->where('pengguna_id', $user);
+        $cart2= Cart::all()->where('pengguna_id', $user);
         $totalprice = $cart->count('paket_id');
-        return view('customer.cart', ['cart' => $cart, 'totalprice'=>$totalprice]);
+        return view('customer.cart', ['cart' => $cart,'cart2' => $cart2, 'totalprice'=>$totalprice]);
     }
 
     

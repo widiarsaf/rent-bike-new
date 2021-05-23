@@ -69,8 +69,17 @@
                         </tbody>
                     </table>
                     <div class="cart-buttons">
-                        <form action="{{route('penyewaan.store')}}">
-                            <button href="" class="boxed-btn black">Check Out</button>
+                        <form action="{{route('penyewaan.store')}}" method="POST">
+                            @csrf
+                            @php $total2 = 0 @endphp
+                            @foreach($cart2 as $cart)
+                            <input type="text" name="pengguna_id" value="{{$cart->user->id_pengguna}}"> id user
+                            <input type="text" name="sepeda_id[]" value="{{$cart->sepeda->id_sepeda}}"> id sepeda
+                            <input type="text" name="paket_id[]" value="{{$cart->paket->id_paket}}"> id paket
+                            <div style="display: none">{{$total2 += $cart->paket->harga}}</div>
+                            @endforeach
+                            <input type="hidden" name="total" value="{{$total2}}">
+                            <button class="boxed-btn black">Check Out</button>
                         </form>
                     </div>
                 </div>
