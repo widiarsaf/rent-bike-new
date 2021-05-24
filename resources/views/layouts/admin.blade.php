@@ -30,6 +30,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/assetsAdmin/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/assetsAdmin/css/jquery.mCustomScrollbar.css')}}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -293,6 +294,7 @@
     <script src="{{asset('assets/assetsAdmin/js/pcoded.min.js')}}"></script>
     <script src="{{asset('assets/assetsAdmin/js/demo-12.js')}}"></script>
     <script src="{{asset('assets/assetsAdmin/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 </body>
 
 </html>

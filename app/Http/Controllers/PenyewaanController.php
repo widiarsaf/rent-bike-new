@@ -55,7 +55,6 @@ class PenyewaanController extends Controller
         // Create New Detail Penyewaan
         $spd = $request->get('sepeda_id');
         $pkt = $request->get('paket_id');
-        $no_nota = 'GWSX'. "-". 'b6F3d';
         $data = [];
         for($i = 0; $i < count($spd); $i++){
             $detailPenyewaan = new DetailPenyewaan;

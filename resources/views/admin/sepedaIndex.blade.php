@@ -143,7 +143,7 @@
 
             {{-- Tabel --}}
             <div class=" table-responsive" style="display : block;" id="sepedaTable">
-                <table class="table table-hover">
+                <table class="table table-hover" id="tabelSepeda">
                     <thead>
                         <tr>
                             <th>Unit Code</th>

@@ -73,9 +73,9 @@
                             @csrf
                             @php $total2 = 0 @endphp
                             @foreach($cart2 as $cart)
-                            <input type="text" name="pengguna_id" value="{{$cart->user->id_pengguna}}"> id user
-                            <input type="text" name="sepeda_id[]" value="{{$cart->sepeda->id_sepeda}}"> id sepeda
-                            <input type="text" name="paket_id[]" value="{{$cart->paket->id_paket}}"> id paket
+                            <input type="hidden" name="pengguna_id" value="{{$cart->user->id_pengguna}}">
+                            <input type="hidden" name="sepeda_id[]" value="{{$cart->sepeda->id_sepeda}}">
+                            <input type="hidden" name="paket_id[]" value="{{$cart->paket->id_paket}}">
                             <div style="display: none">{{$total2 += $cart->paket->harga}}</div>
                             @endforeach
                             <input type="hidden" name="total" value="{{$total2}}">
