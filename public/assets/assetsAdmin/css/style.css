@@ -14334,3 +14334,14 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
   white-space: -moz-pre-wrap;
   white-space: -pre-wrap;
 }
+
+.dataTables_wrapper .dataTables_filter input {
+  width: 300px;
+  border: 1px solid rgb(219, 219, 219) !important;
+  height: 40px;
+}
+
+.dataTables_wrapper .dataTables_filter label{
+    font-weight: bold;
+    font-size: 15px;
+}
