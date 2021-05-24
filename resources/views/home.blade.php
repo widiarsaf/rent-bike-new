@@ -18,7 +18,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+		</div>
 	<!-- end hero area -->
 
 	<!-- features list section -->
