@@ -29,23 +29,13 @@
             </div>
         </div>
         <div class="card-block table-border-style">
-            <div class="d-flex mx-3 mb-3" style="justify-content :space-between">
-                <div class="pcoded-search" id="search" style="width: 500px !important;">
-                    <span class="searchbar-toggle"></span>
-                    <form action="">
-                        <div class="pcoded-search-box d-flex">
-                            <input type="text" class="mr-3" placeholder="Search">
-                            <span>
-                                <button class="btn btn-info"><i class="ti-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+            <div class="header">
+                <div class="d-flex mb-4" style="justify-content :space-between">
+                    <button class="btn btn-primary ml-3" onclick="showFormAddSepeda(); return false;">
+                        <i class="ti-plus"></i>
+                        Tambah Data
+                    </button>
                 </div>
-                <button class="btn btn-primary ml-3" onclick="showFormAddSepeda(); return false;">
-                    <i class="ti-plus"></i>
-                    Tambah Data
-                </button>
-
             </div>
             {{-- Form Add Data --}}
             <div class="mx-3 mb-3" style="display:none;" id="formAddSepeda">

@@ -160,7 +160,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="auth-normal-sign-in.html">
+                                            <a href="{{route('penyewaan.index')}}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Data
                                                     Penyewaan</span>
@@ -168,7 +168,7 @@
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="auth-sign-up.html">
+                                            <a href="{{route('datarekap.index')}}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.breadcrumbs">Data Rekap</span>

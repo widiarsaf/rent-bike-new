@@ -16,24 +16,13 @@
             </div>
         </div>
         <div class="card-block table-border-style">
-            <div class="d-flex ml-3 mb-3">
-                <div class="pcoded-search" style="width: 500px !important;">
-                    <span class="searchbar-toggle"></span>
-                    <form action="">
-                        <div class="pcoded-search-box d-flex">
-                            <input type="text" class="mr-3" placeholder="Search">
-                            <span>
-                                <button class="btn btn-info"><i class="ti-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
+            <div class="d-flex mb-3">
                 <button class="btn btn-primary ml-3" data-toggle="modal" data-target="#addPaket"><i
                         class="ti-plus"></i>Tambah Data</button>
             </div>
             <div class="table-responsive">
                 {{-- Tabel --}}
-                <table class=" table table-hover">
+                <table class=" table table-hover" id="tabelPaket">
                     <thead>
                         <tr>
                             <th>No </th>

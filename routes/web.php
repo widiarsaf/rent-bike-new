@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PenyewaanController;
+use App\Http\Controllers\DetailPenyewaanController;
 
 
 
@@ -20,6 +21,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('kategori', KategoriController::class);
 Route::resource('sepeda', SepedaController::class);
 Route::resource('paket', PaketController::class);
+Route::resource('penyewaan', PenyewaanController::class);
+Route::resource('datarekap', DetailPenyewaanController::class);
 
 
 // Customer Route
@@ -29,7 +32,6 @@ Route::get('about', function(){
 Route::resource('cart', CartController::class);
 Route::resource('product', ProductController::class);
 Route::get('detail/{sepeda}', [ProductController::class, 'detail'])->name('product.detail');
-Route::resource('penyewaan', PenyewaanController::class);
 
 
 

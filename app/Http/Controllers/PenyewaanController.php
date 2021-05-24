@@ -16,7 +16,8 @@ class PenyewaanController extends Controller
     
     public function index()
     {
-        return view ('admin.penyewaanIndex');
+        $penyewaan = Penyewaan::get();
+        return view ('admin.penyewaanIndex', compact('penyewaan', $penyewaan));
     }
 
     

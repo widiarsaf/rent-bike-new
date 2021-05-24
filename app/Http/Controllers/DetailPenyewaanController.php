@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DetailPenyewaan;
 
 class DetailPenyewaanController extends Controller
 {
    
     public function index()
     {
-        //
+        $detailpenyewaan = DetailPenyewaan::get();
+        return view ('admin.dataRekap', compact('detailpenyewaan', $detailpenyewaan));
     }
 
     

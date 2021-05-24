@@ -222,5 +222,17 @@ $(document).ready(function ()
 });
 
 
+$(document).ready(function ()
+{
+    $('#tabelPaket').DataTable();
+});
+
+$(document).ready(function ()
+{
+    $('#tabelPenyewaan').DataTable();
+});
+
+
+
 
 
