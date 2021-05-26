@@ -20,7 +20,7 @@ class CreateSepedaTable extends Migration
             $table->string('deskripsi');
             $table->string('foto_unit');
             $table->string('status',20);
-            $table->foreign('kategori_id')->references('id_kategori')->on('kategori');
+            $table->foreign('kategori_id')->references('id_kategori')->on('kategori')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
