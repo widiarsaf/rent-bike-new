@@ -441,6 +441,16 @@ a.read-more-btn:hover {
 }
 
 
+.cart-btn2:disabled{
+  background: rgb(223, 223, 223);
+  color: #162133;
+}
+
+.cart-btn2:disabled:hover {
+    background: rgb(212, 212, 212);
+    color: #162133;
+}
+
 
 .boxed-btn, a.bordered-btn, a.cart-btn, .cart-btn2 {
   border-radius: 50px;
@@ -2876,3 +2886,4 @@ border: 1.5px solid #eef0a2;
   font-weight: 600;
 
 }
+

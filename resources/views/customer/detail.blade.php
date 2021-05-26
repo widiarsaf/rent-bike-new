@@ -55,11 +55,22 @@
                                     {{$pkt->harga}}</option>
                                 @endforeach
                             </select>
+                            @if($product->status)
+                            <button disabled="disabled" class="cart-btn2"><i class="fas fa-shopping-cart"></i> Add to
+                                Cart</button>
+                            @else
                             <button class="cart-btn2"><i class="fas fa-shopping-cart"></i> Add to
                                 Cart</button>
+                            @endif
                         </form>
                         @endguest
-                        <p>Status: <strong style="font-size: 18px">{{$product->status}}</strong></p>
+                        <p>Status: <strong style="font-size: 18px">
+                                @if($product->status)
+                                <span style="color: rgb(177, 57, 57) !important; font-weight:bold">Di Sewa</span>
+                                @else
+                                <span style="font-weight:bold">Tersedia</span>
+                                @endif
+                            </strong></p>
                     </div>
                 </div>
             </div>
