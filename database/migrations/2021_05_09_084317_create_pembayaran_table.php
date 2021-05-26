@@ -20,9 +20,9 @@ class CreatePembayaranTable extends Migration
             $table->string('foto_bukti')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('nominal');
-            $table->string('metode')->nullable();
-            $table->string('nota_no')->nullable();
-            $table->foreign('nota_no')->references('no_nota')->on('penyewaan');
+            $table->boolean('metode')->default(0);
+            $table->string('nota_no');
+            $table->foreign('nota_no')->references('no_nota')->on('penyewaan')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -17,13 +17,14 @@ class CreatePenyewaanTable extends Migration
         Schema::create('penyewaan', function (Blueprint $table) {
             $table->bigIncrements('id_penyewaan');
             $table->string('no_nota')->index();
-            $table->string('status_pembayaran')->nullable();
-            $table->string('status_pengembalian')->nullable();
-            $table->string('status_jaminan')->nullable();
+            $table->integer('status_pembayaran')->default(0);
+            $table->string('status_pengembalian')->default(0);
+            $table->boolean('status_jaminan')->default(0);
             $table->integer('total_biaya');
             $table->date('tanggal');
+            $table->time('jam');
             $table->unsignedBigInteger('pengguna_id')->nullable();
-            $table->foreign('pengguna_id')->references('id_pengguna')->on('users');
+            $table->foreign('pengguna_id')->references('id_pengguna')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
