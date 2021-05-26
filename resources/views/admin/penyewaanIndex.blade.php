@@ -105,7 +105,6 @@
             </thead>
             <tbody>
                 @foreach($penyewaan as $p) <tr>
-
                     <th style="background: rgb(244, 252, 226)">{{$p->no_nota}}</th>
                     <td>{{$p->user->nama}}</td>
                     <td>{{$p->total_biaya}}</td>
@@ -132,22 +131,4 @@
 </div>
 <!-- Basic table card end -->
 </div>
-<script>
-    function showFormAddSepeda(){
-        console.log('OK')
-        var formAdd = document.getElementById('formAddSepeda');
-        var sepedaTable = document.getElementById('sepedaTable');
-        var search = document.getElementById('search');
-        if (formAdd.style.display === "none") {
-            formAdd.style.display = "";
-            sepedaTable.style.display = "none";
-            search.style.opacity= "0";
-        } else {
-            formAdd.style.display = "none";
-            sepedaTable.style.display = "block";
-            search.style.opacity = "1";
-        }
-    }
-
-</script>
 @endsection

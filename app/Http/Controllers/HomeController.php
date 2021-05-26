@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DetailPenyewaan;
+use App\Models\Penyewaan;
 
 class HomeController extends Controller
 {
@@ -27,7 +29,10 @@ class HomeController extends Controller
     }
 
     public function adminHome()
+    
     {
-        return view('admin.penyewaanIndex');
+        $penyewaan = Penyewaan::with('DetailPenyewaan')->get();
+        return view ('admin.penyewaanIndex', compact('penyewaan', $penyewaan));
+
     }
 }

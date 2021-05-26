@@ -409,12 +409,13 @@ p:last-child {
   background-color: #162133;
 }
 
-a.boxed-btn {
+.boxed-btn {
   font-family: 'Poppins', sans-serif;
   display: inline-block;
   background-color: #D7D911;
   color: #162133;
   padding: 10px 20px;
+  border: none;
 }
 
 a.bordered-btn {
@@ -441,7 +442,7 @@ a.read-more-btn:hover {
 
 
 
-a.boxed-btn, a.bordered-btn, a.cart-btn, .cart-btn2 {
+.boxed-btn, a.bordered-btn, a.cart-btn, .cart-btn2 {
   border-radius: 50px;
 }
 
@@ -1019,13 +1020,13 @@ a.navbar-brand:hover {
   opacity: 0.7;
 }
 
-a.boxed-btn {
+.boxed-btn {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
 }
 
-a.boxed-btn:hover {
+.boxed-btn:hover {
   background-color: #051922;
   color: #D7D911;
 }
@@ -1687,7 +1688,7 @@ p.excerpt {
   color: #555;
 }
 
-.latest-news a.boxed-btn {
+.latest-news .boxed-btn {
   margin-top: 80px;
 }
 
@@ -2862,4 +2863,16 @@ table.order-details tbody td {
   display: flex;
   margin-right: -6px;
   margin-left: -6px;
+}
+
+
+.cart-input{
+height: 50px;
+border: 1.5px solid #eef0a2;
+}
+
+.cart-label{
+  font-size: 16px;
+  font-weight: 600;
+
 }

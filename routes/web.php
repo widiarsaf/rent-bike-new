@@ -15,7 +15,7 @@ use App\Http\Controllers\DetailPenyewaanController;
 Auth::routes();
 
 // Admin Route
-Route::get('admin', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('/admin', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('kategori', KategoriController::class);

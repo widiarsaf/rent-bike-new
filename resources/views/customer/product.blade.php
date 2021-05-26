@@ -45,8 +45,14 @@
                     </div>
                     <h3>{{$mtb->unit_code}}</h3>
                     <h4>{{$mtb->kategori->nama_kategori}}</h4>
-                    <p class="product-status"><span>Status</span> {{$mtb->status}}</p>
-                    <a type="disabled" href="{{ route('product.detail',$mtb->id_sepeda) }}" class="cart-btn"><i
+                    <p class="product-status"><span>Status</span>
+                        @if($mtb->status)
+                        <span style="color: rgb(177, 57, 57) !important; font-weight:bold"> Di Sewa </span>
+                        @else
+                        <span style="font-weight:bold"> Tersedia </span>
+                        @endif</p>
+                    </p>
+                    <a href="{{ route('product.detail',$mtb->id_sepeda) }}" class="cart-btn"><i
                             class="fas fa-shopping-cart"></i> Add to Cart</a>
 
                 </div>
@@ -63,7 +69,13 @@
                     </div>
                     <h3>{{$fixie->unit_code}}</h3>
                     <h4>{{$fixie->kategori->nama_kategori}}</h4>
-                    <p class="product-status"><span>Status</span> {{$fixie->status}}</p>
+                    <p class="product-status"><span>Status</span>
+                        @if($fixie->status)
+                        <span style="color: rgb(177, 57, 57) !important; font-weight:bold"> Di Sewa </span>
+                        @else
+                        <span style="font-weight:bold"> Tersedia </span>
+                        @endif</p>
+                    </p>
                     <a href="{{ route('product.detail',$fixie->id_sepeda) }}" class="cart-btn"><i
                             class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
@@ -80,9 +92,16 @@
                     </div>
                     <h3>{{$rb->unit_code}}</h3>
                     <h4>{{$rb->kategori->nama_kategori}}</h4>
-                    <p class="product-status"><span>Status</span> {{$rb->status}}</p>
-                    <a href="{{ route('product.detail',$roadbike->id_sepeda) }}" class="cart-btn"><i
-                            class="fas fa-shopping-cart"></i> Add to Cart</a>
+                    <p class="product-status"><span>Status</span>
+                        @if($rb->status)
+                        <span style="color: rgb(177, 57, 57) !important; font-weight:bold"> Di Sewa </span>
+                        @else
+                        <span style="font-weight:bold"> Tersedia </span>
+                        @endif</p>
+                    </p>
+                    <a href="{{ route('product.detail',$rb->id_sepeda) }}" class="cart-btn"><i
+                            class="fas fa-shopping-cart"></i>
+                        Add to Cart</a>
                 </div>
             </div>
             @endforeach
@@ -93,13 +112,19 @@
                 <div class="single-product-item">
                     <div class="product-image">
                         <a href="single-product.html"><img src="{{asset('storage/'.$seli->foto_unit) }}"
-                                alt="{{$$seli->unit_code}} photo"></a>
+                                alt="{{$seli->unit_code}} photo"></a>
                     </div>
                     <h3>{{$seli->unit_code}}</h3>
                     <h4>{{$seli->kategori->nama_kategori}}</h4>
-                    <p class="product-status"><span>Status</span> {{$seli->status}}</p>
+                    <p class="product-status"><span>Status</span>
+                        @if($seli->status)
+                        <span style="color: rgb(177, 57, 57) !important; font-weight:bold"> Di Sewa </span>
+                        @else
+                        <span style="font-weight:bold"> Tersedia </span>
+                        @endif</p>
                     <a href="{{ route('product.detail',$seli->id_sepeda) }}" class="cart-btn"><i
-                            class="fas fa-shopping-cart"></i> Add to Cart</a>
+                            class="fas fa-shopping-cart"></i>
+                        Add to Cart</a>
                 </div>
             </div>
             @endforeach

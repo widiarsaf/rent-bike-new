@@ -78,23 +78,4 @@
     </div>
     <!-- Basic table card end -->
 </div>
-<script>
-    function showFormAddSepeda(){
-        console.log('OK')
-        var formAdd = document.getElementById('formAddSepeda');
-        var sepedaTable = document.getElementById('sepedaTable');
-        var search = document.getElementById('search');
-        if (formAdd.style.display === "none") {
-            formAdd.style.display = "";
-            sepedaTable.style.display = "none";
-            search.style.opacity= "0";
-        } else {
-            formAdd.style.display = "none";
-            sepedaTable.style.display = "block";
-            search.style.opacity = "1";
-        }
-    }
-
-</script>
-
 @endsection

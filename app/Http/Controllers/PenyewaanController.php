@@ -16,7 +16,7 @@ class PenyewaanController extends Controller
     
     public function index()
     {
-        $penyewaan = Penyewaan::get();
+        $penyewaan = Penyewaan::with('DetailPenyewaan')->get();
         return view ('admin.penyewaanIndex', compact('penyewaan', $penyewaan));
     }
 
@@ -33,11 +33,12 @@ class PenyewaanController extends Controller
             'pengguna_id' => 'required',
             'total' => 'required',
             'sepeda_id' =>'required',
-            'paket_id' => 'required'
+            'paket_id' => 'required',
+            'tanggal' => 'required',
+            'jam' => 'required'
         ]);
 
         $no_nota = 'GWSX'. "-". $this->random_strings(5);
-        $tanggal = Carbon::now();;
 
         // Create Penyewaan
         $penyewaan = New Penyewaan;
@@ -47,10 +48,8 @@ class PenyewaanController extends Controller
         $no_nota = 'GWSX'. "-". $this->random_strings(5);
         $penyewaan->no_nota = $no_nota;
         $penyewaan->total_biaya = $request->get('total');
-        $penyewaan->tanggal = $tanggal->toDateString();
-        $penyewaan->status_jaminan = "belum";
-        $penyewaan->status_pembayaran = "belum";
-        $penyewaan->status_pengembalian = "belum";
+        $penyewaan->tanggal = $request->get('tanggal');
+        $penyewaan->jam = $request->get('jam');
         $penyewaan->save();
 
         // Create New Detail Penyewaan
@@ -62,10 +61,13 @@ class PenyewaanController extends Controller
             $detailPenyewaan->penyewaan()->associate($no_nota);
             $sepeda = new Sepeda;
             $sepeda->id_sepeda = $spd[$i];
+            $findSepeda = Sepeda::where('id_sepeda', $spd[$i])->first();
+            $findSepeda->status = 1;
             $detailPenyewaan->sepeda()->associate($sepeda);
             $paket= new Paket;
             $paket->id_paket = $pkt[$i];
             $detailPenyewaan->paket()->associate($paket);
+            $findSepeda->save();
             $detailPenyewaan->save();
             
         }

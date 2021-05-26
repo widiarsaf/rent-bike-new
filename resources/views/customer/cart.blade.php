@@ -78,6 +78,14 @@
                             <input type="hidden" name="paket_id[]" value="{{$cart->paket->id_paket}}">
                             <div style="display: none">{{$total2 += $cart->paket->harga}}</div>
                             @endforeach
+                            <div class="form-group">
+                                <label for="date" class="cart-label">Masukkan Tanggal Sewa</label>
+                                <input type="date" name="tanggal" class="form-control cart-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="date" class="cart-label">Masukkan Jam Sewa</label>
+                                <input type="time" name="jam" class="form-control cart-input">
+                            </div>
                             <input type="hidden" name="total" value="{{$total2}}">
                             <button class="boxed-btn black">Check Out</button>
                         </form>

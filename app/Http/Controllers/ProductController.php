@@ -16,8 +16,8 @@ class ProductController extends Controller
 
         $mtb = Sepeda::with('kategori')->where('kategori_id', 1)->get();
         $fixie = Sepeda::with('kategori')->where('kategori_id', 2)->get();
-        $roadbike = Sepeda::with('kategori')->where('kategori_id', 3)->get();
-        $seli = Sepeda::with('kategori')->where('kategori_id', 4)->get();
+        $roadbike = Sepeda::with('kategori')->where('kategori_id', 4)->get();
+        $seli = Sepeda::with('kategori')->where('kategori_id', 3)->get();
 
         return view('customer.product', compact('mtb', 'fixie', 'roadbike', 'seli'));
 

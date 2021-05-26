@@ -12,6 +12,17 @@
         <strong>Success!!</strong><span> {{ $message }}</span>
     </div>
     @endif
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 </div>
 <div class="page-body">
     <div class="card">
@@ -29,26 +40,18 @@
             </div>
         </div>
         <div class="card-block table-border-style">
-            <div class="header">
-                <div class="d-flex mb-4" style="justify-content :space-between">
-                    <button class="btn btn-primary ml-3" onclick="showFormAddSepeda(); return false;">
-                        <i class="ti-plus"></i>
-                        Tambah Data
-                    </button>
+            <div id="header-content">
+                <div class="header">
+                    <div class="d-flex mb-4" style="justify-content :space-between">
+                        <button class="btn btn-primary ml-3" onclick="showFormAddSepeda(); return false;">
+                            <i class="ti-plus"></i>
+                            Tambah Data
+                        </button>
+                    </div>
                 </div>
             </div>
             {{-- Form Add Data --}}
             <div class="mx-3 mb-3" style="display:none;" id="formAddSepeda">
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
                 <h4 class=" mb-3">Masukkan Data Sepeda Baru</h4>
                 <form method="post" action="{{ route('sepeda.store') }}" id="myForm" enctype="multipart/form-data">
                     @csrf
@@ -77,59 +80,16 @@
                     <div class="form-group">
                         <label for="status">Status</label>
                         <select name="status" class="form-control">
-                            <option value="dipinjam">dipinjam</option>
-                            <option value="tersedia">tersedia</option>
+                            <option value="1">dipinjam</option>
+                            <option value="0">tersedia</option>
                         </select>
 
                     </div>
-
+                    <a type="button" id="close" class="btn btn-primary btn-outline-primary"
+                        onclick="hideForm()">Back</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-
-            {{-- Edit Data --}}
-            <div class="collapse mx-3 mb-3" id="formEditSepeda">
-                <h4 class=" mb-3">Edit Sepeda Baru</h4>
-                <form method="post" action="{{ route('sepeda.update', 'test')}}" id="myForm"
-                    enctype="multipart/form-data">
-                    {{method_field('PUT')}}
-                    {{csrf_field()}}
-                    <input type="hidden" name="id_sepeda" id="idSepeda" value="">
-                    <div class="form-group">
-                        <label for="unit_code">Unit Code</label>
-                        <input type="text" class="form-control" id="unitCode" value=" " placeholder="Masukkan code unit"
-                            name="unit_code">
-                    </div>
-                    <div class="form-group">
-                        <label for="kategori_id">Kategori</label>
-                        <select name="kategori_id" id="kategoriId" class="form-control">
-                            @foreach($kategori as $ktg)
-                            <option value="{{$ktg->id_kategori}}">{{$ktg->nama_kategori}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="deskripsi">Deskripsi</label>
-                        <input type="text" class="form-control" id="deskripsi" value=" " name="deskripsi">
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Foto Unit</label>
-                        <input type="file" name="foto_unit" class="form-control" id="fotoUnit" value=" "
-                            aria-describedby="image">
-                        {{-- <img src="{{asset('storage/'.$sepeda->foto_unit) }}"> --}}
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" id="status" class="form-control">
-                            <option value="dipinjam">dipinjam</option>
-                            <option value="tersedia">tersedia</option>
-                        </select>
-
-                    </div>
-                    <button type="submit" class="btn btn-primary">Edit</button>
-                </form>
-            </div>
-
 
             {{-- Tabel --}}
             <div class=" table-responsive" style="display : block;" id="sepedaTable">
@@ -154,7 +114,13 @@
                             </td>
                             <td><img width=" 80px" src="{{asset('storage/'.$spd->foto_unit) }}">
                             </td>
-                            <td>{{$spd->status}}</td>
+                            <td>
+                                @if($spd->status)
+                                Di Sewa
+                                @else
+                                Tersedia
+                                @endif
+                            </td>
                             <td style="display: flex">
                                 <a type="button" class="btn btn-warning"
                                     href="{{ route('sepeda.edit', $spd->id_sepeda) }}"><i class="ti-marker-alt"></i></a>
@@ -179,15 +145,28 @@
         console.log('OK')
         var formAdd = document.getElementById('formAddSepeda');
         var sepedaTable = document.getElementById('sepedaTable');
-        var search = document.getElementById('search');
+        var header = document.getElementById('header-content');
         if (formAdd.style.display === "none") {
             formAdd.style.display = "";
             sepedaTable.style.display = "none";
-            search.style.opacity= "0";
+            header.style.display ="none";
         } else {
             formAdd.style.display = "none";
-            sepedaTable.style.display = "block";
-            search.style.opacity = "1";
+            sepedaTable.style.display = "";
+            header.style.display ="block";
+        }
+    }
+
+    function hideForm()
+    {
+        console.log('OK')
+        var formAdd = document.getElementById('formAddSepeda');
+        var sepedaTable = document.getElementById('sepedaTable');
+        var header = document.getElementById('header-content');
+        if (formAdd.style.display === "") {
+            formAdd.style.display = "none";
+            sepedaTable.style.display = "";
+            header.style.display= "";
         }
     }
 
