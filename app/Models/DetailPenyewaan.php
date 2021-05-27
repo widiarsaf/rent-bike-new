@@ -19,6 +19,7 @@ class DetailPenyewaan extends Model
         'nota_no',
         'sepeda_id',
         'paket_id',
+        'tanggal',
         'denda',
     ];
 

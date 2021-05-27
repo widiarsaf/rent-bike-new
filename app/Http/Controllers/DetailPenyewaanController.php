@@ -8,9 +8,24 @@ use App\Models\DetailPenyewaan;
 class DetailPenyewaanController extends Controller
 {
    
-    public function index()
+    public function index(Request $request)
     {
-        $detailpenyewaan = DetailPenyewaan::get();
+        $fromdate = $request->get('from-date');
+        $todate = $request->get('to-date');
+
+        if($fromdate && $todate){
+            $detailpenyewaan = DetailPenyewaan::whereBetween('tanggal', [$fromdate, $todate])->get();
+        }
+
+        else if ($fromdate){
+           $detailpenyewaan = DetailPenyewaan::whereDate('tanggal', '=', $fromdate)->get();
+        }
+
+        else{
+
+            $detailpenyewaan = DetailPenyewaan::get();
+        }
+
         return view ('admin.dataRekap', compact('detailpenyewaan', $detailpenyewaan));
     }
 

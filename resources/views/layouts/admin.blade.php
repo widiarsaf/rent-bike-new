@@ -109,7 +109,7 @@
                             </li>
                             <li class="breadcrumb-item">
 
-                                <a href="#"><i class="icofont icofont-home"></i> Home</a>
+                                <a href="{{route('home')}}"><i class="icofont icofont-home"></i> Home</a>
                             </li>
                         </ul>
                         <ul class="nav-right">

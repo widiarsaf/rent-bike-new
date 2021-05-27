@@ -22,6 +22,7 @@ Route::resource('kategori', KategoriController::class);
 Route::resource('sepeda', SepedaController::class);
 Route::resource('paket', PaketController::class);
 Route::resource('penyewaan', PenyewaanController::class);
+Route::get('updateStatus/{penyewaan}', [PenyewaanController::class, 'updateStatus'])->name('penyewaan.updateStatus');
 Route::resource('datarekap', DetailPenyewaanController::class);
 
 

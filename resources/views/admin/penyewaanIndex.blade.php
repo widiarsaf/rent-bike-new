@@ -97,8 +97,8 @@
                     <th>Nama</th>
                     <th>Total Harga</th>
                     <th>Tanggal Sewa</th>
-                    <th>Status Pengembalian</th>
                     <th>Status Pembayaran</th>
+                    <th>Status Pengembalian</th>
                     <th>Status Jaminan</th>
                     <th>Aksi</th>
                 </tr>
@@ -109,9 +109,96 @@
                     <td>{{$p->user->nama}}</td>
                     <td>{{$p->total_biaya}}</td>
                     <td>{{$p->tanggal}}</td>
-                    <td>{{$p->status_pembayaran}}</td>
-                    <td>{{$p->status_pengembalian}}</td>
-                    <td>{{$p->status_jaminan}}</td>
+                    <td>
+                        <div id="pembayaran{{$p->id_penyewaan}}" style="justify-content: space-between; display:flex">
+                            <center>
+                                @if($p->status_pembayaran == 0)
+                                <div
+                                    style="background-color: rgb(233, 76, 76) !important; color:rgb(241, 241, 241); border-radius:5px; padding: 5px; min-width: 100px">
+                                    Belum
+                                    Lunas</div>
+                                @elseif($p->status_pembayaran == 1)
+                                <div
+                                    style="background-color: rgb(231, 183, 79) !important; color:rgb(241, 241, 241); border-radius:5px; padding: 5px; min-width: 100px">
+                                    DP</div>
+                                @else
+                                <div
+                                    style="background-color: rgb(69, 206, 51) !important; color:rgb(241, 241, 241); border-radius:5px; padding: 5px; min-width: 100px">
+                                    Lunas</div>
+                                @endif
+                            </center>
+                            <a type="button" class="btn" href=""
+                                onclick="$('#editPembayaran{{$p->id_penyewaan}}').show(); $('#pembayaran{{$p->id_penyewaan}}').hide(); return false; ">
+                                <i class="ti-marker-alt"></i></a>
+                        </div>
+                        <form id="editPembayaran{{$p->id_penyewaan}}"
+                            action="{{route('penyewaan.updateStatus', $p->id_penyewaan)}}" style="display: none">
+                            <select name="pembayaran">
+                                <option value="0">Belum Lunas</option>
+                                <option value="1">DP</option>
+                                <option value="2">Lunas</option>
+                            </select>
+                            <button class="btn btn-sm btn-primary">done</button>
+                            <a type="button" class="btn" href=""
+                                onclick="$('#editPembayaran{{$p->id_penyewaan}}').hide(); $('#pembayaran{{$p->id_penyewaan}}').show(); return false; ">&times;</a>
+                        </form>
+                    </td>
+                    <td>
+                        <div id="pengembalian{{$p->id_penyewaan}}" style="justify-content: space-between; display:flex">
+                            <center>
+                                @if($p->status_pengembalian == 0)
+                                <div
+                                    style="background-color: rgb(233, 76, 76) !important; color:rgb(241, 241, 241); border-radius:5px; padding: 5px; min-width: 100px">
+                                    Belum</div>
+                                @else
+                                <div
+                                    style="background-color: rgb(69, 206, 51) !important; color:rgb(241, 241, 241); border-radius:5px; padding: 5px; min-width: 100px">
+                                    Sudah</div>
+                                @endif
+                            </center>
+                            <a type="button" class="btn" href=""
+                                onclick="$('#editPengembalian{{$p->id_penyewaan}}').show(); $('#pengembalian{{$p->id_penyewaan}}').hide(); return false; ">
+                                <i class="ti-marker-alt"></i></a>
+                        </div>
+                        <form id="editPengembalian{{$p->id_penyewaan}}"
+                            action="{{route('penyewaan.updateStatus', $p->id_penyewaan)}}" style="display: none">
+                            <select name="pengembalian">
+                                <option value="0">Belum</option>
+                                <option value="1">Sudah</option>
+                            </select>
+                            <button class="btn btn-sm btn-primary">done</button>
+                            <a type="button" class="btn" href=""
+                                onclick="$('#editPengembalian{{$p->id_penyewaan}}').hide(); $('#pengembalian{{$p->id_penyewaan}}').show(); return false; ">&times;</a>
+                        </form>
+                    </td>
+                    <td>
+                        <div id="jaminan{{$p->id_penyewaan}}" style="justify-content: space-between; display:flex">
+                            <center>
+                                @if($p->status_jaminan == 0)
+                                <div
+                                    style="background-color: rgb(233, 76, 76) !important; color:rgb(241, 241, 241); border-radius:5px; padding: 5px; min-width: 100px">
+                                    Belum</div>
+                                @else
+                                <div
+                                    style="background-color: rgb(69, 206, 51) !important; color:rgb(241, 241, 241); border-radius:5px; padding: 5px; min-width: 100px">
+                                    Sudah</div>
+                                @endif
+                            </center>
+                            <a type="button" class="btn" href=""
+                                onclick="$('#editJaminan{{$p->id_penyewaan}}').show(); $('#jaminan{{$p->id_penyewaan}}').hide(); return false; ">
+                                <i class="ti-marker-alt"></i></a>
+                        </div>
+                        <form id="editJaminan{{$p->id_penyewaan}}"
+                            action="{{route('penyewaan.updateStatus', $p->id_penyewaan)}}" style="display: none">
+                            <select name="jaminan">
+                                <option value="0">Belum</option>
+                                <option value="1">Sudah</option>
+                            </select>
+                            <button class="btn btn-sm btn-primary">done</button>
+                            <a type="button" class="btn" href=""
+                                onclick="$('#editJaminan{{$p->id_penyewaan}}').hide(); $('#jaminan{{$p->id_penyewaan}}').show(); return false; ">&times;</a>
+                        </form>
+                    </td>
                     <td style="display: flex">
                         <form style="margin-left: 5px" action="{{ route('penyewaan.destroy', $p->id_penyewaan) }}"
                             method="POST">

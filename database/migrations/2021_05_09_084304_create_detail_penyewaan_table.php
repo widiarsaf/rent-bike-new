@@ -23,6 +23,7 @@ class CreateDetailPenyewaanTable extends Migration
             $table->unsignedBigInteger('paket_id')->nullable();
             $table->foreign('paket_id')->references('id_paket')->on('paket')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('denda')->nullable();
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

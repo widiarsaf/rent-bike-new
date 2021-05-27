@@ -18,8 +18,8 @@ class CreatePenyewaanTable extends Migration
             $table->bigIncrements('id_penyewaan');
             $table->string('no_nota')->index();
             $table->integer('status_pembayaran')->default(0);
-            $table->string('status_pengembalian')->default(0);
-            $table->boolean('status_jaminan')->default(0);
+            $table->integer('status_pengembalian')->default(0);
+            $table->integer('status_jaminan')->default(0);
             $table->integer('total_biaya');
             $table->date('tanggal');
             $table->time('jam');

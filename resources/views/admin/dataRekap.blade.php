@@ -36,12 +36,12 @@
                         <div class="form mr-2">
                             <label for="">Masukkan Tanggal Awal</label>
                             <input type="date" class="form-control" id="reservation_time"
-                                placeholder="Masukkan tanggal awal" name="reservation_time">
+                                placeholder="Masukkan tanggal awal" name="from-date">
                         </div>
                         <div class="form">
-                            <label for="">Masukkan Tanggal Awal</label>
+                            <label for="">Masukkan Tanggal Akhir</label>
                             <input type="date" class="form-control" id="reservation_time"
-                                placeholder="Masukkan tanggal akhir" name="reservation_time">
+                                placeholder="Masukkan tanggal akhir" name="to-date">
                         </div>
                         <button class="btn btn-info ml-3" style="height: 50%; align-items:center">Filter</button>
                     </div>
@@ -61,14 +61,15 @@
                             <th>No Nota</th>
                             <th>Sepeda</th>
                             <th>Paket</th>
+                            <th>Tanggal</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($detailpenyewaan as $dp) <tr>
-
                             <th style="background: rgb(244, 252, 226)">{{$dp->nota_no}}</th>
                             <td>{{$dp->sepeda->unit_code}}</td>
                             <td>{{$dp->paket->nama_paket}}</td>
+                            <td>{{$dp->tanggal}}</td>
                         </tr>
                         @endforeach
                     </tbody>

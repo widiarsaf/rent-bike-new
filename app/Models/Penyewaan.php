@@ -29,6 +29,6 @@ class Penyewaan extends Model
     }
 
     public function detailPenyewaan() {
-        return $this->hasMany(DetailPenyewaan::class, 'no_nota');
+        return $this->hasMany(DetailPenyewaan::class, 'nota_no');
     }
 }

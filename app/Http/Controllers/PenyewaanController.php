@@ -26,6 +26,7 @@ class PenyewaanController extends Controller
         //
     }
 
+
     
     public function store(Request $request )
     {
@@ -38,7 +39,7 @@ class PenyewaanController extends Controller
             'jam' => 'required'
         ]);
 
-        $no_nota = 'GWSX'. "-". $this->random_strings(5);
+        $no_nota = $this->checkIfAva();
 
         // Create Penyewaan
         $penyewaan = New Penyewaan;
@@ -67,15 +68,69 @@ class PenyewaanController extends Controller
             $paket= new Paket;
             $paket->id_paket = $pkt[$i];
             $detailPenyewaan->paket()->associate($paket);
+            $detailPenyewaan->tanggal = $request->get('tanggal');
             $findSepeda->save();
             $detailPenyewaan->save();
-            
         }
         // Delete Cart
         $pengguna_id = $request->get('pengguna_id');
         $cart = Cart::where('pengguna_id', $pengguna_id)->get();
         $cart->each->delete();
 
+        return redirect()->route('penyewaan.index')
+            ->with('success', 'Penyewaan berhasil diperbarui');
+
+    }
+
+    public function updateStatus(Request $request, $idpenyewaan){
+        $pembayaran = $request->get('pembayaran');
+        $pengembalian = $request->get('pengembalian');
+        $jaminan = $request->get('jaminan');
+
+        $penyewaan = Penyewaan::where('id_penyewaan', $idpenyewaan)->first();
+        if($pembayaran){
+            $penyewaan->status_pembayaran = $pembayaran;
+            $penyewaan->save();
+        }
+        else if($pengembalian){
+            $penyewaan->status_pengembalian = $pengembalian;
+            $penyewaan->save();
+        }
+        else if($jaminan){
+            $penyewaan->status_jaminan = $jaminan;
+            $penyewaan->save();
+        }
+
+        else{
+            // 
+        }
+
+        return redirect()->route('penyewaan.index')
+            ->with('success', 'Penyewaan berhasil diperbarui');
+
+
+
+    }
+
+
+    public function checkIfAva()
+    {
+        $penyewaanList = Penyewaan::all();
+        $no_nota = "RBX" . "-" . $this->random_strings(8);
+        $isAva = True;
+        for ($i = 0; $i < count($penyewaanList); $i++) {
+            if ($penyewaanList[$i]->no_nota === $no_nota) {
+                $isAva = False;
+            } else {
+                $isAva = True;
+            }
+        }
+        if ($isAva) {
+            return $no_nota;
+        } else {
+            $this->checkIfAva();
+        }
+        return $no_nota;
     }
 
 
