@@ -10,8 +10,8 @@
 							<p class="subtitle">Let's Get Healthy</p>
 							<h1>GOWESSLURR MALANG RENT BIKE</h1>
 							<div class="hero-btns">
-								<a href="shop.html" class="boxed-btn">Bike Collection</a>
-								<a href="contact.html" class="bordered-btn">About Us</a>
+								<a href="customer/product.blade.php" class="boxed-btn">Bike Collection</a>
+								<a href="customer/about.blade.php" class="bordered-btn">About Us</a>
 							</div>
 						</div>
 					</div>
@@ -80,7 +80,7 @@
 						<h2>We are <span class="orange-text">GOWESSLURR</span></h2>
 						<p>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem.</p>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
-						<a href="about.html" class="boxed-btn mt-4">know more</a>
+						<a href="customer/about.blade.php" class="boxed-btn mt-4">know more</a>
 					</div>
 				</div>
 			</div>

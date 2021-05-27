@@ -109,7 +109,6 @@
 							<li><a href="index.html">Home</a></li>
 							<li><a href="about.html">About</a></li>
 							<li><a href="services.html">Shop</a></li>
-							<li><a href="news.html">News</a></li>
 							<li><a href="contact.html">Contact</a></li>
 						</ul>
 					</div>
@@ -134,7 +133,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>, All Rights
+					<p>Copyrights &copy; 2021 - Gowesslurr Malang, All Rights
 						Reserved.</p>
 				</div>
 				<div class="col-lg-6 text-right col-md-12">

@@ -38,21 +38,6 @@
 		</div>
 	</div>
 	<!-- end search arewa -->
-	
-	<!-- breadcrumb-section -->
-	<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<p>We sale fresh fruits</p>
-						<h1>About Us</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end breadcrumb section -->
 
 	<!-- featured section -->
 	<div class="feature-bg">
@@ -60,7 +45,7 @@
 			<div class="row">
 				<div class="col-lg-7">
 					<div class="featured-text">
-						<h2 class="pb-3">Why <span class="orange-text">Fruitkha</span></h2>
+						<h2 class="pb-3">GOWESSLURR <span class="orange-text">MALANG</span></h2>
 						<div class="row">
 							<div class="col-lg-6 col-md-6 mb-4 mb-md-5">
 								<div class="list-box d-flex">
@@ -114,16 +99,6 @@
 	</div>
 	<!-- end featured section -->
 
-	<!-- shop banner -->
-	<section class="shop-banner">
-    	<div class="container">
-        	<h3>December sale is on! <br> with big <span class="orange-text">Discount...</span></h3>
-            <div class="sale-percent"><span>Sale! <br> Upto</span>50% <span>off</span></div>
-            <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
-        </div>
-    </section>
-	<!-- end shop banner -->
-
 	<!-- team section -->
 	<div class="mt-150">
 		<div class="container">
@@ -136,7 +111,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 col-md-6">
+				<div class="col-lg-6 col-md-6">
 					<div class="single-team-item">
 						<div class="team-bg team-bg-1"></div>
 						<h4>Jimmy Doe <span>Farmer</span></h4>
@@ -147,7 +122,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6">
+				<div class="col-lg-6 col-md-6">
 					<div class="single-team-item">
 						<div class="team-bg team-bg-2"></div>
 						<h4>Marry Doe <span>Farmer</span></h4>
