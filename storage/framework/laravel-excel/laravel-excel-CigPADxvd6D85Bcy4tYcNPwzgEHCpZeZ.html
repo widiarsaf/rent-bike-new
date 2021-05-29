@@ -18,20 +18,20 @@
         content="flat ui, admin  Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="CodedThemes">
     <!-- Favicon icon -->
-    <link rel="shortcut icon" type="image/png" href="{{asset('assets/assetsCustomer/img/favicon-gws.png')}}">
+    <link rel="shortcut icon" type="image/png" href="http://127.0.0.1:8000/assets/assetsCustomer/img/favicon-gws.png">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/assetsAdmin/css/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/assetsAdmin/css/bootstrap/css/bootstrap.min.css">
     <!-- themify-icons line icon -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/assetsAdmin/icon/themify-icons/themify-icons.css')}}">
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/assetsAdmin/icon/themify-icons/themify-icons.css">
     <!-- ico font -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/assetsAdmin/icon/icofont/css/icofont.css')}}">
-    {{-- Full calendar style --}}
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/assetsAdmin/icon/icofont/css/icofont.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/assetsAdmin/css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/assetsAdmin/css/jquery.mCustomScrollbar.css')}}">
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/assetsAdmin/css/style.css">
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/assetsAdmin/css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 </head>
 
@@ -89,7 +89,7 @@
                             <i class="ti-search"></i>
                         </a>
                         <a href="index.html">
-                            <img class="img-fluid" src="{{asset('assets/assetsAdmin/images/logo.jpg')}}"
+                            <img class="img-fluid" src="http://127.0.0.1:8000/assets/assetsAdmin/images/logo.jpg"
                                 style="width : 55px !important; border-radius: 80% !important" alt="Theme-Logo" />
                         </a>
                         <a class="mobile-options">
@@ -111,13 +111,13 @@
                             </li>
                             <li class="breadcrumb-item">
 
-                                <a href="{{route('home')}}"><i class="icofont icofont-home"></i> Home</a>
+                                <a href="http://127.0.0.1:8000/home"><i class="icofont icofont-home"></i> Home</a>
                             </li>
                         </ul>
                         <ul class="nav-right">
                             <li class="user-profile header-notification">
                                 <a href="#!">
-                                    <img src="{{asset('assets/assetsAdmin/images/avatar-4.jpg')}}" class="img-radius"
+                                    <img src="http://127.0.0.1:8000/assets/assetsAdmin/images/avatar-4.jpg" class="img-radius"
                                         alt="User-Profile-Image">
                                     <span>John Doe</span>
                                     <i class="ti-angle-down"></i>
@@ -129,14 +129,13 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="http://127.0.0.1:8000/logout"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <i class="ti-layout-sidebar-left"></i> Logout
                                         </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        <form id="logout-form" action="http://127.0.0.1:8000/logout" method="POST"
                                             class="d-none">
-                                            @csrf
-                                        </form>
+                                            <input type="hidden" name="_token" value="49eifOa7lS11JlX7CnocgxoWltMOMH0TIGPGaemM">                                        </form>
                                     </li>
                                 </ul>
                             </li>
@@ -162,7 +161,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="{{route('penyewaan.index')}}">
+                                            <a href="http://127.0.0.1:8000/penyewaan">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Data
                                                     Penyewaan</span>
@@ -170,7 +169,7 @@
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="{{route('datarekap.index')}}">
+                                            <a href="http://127.0.0.1:8000/datarekap">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.breadcrumbs">Data Rekap</span>
@@ -178,7 +177,7 @@
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="{{route('paket.index')}}">
+                                            <a href="http://127.0.0.1:8000/paket">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.breadcrumbs">Paket Penyewaan</span>
@@ -231,7 +230,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="{{route('sepeda.index')}}">
+                                            <a href="http://127.0.0.1:8000/sepeda">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.alert">Sepeda</span>
@@ -239,7 +238,7 @@
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="{{route('kategori.index')}}">
+                                            <a href="http://127.0.0.1:8000/kategori">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.breadcrumbs">Kategori Sepeda</span>
@@ -249,7 +248,7 @@
                                     </ul>
                                 </li>
                                 <li class="">
-                                    <a href="{{route('calendar.index')}}">
+                                    <a href="http://127.0.0.1:8000/calendar">
                                         <span class="pcoded-micon"><i class="ti-calendar"></i><b>D</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Kalender</span>
                                         <span class="pcoded-mcaret"></span>
@@ -263,8 +262,79 @@
 
                             <div class="main-body">
                                 <div class="page-wrapper">
-                                    {{-- Content --}}
-                                    @yield('content')
+                                    
+                                    <div>
+    </div>
+<div class="page-body">
+    <div class="card">
+        <div class="card-header">
+            <h5>Tabel Paket Penyewaan</h5>
+            <span>Daftar Paket Penyewaan Yang disediakan</span>
+            <div class="card-header-right">
+                <ul class="list-unstyled card-option">
+                    <li><i class="icofont icofont-simple-left "></i></li>
+                    <li><i class="icofont icofont-maximize full-card"></i></li>
+                    <li><i class="icofont icofont-minus minimize-card"></i></li>
+                    <li><i class="icofont icofont-refresh reload-card"></i></li>
+                    <li><i class="icofont icofont-error close-card"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-block table-border-style">
+            <div class="d-flex" style="align-items:flex-end; justify-content:space-between">
+                <form action="">
+                    <div class="header d-flex col-md-9" style="align-items: flex-end;">
+                        <div class="form mr-2">
+                            <label for="">Masukkan Tanggal Awal</label>
+                            <input type="date" class="form-control" id="reservation_time"
+                                placeholder="Masukkan tanggal awal" name="from-date">
+                        </div>
+                        <div class="form">
+                            <label for="">Masukkan Tanggal Akhir</label>
+                            <input type="date" class="form-control" id="reservation_time"
+                                placeholder="Masukkan tanggal akhir" name="to-date">
+                        </div>
+                        <button class="btn btn-info ml-3" style="height: 50%; align-items:center">Filter</button>
+                    </div>
+                </form>
+
+                <form action="http://127.0.0.1:8000/datarekap/export/all">
+                    <button class="btn btn-primary">Print To Excel</button>
+                </form>
+            </div>
+
+
+            
+            <div class=" table-responsive mt-4" style="display : block;" id="penyewaanTable">
+                <table class="table table-hover" id="tabelDataRekap">
+                    <thead>
+                        <tr>
+                            <th>No Nota</th>
+                            <th>Sepeda</th>
+                            <th>Paket</th>
+                            <th>Tanggal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr>
+                            <th style="background: rgb(244, 252, 226)">GWSX-DUbJr</th>
+                            <td>MTB101</td>
+                            <td>Paket 2 Weeday</td>
+                            <td>2021-05-29</td>
+                        </tr>
+                         <tr>
+                            <th style="background: rgb(244, 252, 226)">GWSX-KSxOP</th>
+                            <td>MTB101</td>
+                            <td>Paket 2 Weeday</td>
+                            <td>2021-05-29</td>
+                        </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Basic table card end -->
+</div>
 
                                 </div>
                             </div>
@@ -279,27 +349,27 @@
     </div>
 
 
-    <script type="text/javascript" src="{{asset('assets/assetsAdmin/js/jquery/jquery.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/assetsAdmin/js/jquery-ui/jquery-ui.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/assetsAdmin/js/popper.js/popper.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/assetsAdmin/js/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8000/assets/assetsAdmin/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8000/assets/assetsAdmin/js/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8000/assets/assetsAdmin/js/popper.js/popper.min.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8000/assets/assetsAdmin/js/bootstrap/js/bootstrap.min.js"></script>
     <!-- jquery slimscroll js -->
-    <script type="text/javascript" src="{{asset('assets/assetsAdmin/js/jquery-slimscroll/jquery.slimscroll.js')}}">
+    <script type="text/javascript" src="http://127.0.0.1:8000/assets/assetsAdmin/js/jquery-slimscroll/jquery.slimscroll.js">
     </script>
     <!-- modernizr js -->
-    <script type="text/javascript" src="{{asset('assets/assetsAdmin/js/modernizr/modernizr.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/assetsAdmin/js/modernizr/css-scrollbars.js')}}"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8000/assets/assetsAdmin/js/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8000/assets/assetsAdmin/js/modernizr/css-scrollbars.js"></script>
     <!-- classie js -->
-    <script type="text/javascript" src="{{asset('assets/assetsAdmin/js/classie/classie.js')}}"></script>
-    {{-- for fullcalendar --}}
+    <script type="text/javascript" src="http://127.0.0.1:8000/assets/assetsAdmin/js/classie/classie.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Custom js -->
-    <script type="text/javascript" src="{{asset('assets/assetsAdmin/js/script.js')}}"></script>
-    <script src="{{asset('assets/assetsAdmin/js/pcoded.min.js')}}"></script>
-    <script src="{{asset('assets/assetsAdmin/js/demo-12.js')}}"></script>
-    <script src="{{asset('assets/assetsAdmin/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script type="text/javascript" src="http://127.0.0.1:8000/assets/assetsAdmin/js/script.js"></script>
+    <script src="http://127.0.0.1:8000/assets/assetsAdmin/js/pcoded.min.js"></script>
+    <script src="http://127.0.0.1:8000/assets/assetsAdmin/js/demo-12.js"></script>
+    <script src="http://127.0.0.1:8000/assets/assetsAdmin/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 </body>
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\DetailPenyewaanController;
+use App\Http\Controllers\FullCalendarController;
 
 
 
@@ -24,6 +25,9 @@ Route::resource('paket', PaketController::class);
 Route::resource('penyewaan', PenyewaanController::class);
 Route::get('updateStatus/{penyewaan}', [PenyewaanController::class, 'updateStatus'])->name('penyewaan.updateStatus');
 Route::resource('datarekap', DetailPenyewaanController::class);
+Route::get('/calendar', [FullCalendarController::class, 'index'])->name('calendar.index');
+Route::get('/datarekap/export/all', [DetailPenyewaanController::class, 'export_excel'])->name('export_excel');
+
 
 
 // Customer Route

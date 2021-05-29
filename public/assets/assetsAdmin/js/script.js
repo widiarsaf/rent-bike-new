@@ -234,5 +234,54 @@ $(document).ready(function ()
 
 
 
+// Calendar
+
+
+$(document).ready(function ()
+{
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var calendar = $('#calendar').fullCalendar({
+        selectable: true,
+        selectHelper: true,
+        select: function (start)
+        {
+            var tanggal = $.fullCalendar.formatDate(start, "YYYY-MM-DD");
+            var formDate = $('#formDate');
+            var selectDate = $('#selectDate');
+            selectDate.val(tanggal);
+            formDate.submit();
+            calendar.fullCalendar('unselect');
+
+        },
+
+        unselect: function (start)
+        {
+            var dummy = " ";
+            var formDate = $('#formDate');
+            var selectDate = $('#selectDate');
+            selectDate.val();
+            formDate.submit();
+
+        },
+
+
+
+
+    });
+
+
+});
+
+
+
+
+
+
+
 
 
