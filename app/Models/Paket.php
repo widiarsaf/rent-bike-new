@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Penyewaan;
 
 class Paket extends Model
 {
@@ -16,4 +17,8 @@ class Paket extends Model
         'jam',
         'harga'
     ];
+
+    public function penyewaan() {
+        return $this->hasMany(Penyewaan::class, 'id_paket');
+    }
 }

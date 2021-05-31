@@ -16,8 +16,10 @@ class PenyewaanController extends Controller
     
     public function index()
     {
-        $penyewaan = Penyewaan::with('DetailPenyewaan')->get();
-        return view ('admin.penyewaanIndex', compact('penyewaan', $penyewaan));
+        $penyewaan = Penyewaan::with('DetailPenyewaan')->with('paket')->get();
+        $sepeda = Sepeda::all();
+        $paket = Paket::all();
+        return view ('admin.penyewaanIndex', compact('penyewaan', 'sepeda', 'paket'));
     }
 
     
@@ -31,56 +33,135 @@ class PenyewaanController extends Controller
     public function store(Request $request )
     {
         $request->validate([
-            'pengguna_id' => 'required',
-            'total' => 'required',
+            'username' => 'required',
             'sepeda_id' =>'required',
-            'paket_id' => 'required',
-            'tanggal' => 'required',
-            'jam' => 'required'
         ]);
+        
+        if(!empty($request->get('username'))){
+            $username = $request->get('username');
+            $findUser = User::where('username', $username)->value('username');
+            if($findUser){
+                $findIdUser = User::where('username', $username)->value('id_pengguna');
+                $sepeda = $request->get('sepeda_id');
+                // dd($sepeda);
+                if (empty($sepeda)) {
+                    return redirect()->route('penyewaan.index')
+                        ->with('fail', 'pilih salah satu sepeda');
+                }
+                else{
+                    $request->validate([
+                        'paket_id' => 'required',
+                        'tanggal' => 'required',
+                        'jam' => 'required'
+                    ]);
 
-        $no_nota = $this->checkIfAva();
+                    // Create Penyewaan
+                    $penyewaan = New Penyewaan;
+                    $user = New User;
+                    $user->id_pengguna = $findIdUser;
+                    $penyewaan->user()->associate($user);
+                    $no_nota = $this->checkIfAva();
+                    $penyewaan->no_nota = $no_nota;
+                    $penyewaan->tanggal = $request->get('tanggal');
+                    $penyewaan->jam = $request->get('jam');
+                    $penyewaan->paket_id = $request->get('paket_id');
 
-        // Create Penyewaan
-        $penyewaan = New Penyewaan;
-        $user = New User;
-        $user->id_pengguna = $request->get('pengguna_id');
-        $penyewaan->user()->associate($user);
-        $no_nota = 'GWSX'. "-". $this->random_strings(5);
-        $penyewaan->no_nota = $no_nota;
-        $penyewaan->total_biaya = $request->get('total');
-        $penyewaan->tanggal = $request->get('tanggal');
-        $penyewaan->jam = $request->get('jam');
-        $penyewaan->save();
+                    // find price
+                    $paket = Paket::where('id_paket', $request->get('paket_id'))->first();
+                    $paketprice = $paket->harga;
+                    $total = count($sepeda) * $paketprice;
 
-        // Create New Detail Penyewaan
-        $spd = $request->get('sepeda_id');
-        $pkt = $request->get('paket_id');
-        $data = [];
-        for($i = 0; $i < count($spd); $i++){
-            $detailPenyewaan = new DetailPenyewaan;
-            $detailPenyewaan->penyewaan()->associate($no_nota);
-            $sepeda = new Sepeda;
-            $sepeda->id_sepeda = $spd[$i];
-            $findSepeda = Sepeda::where('id_sepeda', $spd[$i])->first();
-            $findSepeda->status = 1;
-            $detailPenyewaan->sepeda()->associate($sepeda);
-            $paket= new Paket;
-            $paket->id_paket = $pkt[$i];
-            $detailPenyewaan->paket()->associate($paket);
-            $detailPenyewaan->tanggal = $request->get('tanggal');
-            $findSepeda->save();
-            $detailPenyewaan->save();
+                    $penyewaan->total_biaya = $total;
+                    $penyewaan->denda = 0;
+                    $penyewaan->save();
+
+                    // Create detail Penyewaan
+                    $spd = $request->get('sepeda_id');
+                    for($i = 0; $i < count($spd); $i++){
+                        $detailPenyewaan = new DetailPenyewaan;
+                        $detailPenyewaan->penyewaan()->associate($no_nota);
+                        $sepeda = new Sepeda;
+                        $sepeda->id_sepeda = $spd[$i];
+                        $detailPenyewaan->sepeda()->associate($sepeda);
+                        $paket= new Paket;
+                        $paket->id_paket = $request->get('paket_id');
+                        $detailPenyewaan->paket()->associate($paket);
+                        $detailPenyewaan->tanggal = $request->get('tanggal');
+                        $detailPenyewaan->save();
+
+                    }
+                    return redirect()->route('penyewaan.index')
+                     ->with('success', 'Penyewaan berhasil diperbarui');
+                   
+                }
+
+            }else{
+                return redirect()->route('penyewaan.index')
+                ->with('fail', 'Username tidak boleh ditemukan');
+            }
+
         }
-        // Delete Cart
-        $pengguna_id = $request->get('pengguna_id');
-        $cart = Cart::where('pengguna_id', $pengguna_id)->get();
-        $cart->each->delete();
 
-        return redirect()->route('penyewaan.index')
-            ->with('success', 'Penyewaan berhasil diperbarui');
+        else{
+            return redirect()->route('penyewaan.index')
+                ->with('fail', 'Username tidak boleh kosong');
+        }
+
+
+        // $sepeda = $request->get('sepeda_id');
+        
+        
+
+        // $no_nota = $this->checkIfAva();
+
+        // // Create Penyewaan
+        // $penyewaan = New Penyewaan;
+        // $user = New User;
+        // $user->id_pengguna = $request->get('pengguna_id');
+        // $penyewaan->user()->associate($user);
+        // $no_nota = 'GWSX'. "-". $this->random_strings(5);
+        // $penyewaan->no_nota = $no_nota;
+        // $penyewaan->total_biaya = $request->get('total');
+        // $penyewaan->tanggal = $request->get('tanggal');
+        // $penyewaan->jam = $request->get('jam');
+        // $penyewaan->save();
+
+        // // Create New Detail Penyewaan
+        // $spd = $request->get('sepeda_id');
+        // $pkt = $request->get('paket_id');
+        // $data = [];
+        // for($i = 0; $i < count($spd); $i++){
+            // $detailPenyewaan = new DetailPenyewaan;
+            // $detailPenyewaan->penyewaan()->associate($no_nota);
+            // $sepeda = new Sepeda;
+            // $sepeda->id_sepeda = $spd[$i];
+            // $findSepeda = Sepeda::where('id_sepeda', $spd[$i])->first();
+            // $findSepeda->status = 1;
+            // $detailPenyewaan->sepeda()->associate($sepeda);
+            // $paket= new Paket;
+            // $paket->id_paket = $pkt[$i];
+            // $detailPenyewaan->paket()->associate($paket);
+            // $detailPenyewaan->tanggal = $request->get('tanggal');
+            // $findSepeda->save();
+            // $detailPenyewaan->save();
+        // }
+        // // Delete Cart
+        // $pengguna_id = $request->get('pengguna_id');
+        // $cart = Cart::where('pengguna_id', $pengguna_id)->get();
+        // $cart->each->delete();
+
+        // return redirect()->route('penyewaan.index')
+        //     ->with('success', 'Penyewaan berhasil diperbarui');
 
     }
+
+    
+
+
+
+
+
+
 
     public function updateStatus(Request $request, $idpenyewaan){
         $pembayaran = $request->get('pembayaran');
