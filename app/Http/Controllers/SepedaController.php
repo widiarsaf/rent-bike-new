@@ -32,7 +32,7 @@ class SepedaController extends Controller
             'kategori_id' => 'required',
             'deskripsi' => 'required',
             'foto_unit' => 'nullable',
-            'status' => 'required',
+            'katalog' => 'required',
         ]);
 
         if ($request->file('foto_unit')) {
@@ -43,7 +43,7 @@ class SepedaController extends Controller
         $sepeda->unit_code = $request->get('unit_code');
         $sepeda->deskripsi = $request->get('deskripsi');
         $sepeda->foto_unit = $image_name;
-        $sepeda->status = $request->get('status');
+        $sepeda->katalog = $request->get('katalog');
         $kategori = new Kategori;
         $kategori->id_kategori = $request->get('kategori_id');
 
@@ -75,6 +75,7 @@ class SepedaController extends Controller
             'kategori_id' => 'required',
             'deskripsi' => 'required',
             'foto_unit' => 'nullable',
+            'katalog' => 'required',
             'status' => 'required',
         ]);
 
@@ -92,7 +93,7 @@ class SepedaController extends Controller
        
         $sepeda->unit_code = $request->get('unit_code');
         $sepeda->deskripsi = $request->get('deskripsi');
-        $sepeda->status = $request->get('status');
+        $sepeda->katalog = $request->get('katalog');
 
         $kategori = new Kategori;
         $kategori->id_kategori = $request->get('kategori_id');

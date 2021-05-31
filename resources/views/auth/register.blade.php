@@ -11,38 +11,6 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="nama" class="col-md-4 col-form-label text-md-right">{{ __('Nama') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="nama" type="nama" class="form-control @error('nama') is-invalid @enderror"
-                                    name="nama" value="{{ old('nama') }}" required autocomplete="nama">
-
-                                @error('nama')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="telepon"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Telepon') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="telepon" type="telepon"
-                                    class="form-control @error('telepon') is-invalid @enderror" name="telepon"
-                                    value="{{ old('telepon') }}" required autocomplete="telepon">
-
-                                @error('telepon')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
                         {{-- username --}}
                         <div class="form-group row">
                             <label for="username"

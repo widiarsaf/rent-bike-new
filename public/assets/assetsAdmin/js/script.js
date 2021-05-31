@@ -216,6 +216,33 @@ $('#deletePaket').on('show.bs.modal', function (event)
 })
 
 
+// Katalog
+$('#editKatalog').on('show.bs.modal', function (event)
+{
+    var button = $(event.relatedTarget)
+    var namakatalog = button.data('namakatalog')
+    var deskripsikatalog = button.data('deskripsikatalog')
+    var idkatalog = button.data('idkatalog')
+    var modal = $(this)
+    modal.find('.modal-body #namaKatalog').val(namakatalog);
+    modal.find('.modal-body #deskripsiKatalog').val(deskripsikatalog);
+    modal.find('.modal-body #idKatalog').val(idkatalog);
+})
+
+
+
+$('#deleteKatalog').on('show.bs.modal', function (event)
+{
+    var button = $(event.relatedTarget)
+    var idkatalog = button.data('idkatalog')
+    var modal = $(this)
+    modal.find('.modal-body #idKatalog').val(idkatalog);
+})
+
+
+
+
+
 $(document).ready(function ()
 {
     $('#tabelSepeda').DataTable();

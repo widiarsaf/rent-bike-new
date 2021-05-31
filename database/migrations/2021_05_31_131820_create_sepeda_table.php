@@ -15,12 +15,13 @@ class CreateSepedaTable extends Migration
     {
         Schema::create('sepeda', function (Blueprint $table) {
             $table->bigIncrements('id_sepeda');
-            $table->string('unit_code', 20)->index();
+            $table->string('unit_code', 20)->index()->unique();
+            $table->unsignedBigInteger('katalog_id')->nullable();
             $table->unsignedBigInteger('kategori_id')->nullable();
-            $table->string('deskripsi');
-            $table->string('foto_unit');
-            $table->string('status',20);
+            $table->string('deskripsi')->nullable();
+            $table->string('foto_unit')->nullable();
             $table->foreign('kategori_id')->references('id_kategori')->on('kategori')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('katalog_id')->references('id_katalog')->on('katalog')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

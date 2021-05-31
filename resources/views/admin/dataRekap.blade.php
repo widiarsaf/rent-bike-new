@@ -49,7 +49,7 @@
 
                 <form action="{{route('export_excel')}}">
                     <input type="hidden" name="from-date2" value="{{$from_date2}}">
-                    <input type="hidden" class="form-control" name="to-date2" value="{{$to_date2}}">
+                    <input type="hidden" class=" form-control" name="to-date2" value="{{$to_date2}}">
                     <button class="btn btn-primary">Print To Excel</button>
                 </form>
             </div>

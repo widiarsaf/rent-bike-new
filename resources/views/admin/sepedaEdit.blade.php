@@ -36,13 +36,11 @@
                     <img src="{{asset('storage/'.$sepeda->foto_unit) }}" width="200px">
                 </div>
                 <div class="form-group">
-                    <label for="status">Status</label>
-                    <select name="status" id="status" class="form-control">
-                        <option value="1">dipinjam</option>
-                        <option value="0">tersedia</option>
-                    </select>
-
+                    <label for="katalog">Katalog</label>
+                    <input type="text" class="form-control" id="katalog" value="{{$sepeda->katalog}} "
+                        placeholder="Masukkan katalog" name="ukatalog">
                 </div>
+
                 <a type="button" class="btn btn-primary btn-outline-primary" href="{{route('sepeda.index')}}">back</a>
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>

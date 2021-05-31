@@ -10,6 +10,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\DetailPenyewaanController;
 use App\Http\Controllers\FullCalendarController;
+use App\Http\Controllers\KatalogController;
 
 
 
@@ -21,6 +22,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('kategori', KategoriController::class);
 Route::resource('sepeda', SepedaController::class);
+Route::resource('katalog', KatalogController::class);
 Route::resource('paket', PaketController::class);
 Route::resource('penyewaan', PenyewaanController::class);
 Route::get('updateStatus/{penyewaan}', [PenyewaanController::class, 'updateStatus'])->name('penyewaan.updateStatus');

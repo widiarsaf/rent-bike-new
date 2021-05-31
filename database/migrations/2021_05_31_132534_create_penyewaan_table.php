@@ -13,7 +13,6 @@ class CreatePenyewaanTable extends Migration
      */
     public function up()
     {
-        Schema::enableForeignKeyConstraints();
         Schema::create('penyewaan', function (Blueprint $table) {
             $table->bigIncrements('id_penyewaan');
             $table->string('no_nota')->index();
@@ -23,8 +22,11 @@ class CreatePenyewaanTable extends Migration
             $table->integer('total_biaya');
             $table->date('tanggal');
             $table->time('jam');
+            $table->integer('denda');
             $table->unsignedBigInteger('pengguna_id')->nullable();
             $table->foreign('pengguna_id')->references('id_pengguna')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('paket_id')->nullable();
+            $table->foreign('paket_id')->references('id_paket')->on('paket')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
