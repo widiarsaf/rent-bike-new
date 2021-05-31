@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sepeda;
 use App\Models\Kategori;
+use App\Models\Katalog;
 use App\Models\Paket;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,7 +17,8 @@ class SepedaController extends Controller
         $sepeda = Sepeda::with('kategori')->get();
         $paket = Paket::all();
         $kategori = Kategori::all();
-        return view('admin.sepedaIndex', compact('sepeda', 'paket', 'kategori'));
+        $katalog = Katalog::all();
+        return view('admin.sepedaIndex', compact('sepeda', 'paket', 'kategori', 'katalog'));
     }
 
 
@@ -32,7 +34,7 @@ class SepedaController extends Controller
             'kategori_id' => 'required',
             'deskripsi' => 'required',
             'foto_unit' => 'nullable',
-            'katalog' => 'required',
+            'katalog_id' => 'required',
         ]);
 
         if ($request->file('foto_unit')) {
@@ -43,11 +45,13 @@ class SepedaController extends Controller
         $sepeda->unit_code = $request->get('unit_code');
         $sepeda->deskripsi = $request->get('deskripsi');
         $sepeda->foto_unit = $image_name;
-        $sepeda->katalog = $request->get('katalog');
         $kategori = new Kategori;
         $kategori->id_kategori = $request->get('kategori_id');
+        $katalog = new Katalog;
+        $katalog->id_katalog = $request->get('katalog_id');
 
         $sepeda->kategori()->associate($kategori);
+        $sepeda->katalog()->associate($katalog);
         $sepeda->save();
 
 
@@ -66,7 +70,8 @@ class SepedaController extends Controller
             ->where('id_sepeda', $id_sepeda)
             ->first();
         $kategori = Kategori::all();
-        return view('admin.sepedaEdit', ['sepeda' => $sepeda, 'kategori' => $kategori]);
+        $katalog = Katalog::all();
+        return view('admin.sepedaEdit', ['sepeda' => $sepeda, 'kategori' => $kategori, 'katalog' => $katalog]);
     }
     public function update(Request $request, $id_sepeda)
     {
@@ -75,7 +80,7 @@ class SepedaController extends Controller
             'kategori_id' => 'required',
             'deskripsi' => 'required',
             'foto_unit' => 'nullable',
-            'katalog' => 'required',
+            'katalog_id' => 'required',
             'status' => 'required',
         ]);
 
@@ -93,12 +98,14 @@ class SepedaController extends Controller
        
         $sepeda->unit_code = $request->get('unit_code');
         $sepeda->deskripsi = $request->get('deskripsi');
-        $sepeda->katalog = $request->get('katalog');
 
         $kategori = new Kategori;
         $kategori->id_kategori = $request->get('kategori_id');
+        $katalog = new Katalog;
+        $katalog->id_katalog = $request->get('katalog_id');
 
         $sepeda->kategori()->associate($kategori);
+        $sepeda->katalog()->associate($katalog);
         $sepeda->save();
 
 

@@ -25,6 +25,17 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="Katalog">Katalog</label>
+                    <select name="katalog_id" id="katalog_id" class="form-control">
+                        @foreach($katalog as $katalog)
+                        <option value="{{$katalog->id_katalog}}"
+                            {{$sepeda->katalog_id == $katalog->id_katalog ? 'selected' : ''}}>
+                            {{$katalog->nama_katalog}}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
                     <input type="text" class="form-control" id="deskripsi" value="{{$sepeda->deskripsi}}"
                         name="deskripsi">
@@ -35,12 +46,6 @@
                         value="{{ $sepeda->foto_unit }}" aria-describedby="image">
                     <img src="{{asset('storage/'.$sepeda->foto_unit) }}" width="200px">
                 </div>
-                <div class="form-group">
-                    <label for="katalog">Katalog</label>
-                    <input type="text" class="form-control" id="katalog" value="{{$sepeda->katalog}} "
-                        placeholder="Masukkan katalog" name="ukatalog">
-                </div>
-
                 <a type="button" class="btn btn-primary btn-outline-primary" href="{{route('sepeda.index')}}">back</a>
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>

@@ -69,6 +69,14 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="Katalog">Katalog</label>
+                        <select name="katalog_id" id="katalog_id" class="form-control">
+                            @foreach($katalog as $katalog)
+                            <option value="{{$katalog->id_katalog}}">{{$katalog->nama_katalog}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="deskripsi">Deskripsi</label>
                         <textarea type="text" class="form-control" id="deskripsi" placeholder="Masukkan deskripsi"
                             name="deskripsi"> </textarea>
@@ -77,12 +85,6 @@
                         <label for="foto_unit">Foto Unit</label>
                         <input type="file" class="form-control" id="foto_unit" name="foto_unit">
                     </div>
-                    <div class="form-group">
-                        <label for="katalog">Katalog</label>
-                        <input type="text" class="form-control" id="katalog" placeholder="Masukkan katalog"
-                            name="katalog">
-                    </div>
-
                     <a type="button" id="close" class="btn btn-primary btn-outline-primary"
                         onclick="hideForm()">Back</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -112,7 +114,7 @@
                             </td>
                             <td><img width=" 80px" src="{{asset('storage/'.$spd->foto_unit) }}">
                             </td>
-                            <td>{{$spd->katalog}}</td>
+                            <td>{{$spd->katalog->nama_katalog}}</td>
                             <td style="display: flex">
                                 <a type="button" class="btn btn-warning"
                                     href="{{ route('sepeda.edit', $spd->id_sepeda) }}"><i class="ti-marker-alt"></i></a>
