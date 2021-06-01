@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="card-block table-border-style">
-            <div id="header-content">
+            {{-- <div id="header-content">
                 <div class="header">
                     <div class="d-flex mb-4" style="justify-content :space-between">
                         <button class="btn btn-primary ml-3" onclick="showFormaAddCustomer(); return false;">
@@ -49,7 +49,9 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+
+
             {{-- Form Add Data --}}
             {{-- <div class="mx-3 mb-3" style="display:none;" id="formAddSepeda">
                 <h4 class=" mb-3">Masukkan Data Sepeda Baru</h4>

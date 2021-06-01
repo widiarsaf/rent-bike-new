@@ -50,8 +50,15 @@ class CustomerController extends Controller
     }
 
     
-    public function destroy($id)
+    public function destroy($idcustomer)
     {
-        //
+        $customer = User::where('id_pengguna', $idcustomer)
+            ->first();
+        if($customer->foto_profil && file_exists(storage_path('app/public/' . $customer->foto_profil))) {
+             Storage::delete('public/' . $customer->foto_profil);
+        }
+        User::find($idcustomer)->delete();
+        return redirect()->route('daftarCustomer.index')
+            ->with('success', 'Customer berhasil dihapus');
     }
 }
