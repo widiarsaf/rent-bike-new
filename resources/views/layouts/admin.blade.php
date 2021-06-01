@@ -205,7 +205,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="auth-normal-sign-in.html">
+                                            <a href="{{route('daftarAdmin.index')}}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.alert">Admin</span>
@@ -213,7 +213,7 @@
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="auth-sign-up.html">
+                                            <a href="{{route('daftarCustomer.index')}}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext"
                                                     data-i18n="nav.basic-components.breadcrumbs">Customer</span>

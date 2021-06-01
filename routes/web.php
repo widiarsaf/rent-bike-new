@@ -11,6 +11,8 @@ use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\DetailPenyewaanController;
 use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AdminController;
 
 
 
@@ -25,6 +27,8 @@ Route::resource('sepeda', SepedaController::class);
 Route::resource('katalog', KatalogController::class);
 Route::resource('paket', PaketController::class);
 Route::resource('penyewaan', PenyewaanController::class);
+Route::resource('daftarAdmin', AdminController::class);
+Route::resource('daftarCustomer', CustomerController::class);
 Route::get('updateStatus/{penyewaan}', [PenyewaanController::class, 'updateStatus'])->name('penyewaan.updateStatus');
 Route::resource('datarekap', DetailPenyewaanController::class);
 Route::get('/calendar', [FullCalendarController::class, 'index'])->name('calendar.index');

@@ -18,7 +18,7 @@ class User extends Authenticatable
         'nama',
         'username',
         'password',
-        'telepon',
+        'no_telp',
         'foto_profil',
         'is_admin'
     ];
