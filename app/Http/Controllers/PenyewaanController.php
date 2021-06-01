@@ -108,59 +108,8 @@ class PenyewaanController extends Controller
         }
 
 
-        // $sepeda = $request->get('sepeda_id');
-        
-        
-
-        // $no_nota = $this->checkIfAva();
-
-        // // Create Penyewaan
-        // $penyewaan = New Penyewaan;
-        // $user = New User;
-        // $user->id_pengguna = $request->get('pengguna_id');
-        // $penyewaan->user()->associate($user);
-        // $no_nota = 'GWSX'. "-". $this->random_strings(5);
-        // $penyewaan->no_nota = $no_nota;
-        // $penyewaan->total_biaya = $request->get('total');
-        // $penyewaan->tanggal = $request->get('tanggal');
-        // $penyewaan->jam = $request->get('jam');
-        // $penyewaan->save();
-
-        // // Create New Detail Penyewaan
-        // $spd = $request->get('sepeda_id');
-        // $pkt = $request->get('paket_id');
-        // $data = [];
-        // for($i = 0; $i < count($spd); $i++){
-            // $detailPenyewaan = new DetailPenyewaan;
-            // $detailPenyewaan->penyewaan()->associate($no_nota);
-            // $sepeda = new Sepeda;
-            // $sepeda->id_sepeda = $spd[$i];
-            // $findSepeda = Sepeda::where('id_sepeda', $spd[$i])->first();
-            // $findSepeda->status = 1;
-            // $detailPenyewaan->sepeda()->associate($sepeda);
-            // $paket= new Paket;
-            // $paket->id_paket = $pkt[$i];
-            // $detailPenyewaan->paket()->associate($paket);
-            // $detailPenyewaan->tanggal = $request->get('tanggal');
-            // $findSepeda->save();
-            // $detailPenyewaan->save();
-        // }
-        // // Delete Cart
-        // $pengguna_id = $request->get('pengguna_id');
-        // $cart = Cart::where('pengguna_id', $pengguna_id)->get();
-        // $cart->each->delete();
-
-        // return redirect()->route('penyewaan.index')
-        //     ->with('success', 'Penyewaan berhasil diperbarui');
 
     }
-
-    
-
-
-
-
-
 
 
     public function updateStatus(Request $request, $idpenyewaan){

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Paket;
 use App\Models\DetailPenyewaan;
+use App\Models\Pembayaran;
+
 
 
 
@@ -34,5 +36,8 @@ class Penyewaan extends Model
     }
     public function paket() {
         return $this->belongsTo(Paket::class, 'paket_id');
+    }
+    public function pembayaran() {
+        return $this->hasMany(Pembayaran::class, 'nota_no');
     }
 }
