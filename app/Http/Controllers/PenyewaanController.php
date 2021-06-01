@@ -231,7 +231,10 @@ class PenyewaanController extends Controller
     
     public function show($id)
     {
-        //
+        $penyewaan = Penyewaan::with('paket')->with('user')->where('id_penyewaan', $id)->first();
+        $detailPenyewaan = DetailPenyewaan::with('sepeda')->get();
+        return view ('admin.detailPenyewaan', compact('penyewaan', 'detailPenyewaan'));
+
     }
 
     

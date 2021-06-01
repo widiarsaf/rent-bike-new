@@ -223,8 +223,9 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"><i class="ti-trash"></i></button>
-                                    <a class="btn btn-inverse" data-toggle="tooltip" style="color:white"
-                                        data-original-title="lihat detail"><i class="ti-zoom-in"></i>Lihat Detail</a>
+                                    <a class="btn btn-inverse" href="{{route('penyewaan.show', $p->id_penyewaan)}}"
+                                        onclick="" style="color:white" data-original-title="lihat detail"><i
+                                            class="ti-zoom-in"></i>Lihat Detail</a>
                                 </form>
                             </td>
                         </tr>

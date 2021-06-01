@@ -117,17 +117,19 @@
                         <ul class="nav-right">
                             <li class="user-profile header-notification">
                                 <a href="#!">
-                                    <img src="{{asset('assets/assetsAdmin/images/avatar-4.jpg')}}" class="img-radius"
-                                        alt="User-Profile-Image">
-                                    <span>John Doe</span>
+                                    @guest
+                                    @if(Route::has('login'))
+
+                                    <span>Guest</span>
+
+                                    @else
+
+                                    <span>{{Auth::user()->username}}</span>
+                                    @endif
+                                    @endguest
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-user"></i> Profile
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

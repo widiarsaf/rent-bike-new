@@ -63,14 +63,12 @@
 									<div class="header-icons">
 										@guest
 										@if(Route::has('login'))
-										<a class="shopping-cart" href="{{route('login')}}"><i
-												class="fas fa-shopping-cart"></i></a>
+										<a class="shopping-cart" href="#"><i class="fas fa-user"></i></a>
+
+										@else
 										<a class="shopping-cart" href="#"><i class="fas fa-user"></i></a>
 										@endif
 										@endguest
-										<a class="shopping-cart" href="{{url('cart')}}"><i
-												class="fas fa-shopping-cart"></i></a>
-										<a class="shopping-cart" href="#"><i class="fas fa-user"></i></a>
 
 									</div>
 								</li>
