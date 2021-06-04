@@ -121,7 +121,12 @@
                             <td>{{$p->tanggal_bayar}}</td>
                             <td>{{$p->keterangan}}</td>
                             <td>{{$p->nominal}}</td>
-                            <td>{{$p->metode}}</td>
+                            <td>@if($p->metode==1)
+                                Cash
+                                @else
+                                Transfer
+                                @endif
+                            </td>
                             <td><img width="80px" src="{{asset('storage/'.$p->foto_bukti) }}">
                             </td>
                             <td style="display: flex">

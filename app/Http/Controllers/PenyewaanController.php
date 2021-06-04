@@ -87,6 +87,7 @@ class PenyewaanController extends Controller
                         $paket->id_paket = $request->get('paket_id');
                         $detailPenyewaan->paket()->associate($paket);
                         $detailPenyewaan->tanggal = $request->get('tanggal');
+                        $detailPenyewaan->status_penyewaan = 0;
                         $detailPenyewaan->save();
 
                     }
@@ -118,13 +119,20 @@ class PenyewaanController extends Controller
         $jaminan = $request->get('jaminan');
 
         $penyewaan = Penyewaan::where('id_penyewaan', $idpenyewaan)->first();
+        $findNoNota = Penyewaan::where('id_penyewaan', $idpenyewaan)->value('no_nota');
+        $detailPenyewaan = DetailPenyewaan::where('nota_no', $findNoNota)->get();
         if($pembayaran){
             $penyewaan->status_pembayaran = $pembayaran;
             $penyewaan->save();
         }
         else if($pengembalian){
             $penyewaan->status_pengembalian = $pengembalian;
+            foreach($detailPenyewaan as $dp){
+                $dp->status_penyewaan = $pengembalian;
+                $dp->save();
+            }
             $penyewaan->save();
+            
         }
         else if($jaminan){
             $penyewaan->status_jaminan = $jaminan;

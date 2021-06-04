@@ -18,21 +18,25 @@ class DetailPenyewaanController extends Controller
         $from_date2 = " ";
         $to_date2 = " ";
         $detailpenyewaan = " "; 
+        
 
         if($fromdate && $todate){
-            $detailpenyewaan = DetailPenyewaan::whereBetween('tanggal', [$fromdate, $todate])->get();
+            $detailpenyewaan = DetailPenyewaan::where('status_penyewaan', 1)->whereBetween('tanggal', [$fromdate, $todate])->get();
             $from_date2 = $fromdate;
             $to_date2 = $todate;
         }
 
         else if ($fromdate){
-           $detailpenyewaan = DetailPenyewaan::whereDate('tanggal', '=', $fromdate)->get();
+           $detailpenyewaan = DetailPenyewaan::where('status_penyewaan', 1)->whereDate('tanggal', '=', $fromdate)->get();
            $from_date2 = $fromdate;
+           $to_date2 = "null";
         }
 
         else{
 
-            $detailpenyewaan = DetailPenyewaan::get();
+            $detailpenyewaan = DetailPenyewaan::where('status_penyewaan', 1)->get();
+            $from_date2 = "null" ;
+            $to_date2 = "null";
         }
 
         return view ('admin.dataRekap', compact('detailpenyewaan', 'from_date2', 'to_date2'));
@@ -43,19 +47,19 @@ class DetailPenyewaanController extends Controller
         $fromdate = $request->get('from-date2');
         $todate = $request->get('to-date2');
 
-        if($fromdate && $todate){
+        if($fromdate !== "null" &&  $todate !== "null"){
             $detailpenyewaan = DetailPenyewaan::whereBetween('tanggal', [$fromdate, $todate])->get();
-            $nama_file = 'datarekap_mingguan '.$fromdate . "__" .$todate.'.xlsx';
+            $nama_file = 'datarekap dari '.$fromdate . " sampai " .$todate.'.xlsx';
         }
 
-        else if ($fromdate){
+        else if ($fromdate !== "null" &&  $todate === "null"){
            $detailpenyewaan = DetailPenyewaan::whereDate('tanggal', '=', $fromdate)->get();
-           $nama_file = 'datarekap_mingguan '. "tanggal " .$fromdate.'.xlsx';
+           $nama_file = 'datarekap pada tanggal ' .$fromdate.'.xlsx';
         }
 
         else{
             $detailpenyewaan = DetailPenyewaan::get();
-            $nama_file = 'datarekap '. date('Y-m-d') . '.xlsx';
+            $nama_file = 'datarekap_semua diexport_tanggal '. date('Y-m-d') . '.xlsx';
         }
 
         return Excel::download(new DataRekapExport($detailpenyewaan), $nama_file);

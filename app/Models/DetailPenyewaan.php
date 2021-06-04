@@ -20,7 +20,7 @@ class DetailPenyewaan extends Model
         'sepeda_id',
         'paket_id',
         'tanggal',
-        'denda',
+        'status_penyewaan'
     ];
 
     public function penyewaan() {

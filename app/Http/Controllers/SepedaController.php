@@ -76,12 +76,11 @@ class SepedaController extends Controller
     public function update(Request $request, $id_sepeda)
     {
         $request->validate([
-            'unit_code' => 'required',
-            'kategori_id' => 'required',
-            'deskripsi' => 'required',
+            'unit_code' => 'nullable',
+            'kategori_id' => 'nullable',
+            'deskripsi' => 'nullable',
             'foto_unit' => 'nullable',
-            'katalog_id' => 'required',
-            'status' => 'required',
+            'katalog_id' => 'nullable',
         ]);
 
         $sepeda = Sepeda::with('kategori')

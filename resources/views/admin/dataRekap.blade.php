@@ -56,6 +56,17 @@
 
 
             {{-- Tabel --}}
+            <div class ="mt-5">
+                @if($to_date2 !== "null" && $from_date2 !== "null")
+                    <h5>Data Rekap Penyewaan dari tanggal {{$from_date2}} sampai tanggal {{$to_date2}}</h5>
+                @elseif ($from_date2 !== "null" &&  $to_date2 === "null")
+                    <h5>Data Rekap Penyewaan pada tanggal {{$from_date2}} </h5>
+                @else
+                    <h5>Data Rekap Semua Penyewaan</h5>
+                @endif
+
+                
+            </div>
             <div class=" table-responsive mt-4" style="display : block;" id="penyewaanTable">
                 <table class="table table-hover" id="tabelDataRekap">
                     <thead>
