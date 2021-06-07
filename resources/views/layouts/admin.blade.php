@@ -121,6 +121,7 @@
                                     @if(Route::has('login'))
 
                                     <span>Guest</span>
+                                    @else
                                     @endif
                                     @endguest
                                     <span>{{Auth::user()->username}}</span>

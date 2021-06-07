@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
+use Hash;
 
 class AdminController extends Controller
 {
@@ -48,7 +49,7 @@ class AdminController extends Controller
         $admin->nama = $request->get('nama');
         $admin->username = $request->get('username');
         $admin->email = $request->get('email');
-        $admin->password = $request->get('password');
+        $admin->password = Hash::make($request->get('password'));
         $admin->no_telp = $request->get('no_telp');
         $admin->is_admin = 1;
         $admin->save();
@@ -89,17 +90,15 @@ class AdminController extends Controller
             ->first();
 
         if ($request->file('foto_profil')) {
-            if($admin->foto_profil && file_exists(storage_path('app/public/' . $admin->foto_profil))) {
                 Storage::delete('public/' . $admin->foto_profil);
                 $image_name = $request->file('foto_profil')->store('images', 'public');
                 $admin->foto_profil = $image_name;
-            }
         }
 
         $admin->nama = $request->get('nama');
         $admin->username = $request->get('username');
         $admin->email = $request->get('email');
-        $admin->password = $request->get('password');
+        $admin->password = Hash::make($request->get('password'));
         $admin->no_telp = $request->get('no_telp');
         $admin->is_admin = 1;
         $admin->save();

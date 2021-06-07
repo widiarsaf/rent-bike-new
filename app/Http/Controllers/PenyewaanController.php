@@ -184,9 +184,12 @@ class PenyewaanController extends Controller
         $countGroupSepeda = count($groupSepeda);
         $countGroupPaket = count($groupPaket);
         $detailPenyewaan = DetailPenyewaan::with('sepeda')->get();
-        $pembayaran = Pembayaran::get();
+        $pembayaran = Pembayaran::where('nota_no', $noNota)->get();
+        $tanggalPembayaran = Pembayaran::where('nota_no', $noNota)->groupBy('nota_no')->value('tanggal_bayar');
+        $convertToString = Carbon::parse($tanggalPembayaran)->isoFormat('DD-MMMM-YYYY');
+        $total = Penyewaan::where('id_penyewaan', $id)->value('total_biaya');
         
-        return view ('admin.detailPenyewaan', compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda'));
+        return view ('admin.detailPenyewaan', compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total'));
 
     }
 
@@ -221,8 +224,11 @@ class PenyewaanController extends Controller
         $tanggalPembayaran = Pembayaran::where('nota_no', $noNota)->groupBy('nota_no')->value('tanggal_bayar');
         $convertToString = Carbon::parse($tanggalPembayaran)->isoFormat('DD-MMMM-YYYY');
         $total = Penyewaan::where('id_penyewaan', $id)->value('total_biaya');
+        $name = $penyewaan->user()->value('username');
+        $date = Carbon::now()->isoFormat('DD-MMMM-YYYY');
         $customPaper = array(0,0,200, 600);
-        $nota = PDF::loadview('admin.nota',  compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total'))->setPaper($customPaper, 'potrait');;
-        return $nota->stream();
+        $filename = $name . " " . $date;
+        $nota = PDF::loadview('admin.nota',  compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total'))->setPaper($customPaper, 'potrait');
+        return $nota->stream($filename);
     }
 }
