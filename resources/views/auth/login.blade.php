@@ -34,17 +34,15 @@
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
 				<form class="login100-form validate-form flex-sb flex-w">
 					<div class="login100-pic js-tilt" data-tilt>
-						<img src="assets/assetsCustomer/img/logo-remove.png" style="width:60%; display:block; margin-left:auto; margin-right:auto" alt="IMG">
-					</div><br><br>
-
-					<span class="txt1 p-b-11">
+						<img src="assets/assetsCustomer/img/logo-remove.png" style="width:60%; display:block; margin-left:auto; margin-right:auto" alt="IMG"><br>
+					</div><br>
+					<span class="txt1 p-b-11" style= "margin-right:auto">
 						Username
 					</span>
 					<div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
 						<input class="input100" type="text" name="username" >
 						<span class="focus-input100"></span>
 					</div>
-					
 					<span class="txt1 p-b-11">
 						Password
 					</span>
@@ -65,14 +63,14 @@
 						</div>
 
 						<div>
-							<a href="#" class="txt3">
-								Forgot Password?
+							<a href="#" class="txt3" >
+								Register?
 							</a>
 						</div>
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" style= "margin-left:auto; margin-right:auto">
 							Login
 						</button>
 					</div>
