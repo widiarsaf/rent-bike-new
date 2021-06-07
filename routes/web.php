@@ -108,7 +108,7 @@ Route::resource('/admin/datarekap', DetailPenyewaanController::class)->middlewar
 Route::get('updateStatus/{penyewaan}', [PenyewaanController::class, 'updateStatus'])->name('penyewaan.updateStatus');
 Route::get('/calendar', [FullCalendarController::class, 'index'])->name('calendar.index');
 Route::get('/datarekap/export/all', [DetailPenyewaanController::class, 'export_excel'])->name('export_excel');
-
+Route::get('/detailPenyewaan/print/nota/{id}', [PenyewaanController::class, 'export_pdf'])->name('printNota');
 
 
 // Customer Route

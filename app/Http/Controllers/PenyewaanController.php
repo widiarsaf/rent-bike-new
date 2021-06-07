@@ -9,7 +9,9 @@ use App\Models\User;
 use App\Models\Sepeda;
 use App\Models\Paket;
 use App\Models\DetailPenyewaan;
+use App\Models\Pembayaran;
 use Carbon\Carbon;
+use PDF;
 
 class PenyewaanController extends Controller
 {
@@ -173,10 +175,18 @@ class PenyewaanController extends Controller
 
     
     public function show($id)
-    {
+    {   
+        $noNota = Penyewaan::where('id_penyewaan', $id)->value('no_nota');
         $penyewaan = Penyewaan::with('paket')->with('user')->where('id_penyewaan', $id)->first();
+        $detailPenyewaanbyNoNota = DetailPenyewaan::where('nota_no', $noNota)->get();
+        $groupSepeda = DetailPenyewaan::where('nota_no', $noNota)->groupBy('sepeda_id')->get();
+        $groupPaket = DetailPenyewaan::where('nota_no', $noNota)->groupBy('paket_id')->get();
+        $countGroupSepeda = count($groupSepeda);
+        $countGroupPaket = count($groupPaket);
         $detailPenyewaan = DetailPenyewaan::with('sepeda')->get();
-        return view ('admin.detailPenyewaan', compact('penyewaan', 'detailPenyewaan'));
+        $pembayaran = Pembayaran::get();
+        
+        return view ('admin.detailPenyewaan', compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda'));
 
     }
 
@@ -195,5 +205,24 @@ class PenyewaanController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function export_pdf($id){
+        $noNota = Penyewaan::where('id_penyewaan', $id)->value('no_nota');
+        $penyewaan = Penyewaan::with('paket')->with('user')->where('id_penyewaan', $id)->first();
+        $detailPenyewaanbyNoNota = DetailPenyewaan::where('nota_no', $noNota)->get();
+        $groupSepeda = DetailPenyewaan::where('nota_no', $noNota)->groupBy('sepeda_id')->get();
+        $groupPaket = DetailPenyewaan::where('nota_no', $noNota)->groupBy('paket_id')->get();
+        $countGroupSepeda = count($groupSepeda);
+        $countGroupPaket = count($groupPaket);
+        $detailPenyewaan = DetailPenyewaan::with('sepeda')->get();
+        $pembayaran = Pembayaran::where('nota_no', $noNota)->get();
+        $tanggalPembayaran = Pembayaran::where('nota_no', $noNota)->groupBy('nota_no')->value('tanggal_bayar');
+        $convertToString = Carbon::parse($tanggalPembayaran)->isoFormat('DD-MMMM-YYYY');
+        $total = Penyewaan::where('id_penyewaan', $id)->value('total_biaya');
+        $customPaper = array(0,0,200, 600);
+        $nota = PDF::loadview('admin.nota',  compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total'))->setPaper($customPaper, 'potrait');;
+        return $nota->stream();
     }
 }
