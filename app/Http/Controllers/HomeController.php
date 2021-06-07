@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DetailPenyewaan;
 use App\Models\Penyewaan;
+use App\Models\Paket;
+use App\Models\Sepeda;
 
 class HomeController extends Controller
 {
@@ -32,7 +34,9 @@ class HomeController extends Controller
     
     {
         $penyewaan = Penyewaan::with('DetailPenyewaan')->get();
-        return view ('admin.penyewaanIndex', compact('penyewaan', $penyewaan));
+        $sepeda = Sepeda::all();
+        $paket = Paket::all();
+        return view ('admin.penyewaanIndex', compact('penyewaan', 'paket', 'sepeda'));
 
     }
 }

@@ -67,8 +67,28 @@
                         <label for="jam">Jam</label>
                         <input type="time" class="form-control" id="jam" placeholder="Masukkan jam" name="jam">
                     </div>
-
+                    @php $noPaket = 1; @endphp
+                    @foreach($paket as $p)
                     <div class="form-group">
+                        <label for="jam">{{$p->nama_paket}}</label>
+                        {{-- <input type="checkbox" value = "{{$p->id_paket}}" id = "paketInput{{$p->id_paket}}" name="paket_id[]"> --}}
+                        <div class="form-control">
+                            @foreach($sepeda as $s)
+                            <input type="checkbox" onchange = "$('#paketInput{{$p->id_paket}}').checked = true;" 
+                            id="sepeda{{$s->id_sepeda}}{{$p->id_paket}}" 
+                            name="sepeda_id[][{{$p->id_paket}}]" value = {{$s->id_sepeda}}>
+                            <label for="service{{$s->id_sepeda}}">{{$s->unit_code}}</label>
+                            @endforeach
+                        </div>
+                    </div>
+                    <p style = "display:none">{{$noPaket++}}></p>
+                   @endforeach
+
+
+
+
+
+                    {{-- <div class="form-group">
                         <label for="Paket">Paket</label>
                         <select name="paket_id" id="paket_id" class="form-control">
                             @foreach($paket as $pkt)
@@ -85,7 +105,7 @@
                             <label for="service{{$s->id_sepeda}}">{{$s->unit_code}}</label>
                             @endforeach
                         </div>
-                    </div>
+                    </div> --}}
                     <a type="button" id="close" class="btn btn-primary btn-outline-primary"
                         onclick="hideForm()">Back</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -102,7 +122,6 @@
                             <th>Total Harga</th>
                             <th>Tanggal Sewa</th>
                             <th>Jam Sewa</th>
-                            <th>Paket</th>
                             <th>Denda</th>
                             <th>Status Pembayaran</th>
                             <th>Status Pengembalian</th>
@@ -117,7 +136,6 @@
                             <td>{{$p->total_biaya}}</td>
                             <td>{{$p->tanggal}}</td>
                             <td>{{$p->jam}}</td>
-                            <td>{{$p->paket->nama_paket}}</td>
                             <td>{{$p->denda}}</td>
 
 

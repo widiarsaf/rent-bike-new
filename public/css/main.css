@@ -180,14 +180,14 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 10px;
   
   background-color: #ebebeb;
 }
 
 
 .wrap-login100 {
-  width: 560px;
+  width: 500px;
   background: #fff;
   border-radius: 10px;
   position: relative;
@@ -238,7 +238,7 @@ iframe {
   width: 100%;
   background: transparent;
   height: 55px;
-  padding: 0 25px 0 25px;
+  padding: 0 20px 0 20px;
 }
 /*------------------------------------------------------------------
 [ Focus Input ]*/
@@ -315,11 +315,11 @@ iframe {
 }
 
 .btn-show-pass:hover {
-  color: #57b846;
+  color: #d0dd55;
 }
 
 .btn-show-pass.active {
-  color: #57b846;
+  color: #d0dd55;
 }
 
 /*==================================================================
@@ -412,7 +412,7 @@ iframe {
 }
 
 .login100-form-btn:hover {
-  background-color: #57b846;
+  background-color: #dcdf5c;
 }
 
 

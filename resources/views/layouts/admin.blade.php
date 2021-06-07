@@ -121,12 +121,11 @@
                                     @if(Route::has('login'))
 
                                     <span>Guest</span>
-
                                     @else
-
-                                    <span>{{Auth::user()->username}}</span>
                                     @endif
                                     @endguest
+                                    <span>{{Auth::user()->username}}</span>
+                                    
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">

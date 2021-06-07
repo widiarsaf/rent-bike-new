@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Penyewaan;
 use Response;
+use Carbon\Carbon;
 
 class FullCalendarController extends Controller
 {
@@ -13,9 +14,22 @@ class FullCalendarController extends Controller
     {
 
       $tanggal = $request->tanggal;
-        $penyewaan = Penyewaan::where('tanggal',$request->tanggal)->get();
-        return view('admin.calendarIndex', compact('penyewaan', $penyewaan));
+      if($tanggal){
+
+          $penyewaan = Penyewaan::with('user')->where('tanggal',$request->tanggal)->get();
+          $selectDate = $tanggal;
+          
+      }
+      else{
+          $today = Carbon::now()->toDateString();
+          $penyewaan = Penyewaan::with('user')->where('tanggal',$today)->get();
+          $selectDate = $today;
+      }
         
+      return view('admin.calendarIndex', compact('penyewaan', 'selectDate'));
+
+
+
     }
 
     

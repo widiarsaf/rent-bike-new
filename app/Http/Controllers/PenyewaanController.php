@@ -9,7 +9,9 @@ use App\Models\User;
 use App\Models\Sepeda;
 use App\Models\Paket;
 use App\Models\DetailPenyewaan;
+use App\Models\Pembayaran;
 use Carbon\Carbon;
+use PDF;
 
 class PenyewaanController extends Controller
 {
@@ -27,104 +29,98 @@ class PenyewaanController extends Controller
     {
         //
     }
-
-
-    
+ 
     public function store(Request $request )
     {
-        $request->validate([
-            'username' => 'required',
-            'sepeda_id' =>'required',
-        ]);
+        $semuaPaket = Paket::get();
+        $hitungSemuaPaket = count($semuaPaket);
         
+
+        $request->validate([
+            'paket_id' => 'nullable',
+            'sepeda_id' => 'nullable',
+        ]);
+
         if(!empty($request->get('username'))){
             $username = $request->get('username');
             $findUser = User::where('username', $username)->value('username');
             if($findUser){
                 $findIdUser = User::where('username', $username)->value('id_pengguna');
-                $sepeda = $request->get('sepeda_id');
                 // dd($sepeda);
-                if (empty($sepeda)) {
-                    return redirect()->route('penyewaan.index')
-                        ->with('fail', 'pilih salah satu sepeda');
-                }
-                else{
-                    $request->validate([
-                        'paket_id' => 'required',
-                        'tanggal' => 'required',
-                        'jam' => 'required'
-                    ]);
-
-                    // Create Penyewaan
-                    $penyewaan = New Penyewaan;
-                    $user = New User;
-                    $user->id_pengguna = $findIdUser;
-                    $penyewaan->user()->associate($user);
-                    $no_nota = $this->checkIfAva();
-                    $penyewaan->no_nota = $no_nota;
-                    $penyewaan->tanggal = $request->get('tanggal');
-                    $penyewaan->jam = $request->get('jam');
-                    $penyewaan->paket_id = $request->get('paket_id');
-
-                    // find price
-                    $paket = Paket::where('id_paket', $request->get('paket_id'))->first();
-                    $paketprice = $paket->harga;
-                    $total = count($sepeda) * $paketprice;
-
-                    $penyewaan->total_biaya = $total;
-                    $penyewaan->denda = 0;
-                    $penyewaan->save();
-
-                    // Create detail Penyewaan
-                    $spd = $request->get('sepeda_id');
-                    for($i = 0; $i < count($spd); $i++){
+                $request->validate([
+                    'paket_id' => 'nullable',
+                    'tanggal' => 'nullable',
+                    'jam' => 'nullable'
+                ]);
+                 // Create Penyewaan
+                $penyewaan = New Penyewaan;
+                $user = New User;
+                $user->id_pengguna = $findIdUser;
+                $penyewaan->user()->associate($user);
+                $no_nota = $this->checkIfAva();
+                $penyewaan->no_nota = $no_nota;
+                $penyewaan->tanggal = $request->get('tanggal');
+                $penyewaan->jam = $request->get('jam');
+                $penyewaan->denda = 0;
+                $penyewaan->total_biaya = 0;
+                $penyewaan->save();
+                $total = 0;
+                
+                $sepeda_id = $request->get('sepeda_id'); 
+                foreach($sepeda_id as $arr){
+                    foreach($arr as $id_paket => $id_sepeda){
                         $detailPenyewaan = new DetailPenyewaan;
                         $detailPenyewaan->penyewaan()->associate($no_nota);
                         $sepeda = new Sepeda;
-                        $sepeda->id_sepeda = $spd[$i];
+                        $sepeda->id_sepeda = $id_sepeda;
                         $detailPenyewaan->sepeda()->associate($sepeda);
                         $paket= new Paket;
-                        $paket->id_paket = $request->get('paket_id');
+                        $paket->id_paket = $id_paket;
                         $detailPenyewaan->paket()->associate($paket);
                         $detailPenyewaan->tanggal = $request->get('tanggal');
+                        $detailPenyewaan->status_penyewaan = 0;
                         $detailPenyewaan->save();
 
+                        // Find Price per Paket
+                        $paketPrice = Paket::where('id_paket', $id_paket)->value('harga');
+                        $total += $paketPrice;
+                        }
                     }
-                    return redirect()->route('penyewaan.index')
-                     ->with('success', 'Penyewaan berhasil diperbarui');
-                   
-                }
+                $penyewaan->total_biaya = $total;   
+                $penyewaan->save();  
 
-            }else{
-                return redirect()->route('penyewaan.index')
-                ->with('fail', 'Username tidak boleh ditemukan');
             }
-
-        }
-
-        else{
+        
+         }
+        
+         else{
             return redirect()->route('penyewaan.index')
-                ->with('fail', 'Username tidak boleh kosong');
-        }
-
-
-
-    }
-
-
+               ->with('fail', 'Username tidak boleh kosong');
+         }
+        
+   }
+            
+        
     public function updateStatus(Request $request, $idpenyewaan){
         $pembayaran = $request->get('pembayaran');
         $pengembalian = $request->get('pengembalian');
         $jaminan = $request->get('jaminan');
 
         $penyewaan = Penyewaan::where('id_penyewaan', $idpenyewaan)->first();
+        $findNoNota = Penyewaan::where('id_penyewaan', $idpenyewaan)->value('no_nota');
+        $detailPenyewaan = DetailPenyewaan::where('nota_no', $findNoNota)->get();
         if($pembayaran){
             $penyewaan->status_pembayaran = $pembayaran;
             $penyewaan->save();
         }
         else if($pengembalian){
             $penyewaan->status_pengembalian = $pengembalian;
+            foreach($detailPenyewaan as $dp){
+                $dp->status_penyewaan = $pengembalian;
+                $dp->save();
+            }
             $penyewaan->save();
+            
         }
         else if($jaminan){
             $penyewaan->status_jaminan = $jaminan;
@@ -146,7 +142,7 @@ class PenyewaanController extends Controller
     public function checkIfAva()
     {
         $penyewaanList = Penyewaan::all();
-        $no_nota = "RBX" . "-" . $this->random_strings(8);
+        $no_nota = "GM" . "-" . $this->random_strings(3);
         $isAva = True;
         for ($i = 0; $i < count($penyewaanList); $i++) {
             if ($penyewaanList[$i]->no_nota === $no_nota) {
@@ -167,7 +163,7 @@ class PenyewaanController extends Controller
     public function random_strings($length_of_string)
     {
         // String of all alphanumeric character
-        $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $str_result = '0123456789';
         // Shufle the $str_result and returns substring
         // of specified length
         return substr(
@@ -179,10 +175,21 @@ class PenyewaanController extends Controller
 
     
     public function show($id)
-    {
+    {   
+        $noNota = Penyewaan::where('id_penyewaan', $id)->value('no_nota');
         $penyewaan = Penyewaan::with('paket')->with('user')->where('id_penyewaan', $id)->first();
+        $detailPenyewaanbyNoNota = DetailPenyewaan::where('nota_no', $noNota)->get();
+        $groupSepeda = DetailPenyewaan::where('nota_no', $noNota)->groupBy('sepeda_id')->get();
+        $groupPaket = DetailPenyewaan::where('nota_no', $noNota)->groupBy('paket_id')->get();
+        $countGroupSepeda = count($groupSepeda);
+        $countGroupPaket = count($groupPaket);
         $detailPenyewaan = DetailPenyewaan::with('sepeda')->get();
-        return view ('admin.detailPenyewaan', compact('penyewaan', 'detailPenyewaan'));
+        $pembayaran = Pembayaran::where('nota_no', $noNota)->get();
+        $tanggalPembayaran = Pembayaran::where('nota_no', $noNota)->groupBy('nota_no')->value('tanggal_bayar');
+        $convertToString = Carbon::parse($tanggalPembayaran)->isoFormat('DD-MMMM-YYYY');
+        $total = Penyewaan::where('id_penyewaan', $id)->value('total_biaya');
+        
+        return view ('admin.detailPenyewaan', compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total'));
 
     }
 
@@ -201,5 +208,27 @@ class PenyewaanController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function export_pdf($id){
+        $noNota = Penyewaan::where('id_penyewaan', $id)->value('no_nota');
+        $penyewaan = Penyewaan::with('paket')->with('user')->where('id_penyewaan', $id)->first();
+        $detailPenyewaanbyNoNota = DetailPenyewaan::where('nota_no', $noNota)->get();
+        $groupSepeda = DetailPenyewaan::where('nota_no', $noNota)->groupBy('sepeda_id')->get();
+        $groupPaket = DetailPenyewaan::where('nota_no', $noNota)->groupBy('paket_id')->get();
+        $countGroupSepeda = count($groupSepeda);
+        $countGroupPaket = count($groupPaket);
+        $detailPenyewaan = DetailPenyewaan::with('sepeda')->get();
+        $pembayaran = Pembayaran::where('nota_no', $noNota)->get();
+        $tanggalPembayaran = Pembayaran::where('nota_no', $noNota)->groupBy('nota_no')->value('tanggal_bayar');
+        $convertToString = Carbon::parse($tanggalPembayaran)->isoFormat('DD-MMMM-YYYY');
+        $total = Penyewaan::where('id_penyewaan', $id)->value('total_biaya');
+        $name = $penyewaan->user()->value('username');
+        $date = Carbon::now()->isoFormat('DD-MMMM-YYYY');
+        $customPaper = array(0,0,200, 600);
+        $filename = $name . " " . $date;
+        $nota = PDF::loadview('admin.nota',  compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total'))->setPaper($customPaper, 'potrait');
+        return $nota->stream($filename);
     }
 }

@@ -88,6 +88,56 @@
 	</div>
 	<!-- end advertisement section -->
 
+	<!-- package section -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">	
+						<h3><span class="orange-text">Our</span> Package</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-3 col-md-5 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{asset('assets/assetsCustomer/img/products/fixie.jpg')}}" alt=""></a>
+						</div>
+						<h3>FIXIE</h3>
+					</div>
+				</div>
+                <div class="col-lg-3 col-md-5 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{asset('assets/assetsCustomer/img/products/mtb.jpg')}}" alt=""></a>
+						</div>
+						<h3>MTB</h3>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-5 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{asset('assets/assetsCustomer/img/products/roadbike.jpg')}}" alt=""></a>
+						</div>
+						<h3>ROAD BIKE</h3>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-5 offset-md-3 offset-lg-0 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{asset('assets/assetsCustomer/img/products/seli.jpg')}}" alt=""></a>
+						</div>
+						<h3>SELI</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end package section -->
+
 	<!-- product section -->
 	<div class="product-section mt-150 mb-150">
 		<div class="container">

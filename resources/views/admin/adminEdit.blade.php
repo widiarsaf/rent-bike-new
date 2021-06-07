@@ -31,7 +31,7 @@
                 <div class=" form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" placeholder="Masukkan password"
-                        name="password" value="{{$admin->password}}">
+                        name="password" >
                 </div>
                 <div class="form-group">
                     <label for="foto_profil">Foto Profile</label>

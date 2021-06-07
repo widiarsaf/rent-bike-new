@@ -58,17 +58,24 @@
 								<li><a href="{{url('home')}}">Home</a></li>
 								<li><a href="{{url('about')}}">About</a></li>
 								<li><a href="{{route('product.index')}}">Sepeda</a></li>
-								<li><a href="{{route('login')}}">Login</a></li>
 								<li>
 									<div class="header-icons">
 										@guest
 										@if(Route::has('login'))
-										<a class="shopping-cart" href="#"><i class="fas fa-user"></i></a>
+										<a href="{{route('login')}}">Login</a>
 
-										@else
-										<a class="shopping-cart" href="#"><i class="fas fa-user"></i></a>
+										@elseif(!(Route::has('login')))
+											
 										@endif
 										@endguest
+										<a class="shopping-cart" href="#"><i class="fas fa-user"></i></a>
+										<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+											<i class="ti-layout-sidebar-left"></i> Logout
+										</a>
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+											@csrf
+										</form>
+
 
 									</div>
 								</li>
