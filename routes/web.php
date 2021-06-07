@@ -21,22 +21,91 @@ use App\Http\Controllers\GaleriController;
 
 Auth::routes();
 
-// Admin Route
-Route::get('/admin', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+// Admin Route for Checking
+Route::get('/admin', function () {
+    if (Auth::check()) {
+        return redirect()->route('admin.home');
+    }
+    return redirect()->route('login');
+});
+Route::get('/penyewaan', function () {
+    if (Auth::check()) {
+        return redirect()->route('penyewaan.index');
+    }
+    return redirect()->route('login');
+});
+Route::get('/sepeda', function () {
+    if (Auth::check()) {
+        return redirect()->route('sepeda.index');
+    }
+    return redirect()->route('login');
+});
+Route::get('/katalog', function () {
+    if (Auth::check()) {
+        return redirect()->route('katalog.index');
+    }
+    return redirect()->route('login');
+});
+Route::get('/kategori', function () {
+    if (Auth::check()) {
+        return redirect()->route('katgeori.index');
+    }
+    return redirect()->route('login');
+});
+Route::get('/pembayaran', function () {
+    if (Auth::check()) {
+        return redirect()->route('pembayaran.index');
+    }
+    return redirect()->route('login');
+});
+Route::get('/pesan', function () {
+    if (Auth::check()) {
+        return redirect()->route('pesan.index');
+    }
+    return redirect()->route('login');
+});
+Route::get('/galeri', function () {
+    if (Auth::check()) {
+        return redirect()->route('galeri.index');
+    }
+    return redirect()->route('login');
+});
+Route::get('/datarekap', function () {
+    if (Auth::check()) {
+        return redirect()->route('datarekap.index');
+    }
+    return redirect()->route('login');
+});
+Route::get('/daftarAdmin', function () {
+    if (Auth::check()) {
+        return redirect()->route('daftarAdmin.index');
+    }
+    return redirect()->route('login');
+});
+Route::get('/daftarCustomer', function () {
+    if (Auth::check()) {
+        return redirect()->route('daftarCustomer.index');
+    }
+    return redirect()->route('login');
+});
+
+
+// 
+Route::get('/admin/index', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::resource('kategori', KategoriController::class);
-Route::resource('sepeda', SepedaController::class);
-Route::resource('katalog', KatalogController::class);
-Route::resource('paket', PaketController::class);
-Route::resource('penyewaan', PenyewaanController::class);
-Route::resource('daftarAdmin', AdminController::class);
-Route::resource('daftarCustomer', CustomerController::class);
-Route::resource('pembayaran', PembayaranController::class);
-Route::resource('pesan', PesanController::class);
-Route::resource('galeri', GaleriController::class);
+Route::resource('/admin/kategori', KategoriController::class)->middleware('is_admin');
+Route::resource('/admin/sepeda', SepedaController::class)->middleware('is_admin');
+Route::resource('/admin/katalog', KatalogController::class)->middleware('is_admin');
+Route::resource('/admin/paket', PaketController::class)->middleware('is_admin');
+Route::resource('/admin/penyewaan', PenyewaanController::class)->middleware('is_admin');
+Route::resource('/admin/daftarAdmin', AdminController::class)->middleware('is_admin');
+Route::resource('/admin/daftarCustomer', CustomerController::class)->middleware('is_admin');
+Route::resource('/admin/pembayaran', PembayaranController::class)->middleware('is_admin');
+Route::resource('/admin/pesan', PesanController::class)->middleware('is_admin');
+Route::resource('/admin/galeri', GaleriController::class)->middleware('is_admin');
+Route::resource('/admin/datarekap', DetailPenyewaanController::class)->middleware('is_admin');
 Route::get('updateStatus/{penyewaan}', [PenyewaanController::class, 'updateStatus'])->name('penyewaan.updateStatus');
-Route::resource('datarekap', DetailPenyewaanController::class);
 Route::get('/calendar', [FullCalendarController::class, 'index'])->name('calendar.index');
 Route::get('/datarekap/export/all', [DetailPenyewaanController::class, 'export_excel'])->name('export_excel');
 

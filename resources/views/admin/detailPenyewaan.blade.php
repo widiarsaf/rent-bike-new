@@ -8,12 +8,11 @@
             <p>Tanggal Sewa = {{$penyewaan->tanggal}}</p>
             <p>Jam Sewa = {{$penyewaan->jam}}</p>
             <p>Total Biaya = {{$penyewaan->total_biaya}}</p>
-            <p>Paket = {{$penyewaan->paket->nama_paket}}</p>
         </div>
         <div class="sepedaDetail">
             @foreach ($detailPenyewaan as $detailPenyewaan)
             @if($penyewaan->no_nota === $detailPenyewaan->nota_no)
-            <li>{{$detailPenyewaan->sepeda->unit_code}}</li>
+            <li>{{$detailPenyewaan->sepeda->unit_code}} - {{$detailPenyewaan->paket->nama_paket}}</li>
             @endif
             @endforeach
 
