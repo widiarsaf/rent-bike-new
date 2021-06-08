@@ -62,12 +62,14 @@
 									<div class="header-icons">
 										@guest
 										@if(Route::has('login'))
-										<a href="{{route('login')}}">Login</a>
-
-										@elseif(!(Route::has('login')))
-											
+											<a href="{{route('login')}}">Login</a>
 										@endif
-										@endguest
+									
+										@if (Route::has('Register'))
+											<a href="{{route('login')}}">Login</a>
+										@endif
+									
+										@else
 										<a class="shopping-cart" href="#"><i class="fas fa-user"></i></a>
 										<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 											<i class="ti-layout-sidebar-left"></i> Logout
@@ -75,6 +77,7 @@
 										<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 											@csrf
 										</form>
+										@endguest
 
 
 									</div>
