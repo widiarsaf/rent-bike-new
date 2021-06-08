@@ -7,6 +7,8 @@ use App\Models\DetailPenyewaan;
 use App\Models\Penyewaan;
 use App\Models\Paket;
 use App\Models\Sepeda;
+use App\Models\Galeri;
+use App\Models\Pesan;
 
 class HomeController extends Controller
 {
@@ -27,7 +29,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $pesan = Pesan::get();
+        $galeri = Galeri::all();
+        return view ('home', compact('pesan', 'galeri'));
     }
 
     public function adminHome()
@@ -36,7 +40,9 @@ class HomeController extends Controller
         $penyewaan = Penyewaan::with('DetailPenyewaan')->get();
         $sepeda = Sepeda::all();
         $paket = Paket::all();
-        return view ('admin.penyewaanIndex', compact('penyewaan', 'paket', 'sepeda'));
+        $pesan = Pesan::all();
+        $galeri = Galeri::all();
+        return view ('admin.penyewaanIndex', compact('penyewaan', 'paket', 'sepeda', 'pesan', 'galeri'));
 
     }
 }
