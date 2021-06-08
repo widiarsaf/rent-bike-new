@@ -26,7 +26,7 @@ class PenyewaanController extends Controller
 
 
     public function penyewaanCustomer($iduser){
-        $penyewaan = Penyewaan::with('DetailPenyewaan')->with('paket')->with('user')->where('pengguna_id', $iduser)->get();
+        $penyewaan = Penyewaan::with('DetailPenyewaan')->with('paket')->with('user')->with('pembayaran')->where('pengguna_id', $iduser)->get();
         return view ('customer.riwayat', compact('penyewaan'));
         
     }
@@ -209,6 +209,35 @@ class PenyewaanController extends Controller
         }
         
         return view ('admin.detailPenyewaan', compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total', 'kembalian'));
+
+    }
+
+    public function penyewaanCustomerDetail($id)
+    {   
+        $kembalian = 0;
+        $noNota = Penyewaan::where('id_penyewaan', $id)->value('no_nota');
+        $penyewaan = Penyewaan::with('paket')->with('user')->where('id_penyewaan', $id)->first();
+        $detailPenyewaanbyNoNota = DetailPenyewaan::where('nota_no', $noNota)->first();
+        $groupSepeda = DetailPenyewaan::where('nota_no', $noNota)->groupBy('sepeda_id')->get();
+        $groupPaket = DetailPenyewaan::where('nota_no', $noNota)->groupBy('paket_id')->get();
+        $countGroupSepeda = count($groupSepeda);
+        $countGroupPaket = count($groupPaket);
+        $detailPenyewaan = DetailPenyewaan::with('sepeda')->get();
+        $pembayaran = Pembayaran::where('nota_no', $noNota)->first();
+        $tanggalPembayaran = Pembayaran::where('nota_no', $noNota)->groupBy('nota_no')->value('tanggal_bayar');
+        $convertToString = Carbon::parse($tanggalPembayaran)->isoFormat('DD-MMMM-YYYY');
+        $total = Penyewaan::where('id_penyewaan', $id)->value('total_biaya');
+        if($pembayaran !== null){
+            if(Pembayaran::where('nota_no', $noNota)->first()->value('nominal') > $penyewaan->total_biaya){
+                // dd(Pembayaran::where('nota_no', $noNota)->first()->nominal);
+               $kembalian =  Pembayaran::where('nota_no', $noNota)->first()->nominal -  $penyewaan->total_biaya;
+            }
+        }
+        else{
+            $kembalian = 0;
+        }
+        
+        return view ('customer.detailRiwayat', compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total', 'kembalian'));
 
     }
 

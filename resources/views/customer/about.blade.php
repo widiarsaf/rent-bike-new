@@ -110,8 +110,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-6 col-md-6">
+			<div class="row" style="justify-content:center">
+				<div class="col-lg-4 col-md-4">
 					<div class="single-team-item">
 						<div class="team-bg team-bg-1"></div>
 						<h4>Jimmy Doe <span>Farmer</span></h4>
@@ -122,7 +122,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-6">
+				<div class="col-lg-4 col-md-4">
 					<div class="single-team-item">
 						<div class="team-bg team-bg-2"></div>
 						<h4>Marry Doe <span>Farmer</span></h4>
@@ -139,23 +139,28 @@
 	<!-- end team section -->
 
 	<!-- maps section -->
-	<div class="product-section mt-150 pt-100 pb-30" style="background: #051922">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="section-title">	
-						<h3><span class="orange-text">Our Location </span></h3>
+	<div class = "mt-150">
+	<!-- find our location -->
+		<div class="find-location blue-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<p> <i class="fas fa-map-marker-alt"></i> Find Our Location</p>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-8 offset-lg-1 text-center">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15804.797970538884!2d112.6429091!3d-7.9783217!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2e42001be9d62c6e!2sGoweslurr%20malang!5e0!3m2!1sen!2sid!4v1623075144737!5m2!1sen!2sid" 
-				width="900" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-				</div>
-			</div>
+		</div>
+		<!-- end find our location -->
+		
+		<!-- google map section -->
+		<div class="embed-responsive embed-responsive-21by9">
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15804.797970538884!2d112.6429091!3d-7.9783217!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2e42001be9d62c6e!2sGoweslurr%20malang!5e0!3m2!1sen!2sid!4v1623075144737!5m2!1sen!2sid"
+				width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+				class="embed-responsive-item"></iframe>
 		</div>
 	</div>
+	<!-- end google map section -->
 	<!-- end maps section -->
 
 @endsection

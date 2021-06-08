@@ -119,6 +119,8 @@ Route::get('about', function(){
 Route::get('/product/sepeda/all', [SepedaController::class, 'sepedaCustomer'])->name('sepedaCustomer');
 Route::get('/product/sepeda/{params}', [SepedaController::class, 'sepedaCustomerDetail'])->name('sepedaCustomerDetail');
 Route::get('/riwayatPenyewaan/all/{params}', [PenyewaanController::class, 'penyewaanCustomer'])->name('penyewaanCustomer');
+Route::get('/detailRiwayatPenyewaan/user/{params}', [PenyewaanController::class, 'penyewaanCustomerDetail'])->name('penyewaanCustomerDetail');
+
 
 
 
