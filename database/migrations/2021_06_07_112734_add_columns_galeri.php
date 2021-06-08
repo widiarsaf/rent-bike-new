@@ -14,7 +14,7 @@ class AddColumnsGaleri extends Migration
     public function up()
     {
         Schema::table('galeri', function (Blueprint $table) {
-            $table->string('foto')->after('id')->nullable();
+            $table->string('foto')->after('id')->default('images/userDefault.png');
             $table->string('nama')->after('foto')->nullable();
             $table->string('deskripsi')->after('nama')->nullable();
         });

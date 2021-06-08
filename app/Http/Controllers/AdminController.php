@@ -90,9 +90,11 @@ class AdminController extends Controller
             ->first();
 
         if ($request->file('foto_profil')) {
+            if($admin->foto_profil && file_exists(storage_path('app/public/' . $admin->foto_profil))) {
                 Storage::delete('public/' . $admin->foto_profil);
                 $image_name = $request->file('foto_profil')->store('images', 'public');
                 $admin->foto_profil = $image_name;
+            }
         }
 
         $admin->nama = $request->get('nama');

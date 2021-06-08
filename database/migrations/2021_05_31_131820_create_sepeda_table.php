@@ -19,9 +19,10 @@ class CreateSepedaTable extends Migration
             $table->unsignedBigInteger('katalog_id')->nullable();
             $table->unsignedBigInteger('kategori_id')->nullable();
             $table->string('deskripsi')->nullable();
-            $table->string('foto_unit')->nullable();
-            $table->foreign('kategori_id')->references('id_kategori')->on('kategori')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('katalog_id')->references('id_katalog')->on('katalog')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('foto_unit')->default('images/sepedaDefault.jpg
+            ');
+            $table->foreign('kategori_id')->references('id_kategori')->on('kategori')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('katalog_id')->references('id_katalog')->on('katalog')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });
     }

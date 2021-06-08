@@ -24,9 +24,9 @@ class CreatePenyewaanTable extends Migration
             $table->time('jam');
             $table->integer('denda');
             $table->unsignedBigInteger('pengguna_id')->nullable();
-            $table->foreign('pengguna_id')->references('id_pengguna')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('pengguna_id')->references('id_pengguna')->on('users')->onDelete('set null')->onUpdate('cascade');
             $table->unsignedBigInteger('paket_id')->nullable();
-            $table->foreign('paket_id')->references('id_paket')->on('paket')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('paket_id')->references('id_paket')->on('paket')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -15,11 +15,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table){
             $table->bigIncrements('id_pengguna');
-            $table->string('username', 100);
+            $table->string('username', 100)->unique();
             $table->string('email')->nullable();
             $table->string('no_telp', 15)->nullable();
             $table->string('password');
-            $table->string('foto_profil')->default('user.png');
+            $table->string('foto_profil')->default('images/userDefault.png');
             $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();

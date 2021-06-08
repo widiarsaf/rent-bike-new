@@ -13,6 +13,7 @@ class CreatePembayaranTable extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->bigIncrements('id_pembayaran');
             $table->string('nama_pengirim');
@@ -21,8 +22,8 @@ class CreatePembayaranTable extends Migration
             $table->string('keterangan')->nullable();
             $table->string('nominal');
             $table->boolean('metode')->default(0);
-            $table->string('nota_no');
-            $table->foreign('nota_no')->references('no_nota')->on('penyewaan')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('nota_no')->nullable();
+            $table->foreign('nota_no')->references('no_nota')->on('penyewaan')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });
     }

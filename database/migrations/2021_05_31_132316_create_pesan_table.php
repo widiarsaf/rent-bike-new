@@ -16,7 +16,7 @@ class CreatePesanTable extends Migration
         Schema::create('pesan', function (Blueprint $table) {
             $table->bigIncrements('id_pesan');
             $table->string('judul_pesan')->nullable();
-            $table->string('foto_pesan')->nullable();
+            $table->string('foto_pesan')->default('images/bannerDefault.jpg');
             $table->string('deskripsi')->nullable();
             $table->timestamps();
         });
