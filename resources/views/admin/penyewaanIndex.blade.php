@@ -83,29 +83,6 @@
                     </div>
                     <p style = "display:none">{{$noPaket++}}></p>
                    @endforeach
-
-
-
-
-
-                    {{-- <div class="form-group">
-                        <label for="Paket">Paket</label>
-                        <select name="paket_id" id="paket_id" class="form-control">
-                            @foreach($paket as $pkt)
-                            <option value="{{$pkt->id_paket}}">{{$pkt->nama_paket}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="service_id" class="">Sepeda</label>
-                        <div class="form-control">
-                            @foreach($sepeda as $s)
-                            <input type="checkbox" id="sepeda{{$s->id_sepeda}}" name="sepeda_id[]"
-                                value="{{$s->id_sepeda}}">
-                            <label for="service{{$s->id_sepeda}}">{{$s->unit_code}}</label>
-                            @endforeach
-                        </div>
-                    </div> --}}
                     <a type="button" id="close" class="btn btn-primary btn-outline-primary"
                         onclick="hideForm()">Back</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -240,6 +217,7 @@
                                     action="{{ route('penyewaan.destroy', $p->id_penyewaan) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
+                                    <a class="btn btn-warning" href="{{route('penyewaan.edit', $p->id_penyewaan)}}" onclick="" ><i class="ti-marker-alt"></i></a>
                                     <button type="submit" class="btn btn-danger"><i class="ti-trash"></i></button>
                                     <a class="btn btn-inverse" href="{{route('penyewaan.show', $p->id_penyewaan)}}"
                                         onclick="" style="color:white" data-original-title="lihat detail"><i

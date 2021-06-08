@@ -208,18 +208,99 @@ class PenyewaanController extends Controller
     
     public function edit($id)
     {
-        //
+        $penyewaan = Penyewaan::with('DetailPenyewaan')->with('paket')->where('id_penyewaan', $id)->first();
+        $sepeda = Sepeda::all();
+        $paket = Paket::all();
+        return view('admin.penyewaanEdit', compact('penyewaan', 'sepeda', 'paket'));
     }
 
     
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $idPenyewaan)
+    {   
+        
+        $semuaPaket = Paket::get();
+        $hitungSemuaPaket = count($semuaPaket);
+        
+
+        $request->validate([
+            'paket_id' => 'nullable',
+            'sepeda_id' => 'nullable',
+            'no_nota' => 'required'
+        ]);
+
+        if(!empty($request->get('username'))){
+            $username = $request->get('username');
+            $findUser = User::where('username', $username)->value('username');
+            if($findUser){
+                $findIdUser = User::where('username', $username)->value('id_pengguna');
+                // dd($sepeda);
+                $request->validate([
+                    'paket_id' => 'nullable',
+                    'tanggal' => 'nullable',
+                    'jam' => 'nullable'
+                ]);
+                 // Create Penyewaan
+                $penyewaan = Penyewaan::with('DetailPenyewaan')->with('paket')->where('id_penyewaan', $idPenyewaan)->first(); 
+                $getNoNota = Penyewaan::with('DetailPenyewaan')->with('paket')->where('id_penyewaan', $idPenyewaan)->value('no_nota');
+                $detailPenyewaanwithNota = DetailPenyewaan::where('nota_no', $getNoNota)->get();
+                foreach($detailPenyewaanwithNota as $dp){
+                    $dp->delete();
+                }
+                $user = New User;
+                $user->id_pengguna = $findIdUser;
+                $penyewaan->user()->associate($user);
+                $no_nota = $request->get('no_nota');
+                $penyewaan->no_nota = $no_nota;
+                $penyewaan->tanggal = $request->get('tanggal');
+                $penyewaan->jam = $request->get('jam');
+                $penyewaan->denda = 0;
+                $penyewaan->total_biaya = 0;
+                $penyewaan->save();
+                $total = 0;
+                
+                $sepeda_id = $request->get('sepeda_id'); 
+                foreach($sepeda_id as $arr){
+                    foreach($arr as $id_paket => $id_sepeda){
+                        $detailPenyewaan = new DetailPenyewaan;
+                        $detailPenyewaan->penyewaan()->associate($no_nota);
+                        $sepeda = new Sepeda;
+                        $sepeda->id_sepeda = $id_sepeda;
+                        $detailPenyewaan->sepeda()->associate($sepeda);
+                        $paket= new Paket;
+                        $paket->id_paket = $id_paket;
+                        $detailPenyewaan->paket()->associate($paket);
+                        $detailPenyewaan->tanggal = $request->get('tanggal');
+                        $detailPenyewaan->status_penyewaan = 0;
+                        $detailPenyewaan->save();
+
+                        // Find Price per Paket
+                        $paketPrice = Paket::where('id_paket', $id_paket)->value('harga');
+                        $total += $paketPrice;
+                        }
+                    }
+                $penyewaan->total_biaya = $total;   
+                $penyewaan->save();  
+                return redirect()->route('penyewaan.index')
+               ->with('success', 'penyewaan berhasil di update');
+
+            }
+        
+         }
+        
+         else{
+            return redirect()->route('penyewaan.index')
+               ->with('fail', 'Username tidak boleh kosong');
+         }
     }
 
-    public function destroy($id)
+    public function destroy($idPenyewaan)
     {
-        $penyewaan = Penyewaan::where('id_penyewaan', $id)->first();
+        $penyewaan = Penyewaan::with('DetailPenyewaan')->with('paket')->where('id_penyewaan', $idPenyewaan)->first(); 
+        $getNoNota = Penyewaan::with('DetailPenyewaan')->with('paket')->where('id_penyewaan', $idPenyewaan)->value('no_nota');
+        $detailPenyewaanwithNota = DetailPenyewaan::where('nota_no', $getNoNota)->get();
+        foreach($detailPenyewaanwithNota as $dp){
+            $dp->delete();
+        }
         $penyewaan->delete();
 
         return redirect()->route('penyewaan.index')
