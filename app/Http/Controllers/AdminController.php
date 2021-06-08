@@ -91,9 +91,15 @@ class AdminController extends Controller
 
         if ($request->file('foto_profil')) {
             if($admin->foto_profil && file_exists(storage_path('app/public/' . $admin->foto_profil))) {
-                Storage::delete('public/' . $admin->foto_profil);
-                $image_name = $request->file('foto_profil')->store('images', 'public');
-                $admin->foto_profil = $image_name;
+                if($admin->foto_profil !== 'images/userDefault.png'){
+                    Storage::delete('public/' . $admin->foto_profil);
+                    $image_name = $request->file('foto_profil')->store('images', 'public');
+                    $admin->foto_profil = $image_name;
+                }
+                else{
+                    $image_name = $request->file('foto_profil')->store('images', 'public');
+                    $admin->foto_profil = $image_name;
+                }
             }
         }
 
@@ -108,9 +114,6 @@ class AdminController extends Controller
         return redirect()->route('daftarAdmin.index')
             ->with('success', 'Admin berhasil diupdate');
 
-
-
-        
     }
 
     
@@ -119,7 +122,9 @@ class AdminController extends Controller
         $admin = User::where('id_pengguna', $idadmin)
             ->first();
         if($admin->foto_profil && file_exists(storage_path('app/public/' . $admin->foto_profil))) {
-             Storage::delete('public/' . $admin->foto_profil);
+             if($admin->foto_profil !== 'images/userDefault.png'){
+                Storage::delete('public/' . $admin->foto_profil);
+             }
         }
         User::find($idadmin)->delete();
         return redirect()->route('daftarAdmin.index')

@@ -83,6 +83,7 @@
                             <th>Foto</th>
                             <th>Nama</th>
                             <th>Deskripsi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

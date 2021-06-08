@@ -89,9 +89,15 @@ class SepedaController extends Controller
 
         if ($request->file('foto_unit')) {
             if($sepeda->foto_unit && file_exists(storage_path('app/public/' . $sepeda->foto_unit))) {
-                Storage::delete('public/' . $sepeda->foto_unit);
-                $image_name = $request->file('foto_unit')->store('images', 'public');
-                $sepeda->foto_unit = $image_name;
+                if($sepeda->foto_unit !== 'images/sepedaDefault.jpg'){
+                    Storage::delete('public/' . $sepeda->foto_unit);
+                    $image_name = $request->file('foto_unit')->store('images', 'public');
+                    $sepeda->foto_unit = $image_name;
+                }
+                else{
+                    $image_name = $request->file('foto_unit')->store('images', 'public');
+                    $sepeda->foto_unit = $image_name;
+                }
             }
         }
        
@@ -119,7 +125,9 @@ class SepedaController extends Controller
             ->where('id_sepeda', $id_sepeda)
             ->first();
         if($sepeda->foto_unit && file_exists(storage_path('app/public/' . $sepeda->foto_unit))) {
-            Storage::delete('public/' . $sepeda->foto_unit);
+            if($sepeda->foto_unit !== 'images/sepedaDefault.jpg'){
+                Storage::delete('public/' . $sepeda->foto_unit);
+            }
         }
         Sepeda::find($id_sepeda)->delete();
 

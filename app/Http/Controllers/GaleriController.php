@@ -8,22 +8,14 @@ use Illuminate\Support\Facades\Storage;
 
 class GaleriController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         $galeri = Galeri::all();
         return view('admin.galeriIndex', compact('galeri'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         //
@@ -38,17 +30,17 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'foto' => 'required',
+            'foto' => 'nullable',
             'nama' => 'required',
             'deskripsi' => 'required',
         ]);
 
         if ($request->file('foto')) {
             $image_name = $request->file('foto')->store('images', 'public');
+            $galeri->foto = $image_name;
         }
 
         $galeri = new Galeri;
-        $galeri->foto = $image_name;
         $galeri->nama = $request->get('nama');
         $galeri->deskripsi = $request->get('deskripsi');
         $galeri->save();
@@ -91,10 +83,19 @@ class GaleriController extends Controller
     {
         $galeri = Galeri::find($id);
 
-        if ($galeri->foto && file_exists(storage_path('app/public/'.$galeri->foto))){
-            Storage::delete('public/'.$galeri->foto);
+        if($request->get('foto')){
+            if ($galeri->foto && file_exists(storage_path('app/public/'.$galeri->foto))){
+                if($galeri->foto !== 'images/userDefault.png'){
+                    Storage::delete('public/'.$galeri->foto);
+                    $image_name = $request->file('foto')->store('images', 'public');
+                    $galeri->foto = $image_name;
+                else{
+                    $image_name = $request->file('foto')->store('images', 'public');
+                    $galeri->foto = $image_name;
+                }
+
+            }
         }
-        $image_name = $request->file('foto')->store('images', 'public');
 
         $galeri->foto = $image_name;
         $galeri->nama = $request->nama;
@@ -113,7 +114,11 @@ class GaleriController extends Controller
      */
     public function destroy($id)
     {
-        Galeri::find($id)->delete();
+        $galeri = Galeri::find($id)->first();
+        if($galeri->foto !== 'images/userDefault.png'){
+             Storage::delete('public/'.$galeri->foto);
+        }
+        $galeri->delete();
         return redirect()->route('galeri.index')
             ->with('success', 'Galeri berhasil dihapus');
     }

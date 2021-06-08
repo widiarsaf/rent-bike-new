@@ -46,7 +46,7 @@ class CustomerController extends Controller
     
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     
@@ -55,7 +55,9 @@ class CustomerController extends Controller
         $customer = User::where('id_pengguna', $idcustomer)
             ->first();
         if($customer->foto_profil && file_exists(storage_path('app/public/' . $customer->foto_profil))) {
-             Storage::delete('public/' . $customer->foto_profil);
+            if($customer->foto_profil !== 'images/userDefault.png'){
+                Storage::delete('public/' . $customer->foto_profil);
+            }
         }
         User::find($idcustomer)->delete();
         return redirect()->route('daftarCustomer.index')

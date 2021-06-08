@@ -83,6 +83,7 @@
                             <th>Judul Pesan</th>
                             <th>Foto Pesan</th>
                             <th>Deskripsi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

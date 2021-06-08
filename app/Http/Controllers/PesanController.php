@@ -39,17 +39,17 @@ class PesanController extends Controller
     {
         $request->validate([
             'judul_pesan' => 'required',
-            'foto_pesan' => 'required',
+            'foto_pesan' => 'nullable',
             'deskripsi' => 'required',
         ]);
 
         if ($request->file('foto_pesan')) {
             $image_name = $request->file('foto_pesan')->store('images', 'public');
+            $pesan->foto_pesan = $image_name;
         }
 
         $pesan = new Pesan;
         $pesan->judul_pesan = $request->get('judul_pesan');
-        $pesan->foto_pesan = $image_name;
         $pesan->deskripsi = $request->get('deskripsi');
         $pesan->save();
 
@@ -93,11 +93,19 @@ class PesanController extends Controller
 
         $pesan->judul_pesan = $request->judul_pesan;
         
-        if ($pesan->foto_pesan && file_exists(storage_path('app/public/'.$pesan->foto_pesan))){
-            Storage::delete('public/'.$pesan->foto_pesan);
+        if($request->get('foto_pesan')){
+            if ($pesan->foto_pesan && file_exists(storage_path('app/public/'.$pesan->foto_pesan))){
+                if($pesan->foto_pesan !== 'images/bannerDefault.jpg'){
+                    Storage::delete('public/'.$pesan->foto_pesan);
+                    $image_name = $request->file('foto_pesan')->store('images', 'public');
+                    $pesan->foto_pesan = $image_name;
+                }else{
+                    $image_name = $request->file('foto_pesan')->store('images', 'public');
+                    $pesan->foto_pesan = $image_name;
+                 }
+            }
+           
         }
-        $image_name = $request->file('foto_pesan')->store('images', 'public');
-        $pesan->foto_pesan = $image_name;
         $pesan->deskripsi = $request->deskripsi;
 
         $pesan->save();
@@ -113,7 +121,12 @@ class PesanController extends Controller
      */
     public function destroy($id_pesan)
     {
-        Pesan::find($id_pesan)->delete();
+
+        $pesan = Pesan::find($id_pesan)->first();
+        if($pesan->foto_pesan !== 'images/bannerDefault.jpg'){
+            Storage::delete('public/'.$pesan->foto_pesan);
+        }
+        $pesan->delete();
         return redirect()->route('pesan.index')
             ->with('success', 'Pesan berhasil dihapus');
     }
