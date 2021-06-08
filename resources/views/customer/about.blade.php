@@ -1,24 +1,19 @@
 @extends('layouts.customer')
 @section('content')
-<div class="hero-area hero-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-9 offset-lg-2 text-center">
-					<div class="hero-text">
-						<div class="hero-text-tablecell">
-							<p class="subtitle">Let's Get Healthy</p>
-							<h1>GOWESSLURR MALANG RENT BIKE</h1>
-							<div class="hero-btns">
-								<a href="shop.html" class="boxed-btn">Bike Collection</a>
-								<a href="contact.html" class="bordered-btn">About Us</a>
-							</div>
-						</div>
-					</div>
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="breadcrumb-text">
+					<p>Get close with Us</p>
+					<h1>About Us</h1>
 				</div>
 			</div>
 		</div>
-		</div>
-	<!-- end hero area -->
+	</div>
+</div>
+<!-- end breadcrumb section -->
 
 	<!-- search area -->
 	<div class="search-area">

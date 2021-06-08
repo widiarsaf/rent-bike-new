@@ -10,8 +10,8 @@
 							<p class="subtitle">Let's Get Healthy</p>
 							<h1>GOWESSLURR MALANG RENT BIKE</h1>
 							<div class="hero-btns">
-								<a href="customer/product.blade.php" class="boxed-btn">Bike Collection</a>
-								<a href="customer/about.blade.php" class="bordered-btn">About Us</a>
+								<a href="{{route('sepedaCustomer')}}" class="boxed-btn">Bike Collection</a>
+								<a href="{{url('about')}}" class="bordered-btn">About Us</a>
 							</div>
 						</div>
 					</div>

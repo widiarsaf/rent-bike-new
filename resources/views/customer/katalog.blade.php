@@ -7,7 +7,7 @@
 			<div class="col-lg-8 offset-lg-2 text-center">
 				<div class="breadcrumb-text">
 					<p>Trendy and Cool</p>
-					<h1>Sepeda</h1>
+					<h1>Katalog Sepeda</h1>
 				</div>
 			</div>
 		</div>

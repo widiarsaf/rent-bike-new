@@ -6,8 +6,7 @@
 		<div class="row">
 			<div class="col-lg-8 offset-lg-2 text-center">
 				<div class="breadcrumb-text">
-					<p>Trendy and Cool</p>
-					<h1>Sepeda</h1>
+					<h1>Riwayat Penyewaan</h1>
 				</div>
 			</div>
 		</div>
@@ -16,6 +15,9 @@
 <!-- end breadcrumb section -->
 
 <div class="latest-news mt-150 mb-150">
+	<div class="section-title text-center">
+		<center><h3>Riwayat <span class="orange-text">Penyewaan</span></h3></center>
+	</div>
 	<div class="container">
 		<div class="row">
 			{{-- Card --}}
