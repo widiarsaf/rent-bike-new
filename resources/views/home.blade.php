@@ -249,6 +249,35 @@
 	<!-- end product section -->
 
 
+	{{-- Customer of the week --}}
+	<div class="section-title mt-150" >
+		<center><h3><span class="orange-text">Customer</span> of The Week</h3></center>
+	</div>
+	<div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel" style = "padding: 30px; background: black">
+		<div class="carousel-inner">
+			@foreach($galeri as $g)
+			<div class="carousel-item active">
+				<img class="d-block w-100" src="{{asset('storage/'.$g->foto) }}" style = "width : 100px !important"alt="Fourth slide">
+				<div class="carousel-caption d-none d-md-block">
+					<h5 style="color: white !important">{{$g->nama}}</h5>
+					<p style="color: white !important">{{$g->deskripsi}}</p>
+				</div>
+			</div>
+			@endforeach
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+
+	{{-- End customer of the Week --}}
+
+
 	<!-- logo carousel -->
 	<div class="logo-carousel-section">
 		<div class="container">
