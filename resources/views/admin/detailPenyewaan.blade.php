@@ -90,6 +90,11 @@
                                 <td><b> GrandTotal</b></td>
                                 <td><b>: Rp {{$total}} </b></td>
                             </tr>
+                            <tr>
+                                <td><b>Kembalian</b></td>
+                                <td><b>: Rp {{$kembalian}}</b></td>
+                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>

@@ -88,6 +88,8 @@ class PenyewaanController extends Controller
                     }
                 $penyewaan->total_biaya = $total;   
                 $penyewaan->save();  
+                return redirect()->route('penyewaan.index')
+               ->with('success', 'penyewaan berhasil di tambahkan');
 
             }
         
@@ -176,6 +178,7 @@ class PenyewaanController extends Controller
     
     public function show($id)
     {   
+        $kembalian = 0;
         $noNota = Penyewaan::where('id_penyewaan', $id)->value('no_nota');
         $penyewaan = Penyewaan::with('paket')->with('user')->where('id_penyewaan', $id)->first();
         $detailPenyewaanbyNoNota = DetailPenyewaan::where('nota_no', $noNota)->get();
@@ -188,8 +191,17 @@ class PenyewaanController extends Controller
         $tanggalPembayaran = Pembayaran::where('nota_no', $noNota)->groupBy('nota_no')->value('tanggal_bayar');
         $convertToString = Carbon::parse($tanggalPembayaran)->isoFormat('DD-MMMM-YYYY');
         $total = Penyewaan::where('id_penyewaan', $id)->value('total_biaya');
+        if(count($pembayaran) > 0){
+            
+            if(Pembayaran::where('nota_no', $noNota)->first()->value('nominal') > $penyewaan->total_biaya){
+                $kembalian = Pembayaran::where('nota_no', $noNota)->first()->value('nominal') - $penyewaan->total_biaya;
+            }
+        }
+        else{
+            $kembalian = 0;
+        }
         
-        return view ('admin.detailPenyewaan', compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total'));
+        return view ('admin.detailPenyewaan', compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total', 'kembalian'));
 
     }
 
@@ -207,11 +219,17 @@ class PenyewaanController extends Controller
 
     public function destroy($id)
     {
-        //
+        $penyewaan = Penyewaan::where('id_penyewaan', $id)->first();
+        $penyewaan->delete();
+
+        return redirect()->route('penyewaan.index')
+               ->with('sucess', 'Penyewaan berhasil di hapus');
+
     }
 
 
     public function export_pdf($id){
+        $kembalian = "0";
         $noNota = Penyewaan::where('id_penyewaan', $id)->value('no_nota');
         $penyewaan = Penyewaan::with('paket')->with('user')->where('id_penyewaan', $id)->first();
         $detailPenyewaanbyNoNota = DetailPenyewaan::where('nota_no', $noNota)->get();
@@ -228,7 +246,10 @@ class PenyewaanController extends Controller
         $date = Carbon::now()->isoFormat('DD-MMMM-YYYY');
         $customPaper = array(0,0,200, 600);
         $filename = $name . " " . $date;
-        $nota = PDF::loadview('admin.nota',  compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total'))->setPaper($customPaper, 'potrait');
+         if(Pembayaran::where('nota_no', $noNota)->first()->value('nominal') > $penyewaan->total_biaya){
+            $kembalian = Pembayaran::where('nota_no', $noNota)->first()->value('nominal') - $penyewaan->total_biaya;
+        }
+        $nota = PDF::loadview('admin.nota',  compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total', 'kembalian'))->setPaper($customPaper, 'potrait');
         return $nota->stream($filename);
     }
 }

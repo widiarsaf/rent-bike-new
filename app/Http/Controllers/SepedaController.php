@@ -39,12 +39,12 @@ class SepedaController extends Controller
 
         if ($request->file('foto_unit')) {
             $image_name = $request->file('foto_unit')->store('images', 'public');
+            $sepeda->foto_unit = $image_name;
         }
 
         $sepeda = new Sepeda;
         $sepeda->unit_code = $request->get('unit_code');
         $sepeda->deskripsi = $request->get('deskripsi');
-        $sepeda->foto_unit = $image_name;
         $kategori = new Kategori;
         $kategori->id_kategori = $request->get('kategori_id');
         $katalog = new Katalog;

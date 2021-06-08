@@ -21,20 +21,20 @@ class DetailPenyewaanController extends Controller
         
 
         if($fromdate && $todate){
-            $detailpenyewaan = DetailPenyewaan::where('status_penyewaan', 1)->whereBetween('tanggal', [$fromdate, $todate])->get();
+            $detailpenyewaan = DetailPenyewaan::where('status_penyewaan', 1)->whereBetween('tanggal', [$fromdate, $todate])->whereNotNull('nota_no')->get();
             $from_date2 = $fromdate;
             $to_date2 = $todate;
         }
 
         else if ($fromdate){
-           $detailpenyewaan = DetailPenyewaan::where('status_penyewaan', 1)->whereDate('tanggal', '=', $fromdate)->get();
+           $detailpenyewaan = DetailPenyewaan::where('status_penyewaan', 1)->whereDate('tanggal', '=', $fromdate)->whereNotNull('nota_no')->get();
            $from_date2 = $fromdate;
            $to_date2 = "null";
         }
 
         else{
 
-            $detailpenyewaan = DetailPenyewaan::where('status_penyewaan', 1)->get();
+            $detailpenyewaan = DetailPenyewaan::where('status_penyewaan', 1)->whereNotNull('nota_no')->get();
             $from_date2 = "null" ;
             $to_date2 = "null";
         }
@@ -48,17 +48,17 @@ class DetailPenyewaanController extends Controller
         $todate = $request->get('to-date2');
 
         if($fromdate !== "null" &&  $todate !== "null"){
-            $detailpenyewaan = DetailPenyewaan::whereBetween('tanggal', [$fromdate, $todate])->get();
+            $detailpenyewaan = DetailPenyewaan::whereBetween('tanggal', [$fromdate, $todate])->whereNotNull('nota_no')->get();
             $nama_file = 'datarekap dari '.$fromdate . " sampai " .$todate.'.xlsx';
         }
 
         else if ($fromdate !== "null" &&  $todate === "null"){
-           $detailpenyewaan = DetailPenyewaan::whereDate('tanggal', '=', $fromdate)->get();
+           $detailpenyewaan = DetailPenyewaan::whereDate('tanggal', '=', $fromdate)->whereNotNull('nota_no')->get();
            $nama_file = 'datarekap pada tanggal ' .$fromdate.'.xlsx';
         }
 
         else{
-            $detailpenyewaan = DetailPenyewaan::get();
+            $detailpenyewaan = DetailPenyewaan::whereNotNull('nota_no')->get();
             $nama_file = 'datarekap_semua diexport_tanggal '. date('Y-m-d') . '.xlsx';
         }
 

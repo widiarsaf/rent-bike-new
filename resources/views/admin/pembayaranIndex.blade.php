@@ -82,8 +82,10 @@
                     </div>
                     <div class="form-group">
                         <label for="metode">Metode</label>
-                        <input type="text" class="form-control" id="metode" placeholder="Masukkan metode pembayaran"
-                            name="metode">
+                        <select name="metode" id="metode" class="form-control">
+                            <option value="1">Cash</option>
+                            <option value="0">Transfer</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="foto_bukti">Foto Bukti</label>
