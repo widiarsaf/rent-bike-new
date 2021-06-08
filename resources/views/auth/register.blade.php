@@ -32,10 +32,19 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-				<form class="login100-form validate-form flex-sb flex-w">
+				<form class="login100-form validate-form flex-sb flex-w" action = "{{route('register')}}" method = "POST">
+					@csrf
 					<div class="login100-pic js-tilt" data-tilt>
 						<img src="assets/assetsCustomer/img/logo-remove.png" style="width:60%; display:block; margin-left:auto; margin-right:auto" alt="IMG"><br>
 					</div><br>
+					<span class="txt1 p-b-11" style="margin-right:auto">
+						Nama
+					</span>
+					<div class="wrap-input100 validate-input m-b-36" data-validate="Username is required">
+						<input class="input100" type="text" name="nama">
+						<span class="focus-input100"></span>
+					</div>
+					<span clas
 					<span class="txt1 p-b-11" style= "margin-right:auto">
 						Username
 					</span>
@@ -50,22 +59,28 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-						<input class="input100" type="password" name="pass" >
+						<input class="input100" type="password" name="password" >
 						<span class="focus-input100"></span>
 					</div>
                     <span class="txt1 p-b-11" style= "margin-right:auto"><br>
 						Nomor Telefon
 					</span>
 					<div class="wrap-input100 validate-input m-b-36" data-validate = "Phone Number is required">
-						<input class="input100" type="text" name="notel" >
+						<input class="input100" type="text" name="no_telp" >
 						<span class="focus-input100"></span>
 					</div>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" style= "margin-left:auto; margin-right:auto">
+						<button type = "submit" class="login100-form-btn" style= "margin-left:auto; margin-right:auto">
 							Register
 						</button>
 					</div>
+					
 				</form>
+				<div>
+					<a href="{{route('login')}}" class="txt3">
+						Login?
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

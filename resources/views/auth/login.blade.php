@@ -34,29 +34,20 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-				<form class="login100-form validate-form flex-sb flex-w" action = "{{route('login')}}" method = "POST">
+				<form class="login100-form validate-form flex-sb flex-w" action="{{route('login')}}" method="POST">
 					@csrf
-					<div class="login100-pic js-tilt" data-tilt>
-<<<<<<< HEAD
-						<img src="assets/assetsCustomer/img/logo-remove.png" style="width:60%; display:block; margin-left:auto; margin-right:auto" alt="IMG"><br>
-					</div><br>
-					<span class="txt1 p-b-11" style= "margin-right:auto">
-=======
+					<div class="login100-pic js-tilte" data-tilt>
 						<img src="{{asset('assets/assetsAdmin/images/logo.jpg')}}"
 							style="width:30%; display:block; margin-left:auto; margin-right:auto" alt="IMG">
 					</div>
 					<span class="txt1 p-b-11">
->>>>>>> 3a0dad44920a83b6395d7792c01a9429d0cf4eee
 						Username
 					</span>
 					<div class="wrap-input100 validate-input m-b-36" data-validate="Username is required">
 						<input class="input100" type="text" name="username">
 						<span class="focus-input100"></span>
 					</div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 3a0dad44920a83b6395d7792c01a9429d0cf4eee
 					<span class="txt1 p-b-11">
 						Password
 					</span>
@@ -77,18 +68,14 @@
 						</div>
 
 						<div>
-							<a href="#" class="txt3" >
+							<a href="{{route('register')}}" class="txt3">
 								Register?
 							</a>
 						</div>
 					</div>
 
 					<div class="container-login100-form-btn">
-<<<<<<< HEAD
-						<button class="login100-form-btn" style= "margin-left:auto; margin-right:auto">
-=======
-						<button type = "submit" class="login100-form-btn">
->>>>>>> 3a0dad44920a83b6395d7792c01a9429d0cf4eee
+						<button type="submit" class="login100-form-btn">
 							Login
 						</button>
 					</div>
