@@ -139,12 +139,12 @@
 	<!-- end team section -->
 
 	<!-- maps section -->
-	<div class="product-section mt-150 mb-150">
+	<div class="product-section mt-150 pt-100 pb-30" style="background: #051922">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
-						<h3><span class="orange-text">Our</span> Location</h3>
+						<h3><span class="orange-text">Our Location </span></h3>
 					</div>
 				</div>
 			</div>

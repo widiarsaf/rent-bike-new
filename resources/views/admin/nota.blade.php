@@ -22,6 +22,9 @@
 	<hr style = "color: rgb(172, 172, 172) !important">
 	<div class="penyewaanDetail">
 		<center><p>{{$penyewaan->user->username}}</p></center>
+		<center>
+			<p style="margin-top: -10px">{{$penyewaan->user->no_telp}}</p>
+		</center>
 	</div>
 	<div>
 		<center>
@@ -41,20 +44,18 @@
 		</thead>
 		<tbody>
 			<tr>
-			@foreach ($pembayaran as $pembayaran)
-			@if($penyewaan->no_nota === $pembayaran->nota_no)
-			<td>
-				@if($pembayaran->metode)
-				Cash
-				@else
-				Transfer
+				@if($penyewaan->no_nota === $pembayaran->nota_no)
+				<td>
+					@if($pembayaran->metode)
+					Cash
+					@else
+					Transfer
+					@endif
+				</td>
+				<td>{{$countGroupPaket}}</td>
+				<td>{{$countGroupSepeda}}</td>
+				<td>{{$pembayaran->nominal}}</td>
 				@endif
-			</td>
-			<td>{{$countGroupPaket}}</td>
-			<td>{{$countGroupSepeda}}</td>
-			<td>{{$pembayaran->nominal}}</td>
-			@endif
-			@endforeach
 			</tr>
 		</tbody>
 	</table>

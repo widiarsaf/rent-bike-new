@@ -57,7 +57,21 @@
 							<ul>
 								<li><a href="{{url('home')}}">Home</a></li>
 								<li><a href="{{url('about')}}">About</a></li>
-								<li><a href="{{route('product.index')}}">Sepeda</a></li>
+								<li><a href="{{route('sepedaCustomer')}}">Katalog</a></li>
+								<li>
+									@guest
+									@if(Route::has('login'))
+								
+									@endif
+									
+									@if (Route::has('Register'))
+								
+									@endif
+									
+									@else
+									<a href="{{route('penyewaanCustomer', Auth::user()->id_pengguna)}}">Riwayat Penyewaan</a>
+									@endguest
+								</li>
 								<li>
 									<div class="header-icons">
 										@guest
@@ -126,16 +140,6 @@
 							<li><a href="about.html">About</a></li>
 							<li><a href="contact.html">Contact</a></li>
 						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box subscribe">
-						<h2 class="widget-title">Subscribe</h2>
-						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
 					</div>
 				</div>
 			</div>

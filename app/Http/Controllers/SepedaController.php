@@ -21,6 +21,16 @@ class SepedaController extends Controller
         return view('admin.sepedaIndex', compact('sepeda', 'paket', 'kategori', 'katalog'));
     }
 
+    public function sepedaCustomer(){
+         $sepeda = Sepeda::with('kategori')->with('katalog')->get();
+         return view('customer.katalog', compact('sepeda'));
+    }
+
+    public function sepedaCustomerDetail($idSepeda){
+         $sepeda = Sepeda::with('kategori')->with('katalog')->where('id_sepeda', $idSepeda)->first();
+         return view('customer.detailSepeda', compact('sepeda'));
+    }
+
 
     public function create()
     {

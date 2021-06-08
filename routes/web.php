@@ -81,6 +81,7 @@ Route::get('/daftarAdmin', function () {
         return redirect()->route('daftarAdmin.index');
     }
     return redirect()->route('login');
+
 });
 Route::get('/daftarCustomer', function () {
     if (Auth::check()) {
@@ -115,9 +116,9 @@ Route::get('/detailPenyewaan/print/nota/{id}', [PenyewaanController::class, 'exp
 Route::get('about', function(){
     return view('customer.about');
 });
-Route::resource('cart', CartController::class);
-Route::resource('product', ProductController::class);
-Route::get('detail/{sepeda}', [ProductController::class, 'detail'])->name('product.detail');
+Route::get('/product/sepeda/all', [SepedaController::class, 'sepedaCustomer'])->name('sepedaCustomer');
+Route::get('/product/sepeda/{params}', [SepedaController::class, 'sepedaCustomerDetail'])->name('sepedaCustomerDetail');
+Route::get('/riwayatPenyewaan/all/{params}', [PenyewaanController::class, 'penyewaanCustomer'])->name('penyewaanCustomer');
 
 
 

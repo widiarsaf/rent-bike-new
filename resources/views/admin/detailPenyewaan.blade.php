@@ -13,10 +13,11 @@
                     <p>instagram.com/gowesslurr_malang</p>
                 </center>
             </div>
-            <hr style="color: rgb(172, 172, 172) !important">
+            <hr style="background: rgb(59, 59, 59) !important"/>
             <div class="penyewaanDetail">
                 <center>
-                    <p>{{$penyewaan->user->username}}</p>
+                    <p>{{$penyewaan->user->nama}}</p>
+                    <p style="margin-top: -10px">{{$penyewaan->user->no_telp}}</p>
                 </center>
             </div>
             <div>
@@ -36,8 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        @foreach ($pembayaran as $pembayaran)
+                    <tr> 
                         @if($penyewaan->no_nota === $pembayaran->nota_no)
                         <td>
                             @if($pembayaran->metode)
@@ -50,7 +50,6 @@
                         <td>{{$countGroupSepeda}}</td>
                         <td>{{$pembayaran->nominal}}</td>
                         @endif
-                        @endforeach
                     </tr>
                 </tbody>
             </table>
