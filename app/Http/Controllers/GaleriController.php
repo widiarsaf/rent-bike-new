@@ -89,7 +89,7 @@ class GaleriController extends Controller
                     Storage::delete('public/'.$galeri->foto);
                     $image_name = $request->file('foto')->store('images', 'public');
                     $galeri->foto = $image_name;
-                else{
+                }else{
                     $image_name = $request->file('foto')->store('images', 'public');
                     $galeri->foto = $image_name;
                 }

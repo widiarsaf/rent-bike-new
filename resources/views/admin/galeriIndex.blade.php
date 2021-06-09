@@ -27,8 +27,8 @@
 <div class="page-body">
     <div class="card">
         <div class="card-header">
-            <h5>Tabel Paket Penyewaan</h5>
-            <span>Daftar Paket Penyewaan Yang disediakan</span>
+            <h5>Tabel Galeri</h5>
+            <span>Daftar Galeri yang Ada</span>
             <div class="card-header-right">
                 <ul class="list-unstyled card-option">
                     <li><i class="icofont icofont-simple-left "></i></li>

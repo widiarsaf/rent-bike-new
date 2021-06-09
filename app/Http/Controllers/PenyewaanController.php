@@ -340,7 +340,7 @@ class PenyewaanController extends Controller
         $penyewaan->delete();
 
         return redirect()->route('penyewaan.index')
-               ->with('sucess', 'Penyewaan berhasil di hapus');
+               ->with('success', 'Penyewaan berhasil di hapus');
 
     }
 
