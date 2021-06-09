@@ -115,7 +115,7 @@
                                 action="{{ route('daftarCustomer.destroy', $cst->id_pengguna) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger"><i class="ti-trash"></i></button>
+                                <button type="submit" disabled = "disabled"class="btn btn-danger"><i class="ti-trash"></i></button>
                             </form>
                         </td>
                     </tr>

@@ -84,7 +84,7 @@
 						<p>Berdiri sejak tahun 2020, pada masa pandemi Covid, Gowesslurr telah menyewakan
 						banyak sepeda kepada pelanggan dan terus meningkatkan kualitas sepedanya. Kami Gowesslurr, jangan lupa hidup sehat
 						dengan berolahraga khususnya bersepeda</p>
-						<a href="customer/about.blade.php" class="boxed-btn mt-4">know more</a>
+						<a href="{{url('about')}}" class="boxed-btn mt-4">know more</a>
 					</div>
 				</div>
 			</div>
