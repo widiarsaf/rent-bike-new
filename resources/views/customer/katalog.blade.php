@@ -54,7 +54,7 @@
 			@endif
 			@endforeach
 			@foreach($sepeda as $katalog2)
-			@if($katalog1->katalog->nama_katalog == 'Katalog 2')
+			@if($katalog2->katalog->nama_katalog == 'Katalog 2')
 			<div class="col-lg-3 col-md-4 text-center katalog2">
 				<div class="single-product-item">
 					<div class="product-image">

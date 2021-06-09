@@ -42,47 +42,21 @@
 					<div class="featured-text">
 						<h2 class="pb-3">GOWESSLURR <span class="orange-text">MALANG</span></h2>
 						<div class="row">
-							<div class="col-lg-6 col-md-6 mb-4 mb-md-5">
-								<div class="list-box d-flex">
-									<div class="list-icon">
-										<i class="fas fa-shipping-fast"></i>
+							<div class="col-lg-12">
+								<div class="contact-form-wrap">
+									<div class="contact-form-box">
+										<h4><i class="fas fa-map"></i> Address</h4>
+										<p style="font-size: 16px !important">Goweslurr malang
+										Jl. Terusan Kesatrian No.Dalam, Kesatrian, Kec. Blimbing, Kota Malang, Jawa Timur 65126</p>
 									</div>
-									<div class="content">
-										<h3>Home Delivery</h3>
-										<p>sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
+									<div class="contact-form-box">
+										<h4><i class="far fa-clock"></i> Rent Hours</h4>
+										<p style="font-size: 16px !important">SUNDAY-SATURDAT: 7 to 8 PM <br> WEDNESDAY : <b> CLOSED! </b></p>
+										<p></p>
 									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 mb-5 mb-md-5">
-								<div class="list-box d-flex">
-									<div class="list-icon">
-										<i class="fas fa-money-bill-alt"></i>
-									</div>
-									<div class="content">
-										<h3>Best Price</h3>
-										<p>sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 mb-5 mb-md-5">
-								<div class="list-box d-flex">
-									<div class="list-icon">
-										<i class="fas fa-briefcase"></i>
-									</div>
-									<div class="content">
-										<h3>Custom Box</h3>
-										<p>sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="list-box d-flex">
-									<div class="list-icon">
-										<i class="fas fa-sync-alt"></i>
-									</div>
-									<div class="content">
-										<h3>Quick Refund</h3>
-										<p>sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
+									<div class="contact-form-box">
+										<h4><i class="fas fa-address-book"></i> Contact</h4>
+										<p style="font-size: 16px !important">Phone (WA): 0812-3323-5758 <br> Instagram: <a target = "_blank"href="https://www.instagram.com/goweslurr_malang/">goweslurr_malang</a></p>
 									</div>
 								</div>
 							</div>
@@ -109,7 +83,7 @@
 				<div class="col-lg-4 col-md-4">
 					<div class="single-team-item">
 						<div class="team-bg team-bg-1"></div>
-						<h4>Jimmy Doe <span>Farmer</span></h4>
+						<h4>Yusuf Pandhu Wijaya <span>Admin 1</span></h4>
 						<ul class="social-link-team">
 							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
 							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
@@ -120,7 +94,7 @@
 				<div class="col-lg-4 col-md-4">
 					<div class="single-team-item">
 						<div class="team-bg team-bg-2"></div>
-						<h4>Marry Doe <span>Farmer</span></h4>
+						<h4>Tunas Timur<span>Admin 2</span></h4>
 						<ul class="social-link-team">
 							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
 							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>

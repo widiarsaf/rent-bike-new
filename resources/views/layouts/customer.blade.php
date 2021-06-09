@@ -118,17 +118,16 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box about-widget">
 						<h2 class="widget-title">About us</h2>
-						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium
-							doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+						<p>Gowesslurr Malang Rent Bike adalah tempat penyewaan sepeda berlokasi di Jl. Terusan Kesatrian E2, Kota Malang Dekat Rampal, dengan sepeda trendy dan nyaman.</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box get-in-touch">
 						<h2 class="widget-title">Get in Touch</h2>
 						<ul>
-							<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
-							<li>support@fruitkha.com</li>
-							<li>+00 111 222 3333</li>
+							<li>Goweslurr malang Jl. Terusan Kesatrian No.Dalam, Kesatrian, Kec. Blimbing, Kota Malang, Jawa Timur 65126</li>
+							<li><a target="_blank" href="https://www.instagram.com/goweslurr_malang/">goweslurr_malang </a></li>
+							<li>0812-3323-5758</li>
 						</ul>
 					</div>
 				</div>
@@ -136,9 +135,9 @@
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="{{url('home')}}">Home</a></li>
+							<li><a href="{{url('about')}}">About</a></li>
+							<li><a href="{{route('sepedaCustomer')}}">Katalog</a></li>
 						</ul>
 					</div>
 				</div>
@@ -158,9 +157,7 @@
 				<div class="col-lg-6 text-right col-md-12">
 					<div class="social-icons">
 						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="https://www.instagram.com/goweslurr_malang/" target="_blank"><i class="fab fa-instagram"></i></a></li>
 						</ul>
 					</div>
 				</div>

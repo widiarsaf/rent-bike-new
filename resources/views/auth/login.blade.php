@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+	<link rel="icon" type="image/png" href="{{asset('assets/assetsCustomer/img/favicon-gws.png')}}" />
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
@@ -60,12 +60,6 @@
 					</div>
 
 					<div class="flex-sb-m w-full p-b-48">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
 
 						<div>
 							<a href="{{route('register')}}" class="txt3">
@@ -80,6 +74,12 @@
 						</button>
 					</div>
 				</form>
+				<hr>
+				<div>
+					<a href="{{route('home')}}" class="txt3">
+						Back to Home
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

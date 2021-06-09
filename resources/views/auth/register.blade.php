@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="{{asset('assets/assetsCustomer/img/favicon-gws.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -35,7 +35,8 @@
 				<form class="login100-form validate-form flex-sb flex-w" action = "{{route('register')}}" method = "POST">
 					@csrf
 					<div class="login100-pic js-tilt" data-tilt>
-						<img src="assets/assetsCustomer/img/logo-remove.png" style="width:60%; display:block; margin-left:auto; margin-right:auto" alt="IMG"><br>
+						<img src="{{asset('assets/assetsAdmin/images/logo.jpg')}}"
+							style="width:30%; display:block; margin-left:auto; margin-right:auto" alt="IMG">
 					</div><br>
 					<span class="txt1 p-b-11" style="margin-right:auto">
 						Nama
@@ -76,10 +77,11 @@
 					</div>
 					
 				</form>
+				<hr>
 				<div>
-					<a href="{{route('login')}}" class="txt3">
+					<center><a href="{{route('login')}}" class="txt3">
 						Login?
-					</a>
+					</a></center>
 				</div>
 			</div>
 		</div>

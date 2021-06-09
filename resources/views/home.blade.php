@@ -29,11 +29,11 @@
 				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
 					<div class="list-box d-flex align-items-center">
 						<div class="list-icon">
-							<i class="fas fa-shipping-fast"></i>
+							<i class="fas fa-map-marker-alt"></i>
 						</div>
 						<div class="content">
-							<h3>Free Shipping</h3>
-							<p>When order over $75</p>
+							<h3>Easy To Access</h3>
+							<p>Easy to reach and strategically located</p>
 						</div>
 					</div>
 				</div>
@@ -51,11 +51,11 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="list-box d-flex justify-content-start align-items-center">
 						<div class="list-icon">
-							<i class="fas fa-sync"></i>
+							<i class="fas fa-thumbs-up"></i>
 						</div>
 						<div class="content">
-							<h3>Refund</h3>
-							<p>Get refund within 3 days!</p>
+							<h3>Trusted</h3>
+							<p>Customer trust is our priority!</p>
 						</div>
 					</div>
 				</div>
@@ -78,8 +78,12 @@
 					<div class="abt-text">
 						<p class="top-sub">Since Year 2020</p>
 						<h2>We are <span class="orange-text">GOWESSLURR</span></h2>
-						<p>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
+						<p>Gowesslurr Malang Rent Bike adalah tempat penyewaan sepeda berlokasi di Jl. Terusan Kesatrian No.Dalam, Kesatrian, Kec.
+						Blimbing, Kota Malang, Jawa Timur 65126. Berlokasi strategis menjadikan Gowesslurr tepat untuk membantu teman-teman
+						menemukan penyewaan sepeda dengan mudah. </p>
+						<p>Berdiri sejak tahun 2020, pada masa pandemi Covid, Gowesslurr telah menyewakan
+						banyak sepeda kepada pelanggan dan terus meningkatkan kualitas sepedanya. Kami Gowesslurr, jangan lupa hidup sehat
+						dengan berolahraga khususnya bersepeda</p>
 						<a href="customer/about.blade.php" class="boxed-btn mt-4">know more</a>
 					</div>
 				</div>
@@ -250,7 +254,7 @@
 
 
 	{{-- Customer of the week --}}
-	<div class="section-title mt-150" >
+	{{-- <div class="section-title mt-150" >
 		<center><h3><span class="orange-text">Customer</span> of The Week</h3></center>
 	</div>
 	<div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel" style = "padding: 30px; background: black">
@@ -273,7 +277,7 @@
 			<span class="carousel-control-next-icon" aria-hidden="true"></span>
 			<span class="sr-only">Next</span>
 		</a>
-	</div>
+	</div> --}}
 
 	{{-- End customer of the Week --}}
 
