@@ -44,6 +44,7 @@
 		</thead>
 		<tbody>
 			<tr>
+				@if($pembayaran !== null)
 				@if($penyewaan->no_nota === $pembayaran->nota_no)
 				<td>
 					@if($pembayaran->metode)
@@ -55,6 +56,9 @@
 				<td>{{$countGroupPaket}}</td>
 				<td>{{$countGroupSepeda}}</td>
 				<td>{{$pembayaran->nominal}}</td>
+				@endif
+				@else
+				<td colspan="4">Belum Ada Pembayaran</td>
 				@endif
 			</tr>
 		</tbody>

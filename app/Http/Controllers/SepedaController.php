@@ -46,13 +46,12 @@ class SepedaController extends Controller
             'foto_unit' => 'nullable',
             'katalog_id' => 'required',
         ]);
-
+        $sepeda = new Sepeda;
         if ($request->file('foto_unit')) {
             $image_name = $request->file('foto_unit')->store('images', 'public');
             $sepeda->foto_unit = $image_name;
         }
 
-        $sepeda = new Sepeda;
         $sepeda->unit_code = $request->get('unit_code');
         $sepeda->deskripsi = $request->get('deskripsi');
         $kategori = new Kategori;

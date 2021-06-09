@@ -99,7 +99,6 @@
                             <th>Total Harga</th>
                             <th>Tanggal Sewa</th>
                             <th>Jam Sewa</th>
-                            <th>Denda</th>
                             <th>Status Pembayaran</th>
                             <th>Status Pengembalian</th>
                             <th>Status Jaminan</th>
@@ -113,7 +112,6 @@
                             <td>{{$p->total_biaya}}</td>
                             <td>{{$p->tanggal}}</td>
                             <td>{{$p->jam}}</td>
-                            <td>{{$p->denda}}</td>
 
 
                             <td>

@@ -4,6 +4,7 @@
     <div class="card">
         <div>
         <a type="button" class = "btn btn-success" target = "_blank"href="{{route('printNota', $penyewaan->id_penyewaan)}}">Print Nota</a>
+        <a href="{{route('penyewaan.index')}}" type="button" class="btn btn-success-outline">Kembali</a>
         </div>
         <div style="margin-top:20px;">
                 <center>
@@ -38,6 +39,7 @@
                 </thead>
                 <tbody>
                     <tr> 
+                        @if($pembayaran !== null)
                         @if($penyewaan->no_nota === $pembayaran->nota_no)
                         <td>
                             @if($pembayaran->metode)
@@ -49,6 +51,10 @@
                         <td>{{$countGroupPaket}}</td>
                         <td>{{$countGroupSepeda}}</td>
                         <td>{{$pembayaran->nominal}}</td>
+                        @endif
+                        @else
+
+                        <td>Belum Ada pembayaran</td>
                         @endif
                     </tr>
                 </tbody>

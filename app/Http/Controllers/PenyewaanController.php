@@ -199,10 +199,14 @@ class PenyewaanController extends Controller
         $convertToString = Carbon::parse($tanggalPembayaran)->isoFormat('DD-MMMM-YYYY');
         $total = Penyewaan::where('id_penyewaan', $id)->value('total_biaya');
         if($pembayaran !== null){
-            if(Pembayaran::where('nota_no', $noNota)->first()->value('nominal') > $penyewaan->total_biaya){
+            if(Pembayaran::where('nota_no', $noNota)->first()->nominal > $penyewaan->total_biaya){
                 // dd(Pembayaran::where('nota_no', $noNota)->first()->nominal);
                $kembalian =  Pembayaran::where('nota_no', $noNota)->first()->nominal -  $penyewaan->total_biaya;
             }
+            // else {
+            //     $kembalian =  Pembayaran::where('nota_no', $noNota)->first()->nominal -  $penyewaan->total_biaya;
+            //     $kembalian = "kurang " . $kembalian;
+            // }
         }
         else{
             $kembalian = 0;
@@ -227,7 +231,7 @@ class PenyewaanController extends Controller
         $tanggalPembayaran = Pembayaran::where('nota_no', $noNota)->groupBy('nota_no')->value('tanggal_bayar');
         $convertToString = Carbon::parse($tanggalPembayaran)->isoFormat('DD-MMMM-YYYY');
         $total = Penyewaan::where('id_penyewaan', $id)->value('total_biaya');
-        if($pembayaran !== null){
+        if(count($pembayaran ) >= 0){
             if(Pembayaran::where('nota_no', $noNota)->first()->value('nominal') > $penyewaan->total_biaya){
                 // dd(Pembayaran::where('nota_no', $noNota)->first()->nominal);
                $kembalian =  Pembayaran::where('nota_no', $noNota)->first()->nominal -  $penyewaan->total_biaya;
@@ -236,8 +240,8 @@ class PenyewaanController extends Controller
         else{
             $kembalian = 0;
         }
-        
         return view ('customer.detailRiwayat', compact('penyewaan', 'detailPenyewaan', 'pembayaran', 'countGroupPaket', 'countGroupSepeda', 'convertToString', 'total', 'kembalian'));
+        
 
     }
 

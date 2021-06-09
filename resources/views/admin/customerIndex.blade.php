@@ -98,14 +98,19 @@
                 <thead>
                     <tr>
                         <th>Username</th>
+                        <th>Nama</th>
+                        <th>No Telp</th>
+                        <th>Email</th>
                         <th>Password</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($customer as $cst)<tr>
-
                         <td>{{$cst->username}}</td>
+                        <td>{{$cst->nama}}</td>
+                        <td>{{$cst->no_telp}}</td>
+                        <td>{{$cst->email}}</td>
                         <td>
                             <p class="long-text">{{$password}}</p>
                         </td>
