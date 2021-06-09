@@ -21,7 +21,7 @@
 		<div>
 			<a type="button" class="btn btn-lg btn-success" target="_blank"
 				href="{{route('printNota', $penyewaan->id_penyewaan)}}">Print Nota</a>
-				<a href="{{route('penyewaan.index')}}" type="button" class = "btn btn-success-outline">Kembali</a>
+				<a href="{{route('penyewaanCustomerDetail', $penyewaan->id_penyewaan)}}" type="button" class = "btn btn-success-outline">Kembali</a>
 		</div>
 		<div style="margin-top:20px;">
 			<center>

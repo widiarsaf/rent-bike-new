@@ -84,7 +84,7 @@
 										@endif
 									
 										@else
-										<a class="shopping-cart" href="#"><i class="fas fa-user"></i></a>
+										
 										<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 											<i class="ti-layout-sidebar-left"></i> Logout
 										</a>
