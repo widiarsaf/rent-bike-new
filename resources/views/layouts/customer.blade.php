@@ -80,11 +80,13 @@
 										@endif
 									
 										@if (Route::has('Register'))
-											<a href="{{route('login')}}">Login</a>
+											<a href="{{route('login')}}">Register</a>
 										@endif
 									
 										@else
-										
+										<a href="{{route('profileAdmin', Auth::user()->id_pengguna)}}">
+											<i class="fas fa-user"></i>
+										</a>
 										<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 											<i class="ti-layout-sidebar-left"></i> Logout
 										</a>

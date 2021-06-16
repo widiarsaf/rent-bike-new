@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ProfilController;
+
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SepedaController;
 use App\Http\Controllers\PaketController;
@@ -110,7 +113,8 @@ Route::get('updateStatus/{penyewaan}', [PenyewaanController::class, 'updateStatu
 Route::get('/calendar', [FullCalendarController::class, 'index'])->name('calendar.index');
 Route::get('/datarekap/export/all', [DetailPenyewaanController::class, 'export_excel'])->name('export_excel');
 Route::get('/detailPenyewaan/print/nota/{id}', [PenyewaanController::class, 'export_pdf'])->name('printNota');
-
+Route::get('/profileAdmin/{params}', [ProfilController::class, 'getAdmin'])->name('profileAdmin');
+Route::put('/profileAdmin/{params}', [ProfilController::class, 'updateBio'])->name('updateBio');
 
 // Customer Route
 Route::get('about', function(){

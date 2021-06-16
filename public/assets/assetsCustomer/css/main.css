@@ -2887,3 +2887,31 @@ border: 1.5px solid #eef0a2;
 
 }
 
+.label-profile{
+  color: #ecf086;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.input-profil{
+  background: none;
+  height: 30px !important;
+  color: white;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid #5c5c5b;
+  font-size: 14px;
+}
+
+.input-profil:focus{
+  background: none;
+  border: none;
+  border-radius: 0px;
+  border: 1px solid #D7D911;
+  color: white;
+}
+
+.cancel:hover{
+  background: #D7D911 !important;
+  color: #020C0E !important;
+}

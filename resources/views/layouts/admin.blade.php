@@ -130,6 +130,11 @@
                                 </a>
                                 <ul class="show-notification profile-notification">
                                     <li>
+                                        <a href="{{route('profileAdmin', Auth::user()->id_pengguna)}}">
+                                            <i class="ti-user"></i> Profile
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <i class="ti-layout-sidebar-left"></i> Logout
